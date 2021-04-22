@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import viewVehicleStatus
+from .models import vehicleStatus
 
 class viewVehicleStatusSerializer(serializers.ModelSerializer):
     class Meta:
-        model = viewVehicleStatus
+        model = vehicleStatus
         fields = ('json',)
