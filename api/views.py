@@ -17,6 +17,6 @@ class createVehicleStatus(APIView):
         if serializer.is_valid():
             json = serializer.data.get('json')
             vehicle_status = vehicleStatus(json=json)
-            vehicleStatus.save(self)
+            vehicle_status.save()
             return Response(viewVehicleStatusSerializer(vehicle_status).data, status=status.HTTP_200_OK)
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
