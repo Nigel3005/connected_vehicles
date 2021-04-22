@@ -5,3 +5,8 @@ class viewVehicleStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = vehicleStatus
         fields = ('json',)
+
+class createVehicleStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = vehicleStatus
+        fields = ('json',)
