@@ -4,5 +4,5 @@ from .views import viewVehicleStatusses
 
 urlpatterns = [
     path('view-vehicle-statusses/', viewVehicleStatusses.as_view()),
-    path(' ', viewVehicleStatusses.as_view()),
+    path('', viewVehicleStatusses.as_view()),
 ]
