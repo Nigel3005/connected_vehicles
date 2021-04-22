@@ -1,9 +1,7 @@
 from django.shortcuts import render
+from rest_framework import generics
 from rest_framework.views import APIView
+from api.models import vehicleStatus
 
-# Create your views here.
-class viewapi(APIView):
-
-    def get(self, request):
-
-        return "hoi"
+class viewapi(generics.ListAPIView):
+    queryset = vehicleStatus.objects.all()
