@@ -1,10 +1,10 @@
 from django.db import models
 
 class vehicleStatus(models.Model):
-    json = models.TextField()
+    vehicleid = models.TextField()
 
     def __str__(self):
-        return self.json
+        return self.vehicleid
 
     class Meta:
         verbose_name_plural = "vehicle statusses"
