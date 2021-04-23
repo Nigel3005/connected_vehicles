@@ -9,4 +9,4 @@ class viewVehicleStatusSerializer(serializers.ModelSerializer):
 class createVehicleStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = vehicleStatus
-        fields = ('vehicleid',)
+        fields = (,)
