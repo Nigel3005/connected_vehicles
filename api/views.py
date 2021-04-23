@@ -31,6 +31,6 @@ class createVehicleStatus(APIView):
             vehicleid = request.headers.get('vehicleid')
             vehicle_status = vehicleStatus(vehicleid=vehicleid, payload=payload)
             vehicle_status.save()
-            return Response(viewVehicleStatusSerializer(vehicle_status).data, status=status.HTTP_200_OK)
+            return Response({'Good request': 'saved'}, status=status.HTTP_201_CREATED)
         except:
             return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
