@@ -5,8 +5,3 @@ class viewVehicleStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = vehicleStatus
         fields = ('vehicleid','payload')
-
-# class createVehicleStatusSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = vehicleStatus
-#         fields = ('vs',)
