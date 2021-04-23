@@ -6,7 +6,7 @@ class viewVehicleStatusSerializer(serializers.ModelSerializer):
         model = vehicleStatus
         fields = ('vehicleid','vs')
 
-class createVehicleStatusSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = vehicleStatus
-        fields = ('vs',)
+# class createVehicleStatusSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = vehicleStatus
+#         fields = ('vs',)
