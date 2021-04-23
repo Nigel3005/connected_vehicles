@@ -13,7 +13,7 @@ class createVehicleStatus(APIView):
     serializer_class = createVehicleStatusSerializer
 
     def post(self, request, format=None):
-        data = request.data[2]
+        data = request.data[1]
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             vs = serializer.data.get('vs')
