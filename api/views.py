@@ -13,11 +13,11 @@ class createVehicleStatus(APIView):
     serializer_class = createVehicleStatusSerializer
 
     def post(self, request, format=None):
-        serializer = self.serializer_class(data=request.data)
+        data = request.data[2]
+        serializer = self.serializer_class(data=data)
         if serializer.is_valid():
-            vehicleid = serializer.data.get('vehicleid')
-            vehicleid = request.headers.get('vehicleid')
-            vehicleid = request.POST.getlist('bt')
+            vehicleid = serializer.data.get('vs')
+            # vehicleid = request.headers.get('vehicleid')
             vehicle_status = vehicleStatus(vehicleid=vehicleid)
             vehicle_status.save()
             return Response(viewVehicleStatusSerializer(vehicle_status).data, status=status.HTTP_200_OK)
