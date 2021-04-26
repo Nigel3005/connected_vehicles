@@ -13,12 +13,11 @@
 <body>
 
     <div class="login-box">
-        <h1>Login</h1>
-        <br>
+        <h1>Sign up</h1>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button>Login</button>
+            <button>Sign up</button>
         </form>
     </div>
 
