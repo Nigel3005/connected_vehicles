@@ -7,7 +7,6 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 from django.shortcuts import render
 from api.models import vehicleStatus
-import requests
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
