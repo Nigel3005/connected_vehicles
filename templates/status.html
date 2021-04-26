@@ -16,14 +16,14 @@
             <h2> Voertuigen </h2>
         {% for status in vehicle_statusses %}
 {#            <p>Naam voertuig: {{ status.vehicle_name }}</p>#}
-<!--            <p>Kenteken: {{ status.vehicle_id }}</p>-->
+            <p>Kenteken: {{ status.vehicleid }}</p>
 <!--            <p>Charging: {{ status.accu_charging }}</p>-->
 <!--            <p>Percentage: {{ status.accu_percentage }}%</p>-->
 <!--            <p>Laatst Online: {{ status.time }}</p>-->
             <br>
         {% endfor %}
     {% else %}
-        <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicle_id }} ) </p>
+        <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicleid }} ) </p>
     {% endif %}
 </body>
 
