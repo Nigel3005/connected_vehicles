@@ -15,11 +15,11 @@
     {% if vehicle_statusses|length > 0 %}
             <h2> Voertuigen </h2>
         {% for status in vehicle_statusses %}
-{#            <p>Naam voertuig: {{ status.vehicle_name }}</p>#}
+            <p>Naam voertuig: {{ status.vehicle_name }}</p>
             <p>Kenteken: {{ status.vehicleid }}</p>
-<!--            <p>Charging: {{ status.accu_charging }}</p>-->
-<!--            <p>Percentage: {{ status.accu_percentage }}%</p>-->
-<!--            <p>Laatst Online: {{ status.time }}</p>-->
+            <p>Charging: {{ status.test_1 }}</p>
+            <p>Percentage: {{ status.test_2 }}%</p>
+            <p>Laatst Online: {{ status.time }}</p>
             <br>
         {% endfor %}
     {% else %}
