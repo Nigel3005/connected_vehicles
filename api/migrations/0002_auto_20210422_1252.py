@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='vehiclestatus',
             old_name='json',
-            new_name='vehicleid',
+            new_name='vehicle_id',
         ),
     ]
