@@ -15,7 +15,7 @@ class createVehicleStatus(APIView):
         try:
             payload = request.data[1]["vs"]
             # battery_perc = int(payload[2:3])-30
-            vehicleid = request.headers.get('vehicle_id')
+            vehicleid = request.headers.get('vehicleid')
             vehicle_status = vehicleStatus(vehicleid=vehicleid, payload=payload)
             vehicle_status.save()
             return Response({'Good request': 'saved'}, status=status.HTTP_201_CREATED)

@@ -4,4 +4,4 @@ from .models import vehicleStatus
 class viewVehicleStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = vehicleStatus
-        fields = ('vehicle_id','payload')
+        fields = ('vehicleid','payload')

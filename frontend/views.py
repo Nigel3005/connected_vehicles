@@ -20,5 +20,5 @@ def status(request):
     template_name = 'status.html'
     vehicle_id = request.user.profile.vehicle_id
     vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=vehicle_id)
-    args = {'vehicle_statusses': vehicle_statusses, 'vehicle_id':vehicle_id}
+    args = {'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicle_id}
     return render(request, template_name, args)

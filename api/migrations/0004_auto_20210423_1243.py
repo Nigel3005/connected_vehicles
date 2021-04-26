@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='vehiclestatus',
-            name='vehicle_id',
+            name='vehicleid',
             field=models.CharField(max_length=11),
         ),
     ]
