@@ -96,6 +96,8 @@ footer{
 ul {
   list-style-type: none;
   margin: 0;
+  margin-left: 10px;
+  margin-right: 20px;
   padding: 0;
   overflow: hidden;
   background-color: #333;
