@@ -129,6 +129,6 @@ li a:hover.active {
 }
 
 .active {
-  /*background-color: #4CAF50;*/
-    background: linear-gradient(90deg, rgba(14,0,255,1) 0%, rgba(9,9,121,1) 30%, rgba(13,1,237,1) 51%, rgba(9,9,121,1) 70%, rgba(0,202,249,1) 100%, rgba(0,212,255,1) 100%);
+    /*background-color: #4CAF50;*/
+    background: linear-gradient(90deg, rgba(125, 119, 223, 1) 0%, rgba(9, 9, 121, 1) 24%, rgba(1, 237, 159, 1) 50%, rgba(9, 9, 121, 1) 75%, rgba(125, 119, 223, 1) 100%);
 }
