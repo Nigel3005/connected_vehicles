@@ -65,4 +65,4 @@ def registerView(request):
             return redirect('/account-activation-send')
     else:
         form = SignUpForm()
-    render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
+        return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
