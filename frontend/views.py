@@ -10,7 +10,7 @@ from user_profile.tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import login
-
+from django.contrib.auth import authenticate
 
 
 def indexView(request):
@@ -68,5 +68,19 @@ def registerView(request):
         return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
 
 def loginView(request):
-    form = LoginForm
-    return render(request, 'default.html', {'page': 'registration/login.html', 'form': form})
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = authenticate(username=form.username, password=form.password)
+            if user is not None:
+                if user.is_active:
+                    return redirect('/status')
+                else:
+                    form = LoginForm
+                    return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated'})
+            else:
+                form = LoginForm
+                return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
+    else:
+        form = LoginForm
+        return render(request, 'default.html', {'page': 'registration/login.html', 'form': form})
