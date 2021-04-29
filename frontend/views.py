@@ -35,7 +35,7 @@ def activateView(request, uidb64, token):
 
 @login_required()
 def account_activation_sendView(request):
-    template_name = 'registration/account-activation-send.html'
+    template_name = '../templates/registration/account-activation-send.html'
     return render(request, template_name)
 
 @login_required
