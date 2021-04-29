@@ -129,7 +129,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 SECURE_SSL_REDIRECT = True
 LOGIN_REDIRECT_URL = 'status'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 DEFAULT_FROM_EMAIL = 'nigelwerk25@gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
