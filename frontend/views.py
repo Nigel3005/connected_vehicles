@@ -5,7 +5,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
 from api.models import vehicleStatus
 from django.contrib.auth.decorators import login_required
-from frontend.forms import SignUpForm
+from frontend.forms import SignUpForm, LoginForm
 from user_profile.tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_decode
@@ -66,3 +66,7 @@ def registerView(request):
     else:
         form = SignUpForm()
         return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
+
+def loginView(request):
+    form = LoginForm
+    return render(request, 'default.html', {'page': 'registration/login.html', 'form': form})
