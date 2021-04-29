@@ -11,7 +11,7 @@ urlpatterns = [
     path('', views.indexView, name='Home'),
     path('login', LoginView.as_view(), name="Login"),
     path('register', views.registerView, name="Register"),
-    path('activation', views.account_activation_sendView, name="activation"),
+    path('activation',  views.registerView, name="activation"),
     path('activate/<slug:uidb64>/<slug:token>/', views.activateView, name='activate'),
 
 ]
