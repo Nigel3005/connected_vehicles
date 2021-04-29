@@ -87,4 +87,4 @@ def loginView(request):
 
     else:
         form = LoginForm
-        return render(request, 'default.html', {'page': 'registration/login.html', 'form': form})
+        return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error':None})
