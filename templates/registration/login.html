@@ -2,7 +2,6 @@
 
     <div class="login-box">
         <h1>Login</h1>
-        <p>ERROR: {{ error }}</p>
         <form method="POST">
             {% csrf_token %}
             {% for field in form %}
@@ -14,6 +13,7 @@
             {% endfor %}
         </p>
     {% endfor %}
+            <p style="color: red">ERROR: {{ error }}</p>
             <button>Sign up</button>
         </form>
     </div>
