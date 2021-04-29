@@ -29,7 +29,7 @@ def activateView(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('home')
+        return redirect('/home')
     else:
         return render(request, 'registration/account-activation-invalid.html')
 
