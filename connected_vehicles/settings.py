@@ -130,4 +130,9 @@ SECURE_SSL_REDIRECT = True
 LOGIN_REDIRECT_URL = 'status'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'niels@nvdn.eu'
+DEFAULT_FROM_EMAIL = 'nigelwerk25@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nigelwerk25@gmail.com'
+EMAIL_HOST_PASSWORD = 'HHBB1122'
