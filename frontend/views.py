@@ -31,20 +31,19 @@ def activateView(request, uidb64, token):
         login(request, user)
         return redirect('/home')
     else:
-        return render(request, 'registration/account-activation-invalid.html')
+        render(request, 'default.html', {'page': 'registration/account-activation-invalid.html'})
 
 
 def account_activation_sendView(request):
     template_name = '../templates/registration/account-activation-send.html'
-    return render(request, template_name)
+    render(request, 'default.html', {'page': template_name})
 
 @login_required
 def statusView(request):
-    template_name = 'status.html'
     vehicleid = request.user.profile.vehicle_id
     vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
-    args = {'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
-    return render(request, template_name, args)
+    args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
+    render(request, 'default.html', args)
 
 def registerView(request):
     if request.method == 'POST':
