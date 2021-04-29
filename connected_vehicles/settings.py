@@ -130,3 +130,4 @@ SECURE_SSL_REDIRECT = True
 LOGIN_REDIRECT_URL = 'status'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'niels@nvdn.eu'
