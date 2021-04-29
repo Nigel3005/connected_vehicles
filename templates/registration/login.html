@@ -1,17 +1,19 @@
 <body>
 
-    <ul>
-        <li><a href="/home">Connected-Vehicles</a></li>
-        <li style="float:right"><a class="active" href="/login">Login</a></li>
-        <li style="float:right"><a href="/register">Register</a></li>
-    </ul>
-
     <div class="login-box">
-        <h1>Login</h1>
+        <h1>Sign up</h1>
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button>Login</button>
+            {% for field in form %}
+        <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        </p>
+    {% endfor %}
+            <button>Sign up</button>
         </form>
     </div>
 
