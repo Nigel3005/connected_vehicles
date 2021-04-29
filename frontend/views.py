@@ -51,6 +51,7 @@ def registerView(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            # user can't login until link confirmed
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
