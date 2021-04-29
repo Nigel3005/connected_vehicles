@@ -1,7 +1,10 @@
 <body>
 
     <div class="login-box">
-        <h1>Sign up</h1>
+        <h1>Login</h1>
+        {% if 'error' in locals() %}
+            <p>ERROR: {{ error }}</p>
+        {% endif %}
         <form method="POST">
             {% csrf_token %}
             {% for field in form %}
