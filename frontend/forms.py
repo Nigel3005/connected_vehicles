@@ -12,12 +12,14 @@ class SignUpForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    def pizza(self):
+        print('pizza')
     # username = forms.CharField(label='Username', max_length=50)
     # password = forms.CharField(label='Password', max_length=50, type='password')
-
-    class Meta:
-        model = User
-        # fields = ('username', 'password')
-
-    def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs)
+    #
+    # class Meta:
+    #     model = User
+    #     fields = ('username', 'password')
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super(LoginForm, self).__init__(*args, **kwargs)
