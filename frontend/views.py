@@ -82,7 +82,9 @@ def loginView(request):
                 form = LoginForm
                 return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
         else:
-            return render(request, 'default.html', {'page': 'registration/login.html', 'form': LoginForm, 'error': 'Invalid Form' + form.username + ' ' + form.password})
+            form_input = form
+            form = LoginForm
+            return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Invalid Form' + str(form_input) })
 
     else:
         form = LoginForm
