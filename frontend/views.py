@@ -45,7 +45,7 @@ def statusView(request):
         args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
         return render(request, 'default.html', args)
     else:
-        args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': None}
+        args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': 'Login Required'}
         return render(request, 'default.html', args)
 
 def registerView(request):
