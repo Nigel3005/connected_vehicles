@@ -38,7 +38,7 @@ def account_activation_sendView(request):
     template_name = '../templates/registration/account-activation-send.html'
     render(request, 'default.html', {'page': template_name})
 
-@login_required
+# @login_required
 def statusView(request):
     vehicleid = request.user.profile.vehicle_id
     vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
