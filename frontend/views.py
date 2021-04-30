@@ -69,11 +69,10 @@ def registerView(request):
 
 def loginView(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        form = LoginForm(username=username, password=password)
-        if form.is_valid():
-            user = authenticate(username=form.username, password=form.password)
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
                     return redirect('/status')
@@ -83,7 +82,7 @@ def loginView(request):
             else:
                 form = LoginForm
                 return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
-        else:
+        except:
             form_input = requestt
             form = LoginForm
             return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Invalid Form' + str(form_input) })

@@ -12,11 +12,11 @@ class SignUpForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='Username', max_length=50)
-    password = forms.CharField(label='Password', max_length=50)
-
-    class Meta:
-        model = User
-        fields = ('username', 'password')
-
-    def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs)
+    # password = forms.CharField(label='Password', max_length=50)
+    #
+    # class Meta:
+    #     model = User
+    #     fields = ('username', 'password')
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super(LoginForm, self).__init__(*args, **kwargs)
