@@ -38,12 +38,15 @@ def account_activation_sendView(request):
     template_name = '../templates/registration/account-activation-send.html'
     render(request, 'default.html', {'page': template_name})
 
-# @login_required
 def statusView(request):
-    vehicleid = request.user.profile.vehicle_id
-    vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
-    args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
-    return render(request, 'default.html', args)
+    if request.user.is_active:
+        vehicleid = request.user.profile.vehicle_id
+        vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
+        args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
+        return render(request, 'default.html', args)
+    else:
+        args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': None}
+        return render(request, 'default.html', args)
 
 def registerView(request):
     if request.method == 'POST':
