@@ -17,7 +17,7 @@ class LoginForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password')
+        # fields = ('username', 'password')
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
