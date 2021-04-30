@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
-
+import json
 
 def indexView(request):
     template_name = 'index.html'
@@ -83,7 +83,7 @@ def loginView(request):
                 form = LoginForm
                 return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
         else:
-            form_input = requestt
+            form_input = json.loads(requestt)
             form = LoginForm
             return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Invalid Form' + str(form_input) })
 
