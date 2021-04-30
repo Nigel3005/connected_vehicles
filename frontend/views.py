@@ -70,7 +70,7 @@ def registerView(request):
 def loginView(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        requestt = request.body
+        requestt = request.POST
         if form.is_valid():
             user = authenticate(username=form.username, password=form.password)
             if user is not None:
