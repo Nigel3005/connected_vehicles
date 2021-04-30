@@ -4,7 +4,7 @@
         <h1>Login</h1>
         <form method="POST">
             {% csrf_token %}
-            {% form.as_p %}
+            {{ form.as_p }}
 {#            {% for field in form %}#}
 {#                <p>#}
 {#                    {{ field.label_tag }}<br>#}
