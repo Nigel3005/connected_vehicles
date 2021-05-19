@@ -5,7 +5,7 @@
         <form method="POST" content_type='application/json'>
             {% csrf_token %}
             {{ form.as_p }}
-            <p class="error-msg">{{ error }}</p>
+            <p class="errormsg">{{ error }}</p>
             <button type="submit" value=Submit">Login</button>
         </form>
     </div>
