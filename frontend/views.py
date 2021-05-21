@@ -65,7 +65,7 @@ def registerView(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
-            return redirect('/account-activation-send')
+            return redirect('account-activation-send')
     else:
         form = SignUpForm()
         return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
