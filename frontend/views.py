@@ -34,14 +34,19 @@ def account_activation_sendView(request):
     render(request, 'default.html', {'page': template_name})
 
 def statusView(request):
-    vehicleid = request.user.profile.vehicle_id
-    if vehicleid != None:
-        vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
-        args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
-        return render(request, 'default.html', args)
+    if request.user != "AnonymousUser":
+        vehicleid = request.user.profile.vehicle_id
+        if vehicleid != None:
+            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
+            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
+            return render(request, 'default.html', args)
+        else:
+            args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': None }
+            return render(request, 'default.html', args)
     else:
-        args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': None }
+        args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': None}
         return render(request, 'default.html', args)
+
 
 def registerView(request):
     if request.method == 'POST':
