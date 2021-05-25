@@ -2,32 +2,20 @@
     <h1>Logboek</h1>
     <br>
     {% if user.is_authenticated %}
-        {% if vehicleid != None %}
-            {% if vehicle_statusses|length > 0 %}
-                <h2> Profiel </h2>
-                <table>
-                    <tr>
-                        <th>Naam: </th>
-                        <th>E-mail: </th>
-                        <th>wachtwoord: </th>
-
-                    </tr>
-                {% for status in vehicle_statusses %}
-                        <tr>
-                            <th>{{ user.username}}</th>
-                            <th>{{ user.email }}</th>
-                            <th>{{ user.password }}</th>
-                        </tr>
-                {% endfor %}
-                        </table>
-            {% else %}
-                <p>Er zijn geen gegevens bekend bij deze username ( {{ user.username }} ) </p>
-            {% endif %}
-         {% else %}
-            <p>Er zijn geen gegevens aan dit account gekoppeld.</p>
-        {% endif %}
+        <h2> Profiel </h2>
+        <table>
+            <tr>
+                <th>Naam: </th>
+                <th>E-mail: </th>
+                <th>wachtwoord: </th>
+            </tr>
+            <tr>
+                <th>{{ user.username}}</th>
+                <th>{{ user.email }}</th>
+                <th>{{ user.password }}</th>
+            </tr>
+                </table>
     {% else %}
         <p>Om uw gegevems te zien moet u eerst <a href="/login">inloggen</a>.</p>
     {% endif %}
-
 </body>
