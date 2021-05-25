@@ -10,7 +10,7 @@ from django.contrib.auth import login, logout, authenticate
 
 def indexView(request):
     template_name = 'index.html'
-    return render(request, 'default.html', {'page': template_name, 'user': request.user})
+    return render(request, 'default.html', {'page': template_name, 'user1': request.user})
 
 def activateView(request, uidb64, token):
     try:
