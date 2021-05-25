@@ -5,8 +5,11 @@ class vehicleStatus(models.Model):
     vehicle_name = models.CharField(max_length=200)
     vehicleid = models.CharField(max_length=11)
     payload = models.CharField(max_length=200)
-    test_1 = models.CharField(max_length=200)
-    test_2 = models.CharField(max_length=200)
+    laden = models.CharField(max_length=200)
+    cell_spanning = models.CharField(max_length=200)
+    accu_spanning = models.CharField(max_length=200)
+    cell_perc = models.CharField(max_length=200)
+    motor_temp = models.CharField(max_length=200)
 
     def __str__(self):
         return self.vehicleid

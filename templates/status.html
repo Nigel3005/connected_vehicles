@@ -7,8 +7,11 @@
             {% for status in vehicle_statusses %}
                 <p>Naam voertuig: {{ status.vehicle_name }}</p>
                 <p>Kenteken: {{ status.vehicleid }}</p>
-                <p>Charging: {{ status.test_1 }}</p>
-                <p>Percentage: {{ status.test_2 }}%</p>
+                <p>Laden: {{ status.laden }}</p>
+                <p>Cell spanning: {{ status.cell_spanning }}</p>
+                <p>Accu spanning: {{ status.accu_spanning }}%</p>
+                <p>Cell percentage: {{ status.cell_perc }}%</p>
+                <p>Motor temparatuur: {{ status.motor_temp }}%</p>
                 <p>Laatst Online: {{ status.time }}</p>
                 <br>
             {% endfor %}

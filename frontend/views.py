@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.utils.encoding import force_text
 from api.models import vehicleStatus
 from frontend.forms import SignUpForm, LoginForm
-from user_profile.tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import login, logout, authenticate
@@ -11,27 +10,6 @@ from django.contrib.auth import login, logout, authenticate
 def indexView(request):
     template_name = 'index.html'
     return render(request, 'default.html', {'page': template_name})
-
-# def activateView(request, uidb64, token):
-#     try:
-#         uid = force_text(urlsafe_base64_decode(uidb64))
-#         user = User.objects.get(pk=uid)
-#     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-#         user = None
-#
-#     if user is not None and account_activation_token.check_token(user, token):
-#         user.is_active = True
-#         user.profile.email_confirmed = True
-#         user.save()
-#         login(request, user)
-#         return redirect('/home')
-#     else:
-#         render(request, 'default.html', {'page': 'registration/account-activation-invalid.html'})
-
-
-# def account_activation_sendView(request):
-#     template_name = '../templates/registration/account-activation-send.html'
-#     render(request, 'default.html', {'page': template_name})
 
 def statusView(request):
     if not request.user.is_anonymous:
