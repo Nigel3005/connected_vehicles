@@ -13,12 +13,14 @@
                 <th>{{ user.email }}</th>
             </tr>
             {% if vehicleid != None %}
-                {% for status in vehicle_statusses %}
-                    <tr>
-                        <th>Kenteken: </th>
-                        <th>{{ user.vehicleid }}</th>
-                    </tr>
-                {% endfor %}
+                {% if vehicle_statusses|length > 0 %}
+                    {% for status in vehicle_statusses %}
+                        <tr>
+                            <th>Kenteken: </th>
+                            <th>{{ user.vehicleid }}</th>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
             {% endif %}
             </table>
         {% else %}
