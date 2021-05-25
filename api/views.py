@@ -14,11 +14,11 @@ class createVehicleStatus(APIView):
     def post(self, request, format=None):
         try:
             payload = request.data[1]["vs"]
-            laden = payload[2:4]
-            cell_spanning = int(payload[2:3])-30
-            accu_spanning = int(payload[2:3])-30
-            cell_perc = int(payload[2:3])-30
-            motor_temp = int(payload[2:3])-30
+            laden = payload[0]
+            cell_spanning = int(payload[1:2])/100+2
+            accu_spanning = int(payload[3:4])/10
+            cell_perc = int(payload[5:6])
+            motor_temp = int(payload[7:8])-100
             vehicleid = request.headers.get('vehicleid')
             vehicle_status = vehicleStatus(vehicleid=vehicleid, payload=payload, laden=laden, cell_spanning=cell_spanning, accu_spanning=accu_spanning, cell_perc=cell_perc, motor_temp=motor_temp)
             vehicle_status.save()
