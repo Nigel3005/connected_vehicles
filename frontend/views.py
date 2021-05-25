@@ -41,6 +41,21 @@ def logboekView(request):
         args = {'page': 'logboek.html', 'vehicle_statusses': None}
         return render(request, 'default.html', args)
 
+def profielView(request):
+    if not request.user.is_anonymous:
+        vehicleid = request.user.profile.vehicle_id
+        if vehicleid != None:
+            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
+            args = {'page': 'profiel.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
+
+            return render(request, 'default.html', args)
+        else:
+            args = {'page': 'profiel.html', 'vehicle_statusses': None, 'vehicleid': vehicleid}
+            return render(request, 'default.html', args)
+    else:
+        args = {'page': 'profiel.html', 'vehicle_statusses': None}
+        return render(request, 'default.html', args)
+
 
 def registerView(request):
     if request.method == 'POST':
