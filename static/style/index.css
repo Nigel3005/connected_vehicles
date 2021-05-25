@@ -77,23 +77,6 @@ input {
     margin: 12px 0;
 }
 
-
-footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: black;
-   text-align: center;
-}
-
-/*footer{*/
-/*    color: black;*/
-/*    padding-left: 10px;*/
-/*    position: fixed;*/
-/*    bottom: 20px;*/
-/*}*/
-
 ul {
   list-style-type: none;
   margin: 0;
