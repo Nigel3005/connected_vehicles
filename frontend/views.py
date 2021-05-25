@@ -1,17 +1,12 @@
-from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode
-from django.template.loader import render_to_string
+from django.utils.encoding import force_text
 from api.models import vehicleStatus
-from django.contrib.auth.decorators import login_required
 from frontend.forms import SignUpForm, LoginForm
 from user_profile.tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_decode
-from django.contrib.auth import login
-from django.contrib.auth import authenticate
-import json
+from django.contrib.auth import login, logout, authenticate
+
 
 def indexView(request):
     template_name = 'index.html'
@@ -84,3 +79,7 @@ def loginView(request):
     else:
         form = LoginForm
         return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': ""})
+
+def logoutView(request):
+    logout(request)
+    indexView(request)
