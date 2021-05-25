@@ -3,19 +3,19 @@
     <br>
     {% if vehicleid != None %}
         {% if vehicle_statusses|length > 0 %}
-                <h2> Voertuigen </h2>
+            <h2> Voertuigen </h2>
+            <table>
+                <tr>
+                    <th>Naam voertuig: </th>
+                    <th>Kenteken: </th>
+                    <th>Laden: </th>
+                    <th>Cell spanning: </th>
+                    <th>Accu spanning: </th>
+                    <th>Cell percentage: </th>
+                    <th>Motor temparatuur: </th>
+                    <th>Laatst Online: </th>
+                </tr><br>
             {% for status in vehicle_statusses %}
-                    <table>
-                    <tr>
-                        <th>Naam voertuig: }</th>
-                        <th>Kenteken: </th>
-                        <th>Laden: </th>
-                        <th>Cell spanning: </th>
-                        <th>Accu spanning: </th>
-                        <th>Cell percentage: </th>
-                        <th>Motor temparatuur: </th>
-                        <th>Laatst Online: </th>
-                    </tr>
                     <tr>
                         <th>{{ status.vehicle_name }}</th>
                         <th>{{ status.vehicleid }}</th>
