@@ -130,8 +130,6 @@ SECURE_SSL_REDIRECT = True
 LOGIN_REDIRECT_URL = '/status'
 LOGIN_URL = '/login'
 
-
-
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = ''

@@ -58,7 +58,7 @@ def registerView(request):
             user.save()
             current_site = get_current_site(request)
             subject = 'Activate Your connected vehicles Account'
-            message = render_to_string('registration/account-activation-email.html', {
+            message = render_to_string('registration/account-activation-send.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
