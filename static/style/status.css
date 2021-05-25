@@ -57,3 +57,17 @@ li a:hover.active {
     background-color: #4CAF50;
 /*background: linear-gradient(90deg, rgba(52,206,255,1) 0%, rgba(0,129,255,1) 24%, rgba(52,206,255,1) 50%, rgba(0,129,255,1) 75%, rgba(52,206,255,1) 100%);*/
 }
+
+table, td, th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+}
