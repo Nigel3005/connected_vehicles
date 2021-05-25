@@ -40,7 +40,7 @@ def account_activation_sendView(request):
 
 def statusView(request):
     vehicleid = request.user.profile.vehicle_id
-    if len(vehicleid) > 0:
+    if vehicleid != None:
         vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
         args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid':vehicleid}
         return render(request, 'default.html', args)
