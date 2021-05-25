@@ -16,9 +16,9 @@ class createVehicleStatus(APIView):
             payload = request.data[1]["vs"]
             # test_1 = request.data('test_1')
             # test_2 = request.data('test_2')
-            vehicle_name = request.data('vehicle_name')
+            # vehicle_name = request.data('vehicle_name')
             vehicleid = request.headers.get('vehicleid')
-            vehicle_status = vehicleStatus(vehicleid=vehicleid, payload=payload, test_1='test_1', test_2='test_2', vehicle_name=vehicle_name)
+            vehicle_status = vehicleStatus(vehicleid=vehicleid, payload=payload, test_1='test_1', test_2='test_2', vehicle_name='vehicle_name')
             vehicle_status.save()
             return Response({'Good request': 'saved'}, status=status.HTTP_201_CREATED)
         except:
