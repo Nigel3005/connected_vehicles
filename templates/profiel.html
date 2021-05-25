@@ -6,15 +6,19 @@
         <table>
             <tr>
                 <th>Naam: </th>
-                <th>E-mail: </th>
-                <th>wachtwoord: </th>
+                <th>{{ user.username}}</th>
             </tr>
             <tr>
-                <th>{{ user.username}}</th>
+                <th>E-mail: </th>
                 <th>{{ user.email }}</th>
-                <th>{{ user.vehicleid }}</th>
             </tr>
-                </table>
+            {% for status in vehicle_statusses %}
+                <tr>
+                    <th>Kenteken: </th>
+                    <th>{{ user.vehicleid }}</th>
+                </tr>
+            {% endfor %}
+        </table>
     {% else %}
         <p>Om uw gegevems te zien moet u eerst <a href="/login">inloggen</a>.</p>
     {% endif %}
