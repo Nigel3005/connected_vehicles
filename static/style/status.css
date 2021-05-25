@@ -9,11 +9,11 @@ body h1,h2,h3,p{
     padding-left: 10px;
 }
 
-footer{
+footer {
     color: black;
-    padding-left: 10px;
+    clear: both;
     position: relative;
-    bottom: 20px;
+    height: 200px;
     margin-top: -200px;
 }
 
