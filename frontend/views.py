@@ -12,26 +12,26 @@ def indexView(request):
     template_name = 'index.html'
     return render(request, 'default.html', {'page': template_name})
 
-def activateView(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        user = None
+# def activateView(request, uidb64, token):
+#     try:
+#         uid = force_text(urlsafe_base64_decode(uidb64))
+#         user = User.objects.get(pk=uid)
+#     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+#         user = None
+#
+#     if user is not None and account_activation_token.check_token(user, token):
+#         user.is_active = True
+#         user.profile.email_confirmed = True
+#         user.save()
+#         login(request, user)
+#         return redirect('/home')
+#     else:
+#         render(request, 'default.html', {'page': 'registration/account-activation-invalid.html'})
 
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.profile.email_confirmed = True
-        user.save()
-        login(request, user)
-        return redirect('/home')
-    else:
-        render(request, 'default.html', {'page': 'registration/account-activation-invalid.html'})
 
-
-def account_activation_sendView(request):
-    template_name = '../templates/registration/account-activation-send.html'
-    render(request, 'default.html', {'page': template_name})
+# def account_activation_sendView(request):
+#     template_name = '../templates/registration/account-activation-send.html'
+#     render(request, 'default.html', {'page': template_name})
 
 def statusView(request):
     if not request.user.is_anonymous:
