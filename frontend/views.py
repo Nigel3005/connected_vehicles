@@ -34,7 +34,7 @@ def account_activation_sendView(request):
     render(request, 'default.html', {'page': template_name})
 
 def statusView(request):
-    if request.user != 'AnonymousUser':
+    if not request.user.is_anonymous:
         vehicleid = request.user.profile.vehicle_id
         if vehicleid != None:
             vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
