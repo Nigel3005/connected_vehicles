@@ -12,8 +12,9 @@ body h1,h2,h3,p{
 footer{
     color: black;
     padding-left: 10px;
-    position: fixed;
+    position: relative;
     bottom: 20px;
+    margin-top: -200px;
 }
 
 ul {

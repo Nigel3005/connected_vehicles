@@ -77,12 +77,21 @@ input {
     margin: 12px 0;
 }
 
+
 footer{
     color: black;
     padding-left: 10px;
-    position: fixed;
+    position: relative;
     bottom: 20px;
+    margin-top: -200px;
 }
+
+/*footer{*/
+/*    color: black;*/
+/*    padding-left: 10px;*/
+/*    position: fixed;*/
+/*    bottom: 20px;*/
+/*}*/
 
 ul {
   list-style-type: none;
