@@ -7,24 +7,24 @@
             {% for status in vehicle_statusses %}
                     <table>
                     <tr>
-                        <th>Naam voertuig: }</th>
-                        <th>Kenteken: </th>
-                        <th>Laden: </th>
-                        <th>Cell spanning: </th>
-                        <th>Accu spanning: </th>
-                        <th>Cell percentage: </th>
-                        <th>Motor temparatuur: </th>
-                        <th>Laatst Online: </th>
+                        <td>Naam voertuig: }</td>
+                        <td>Kenteken: </td>
+                        <td>Laden: </td>
+                        <td>Cell spanning: </td>
+                        <td>Accu spanning: </td>
+                        <td>Cell percentage: </td>
+                        <td>Motor temparatuur: </td>
+                        <td>Laatst Online: </td>
                     </tr>
                     <tr>
-                        <th>{{ status.vehicle_name }}</th>
-                        <th>{{ status.vehicleid }}</th>
-                        <th>{{ status.laden }}</th>
-                        <th>{{ status.cell_spanning }}</th>
-                        <th>{{ status.accu_spanning }}%</th>
-                        <th>{{ status.cell_perc }}%</th>
-                        <th>{{ status.motor_temp }}%</th>
-                        <th>{{ status.time }}</th>
+                        <td>{{ status.vehicle_name }}</td>
+                        <td>{{ status.vehicleid }}</td>
+                        <td>{{ status.laden }}</td>
+                        <td>{{ status.cell_spanning }}</td>
+                        <td>{{ status.accu_spanning }}%</td>
+                        <td>{{ status.cell_perc }}%</td>
+                        <td>{{ status.motor_temp }}%</td>
+                        <td>{{ status.time }}</td>
                     </tr>
 
                     </table>
