@@ -12,16 +12,10 @@
                 <th>E-mail: </th>
                 <th>{{ user.email }}</th>
             </tr>
-            {% if vehicleid != None %}
-                {% if vehicle_statusses|length > 0 %}
-                    {% for status in vehicle_statusses %}
-                        <tr>
-                            <th>Kenteken: </th>
-                            <th>{{ user.vehicleid }}</th>
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-            {% endif %}
+                <tr>
+                    <th>Kenteken: </th>
+                    <th>{{ user.vehicleid }}</th>
+                </tr>
             </table>
         {% else %}
             <p>Om uw gegevems te zien moet u eerst <a href="/login">inloggen</a>.</p>
