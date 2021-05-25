@@ -15,10 +15,8 @@ def statusView(request):
     if not request.user.is_anonymous:
         vehicleid = request.user.profile.vehicle_id
         if vehicleid != None:
-            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
-            reversed_list= vehicle_statusses[::-1]
-            # args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
-            args = {'page':'status.html',' reversed_list': reversed_list, 'vehicleid': vehicleid}
+            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).reversed()
+            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
             return render(request, 'default.html', args)
         else:
             args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': vehicleid}
