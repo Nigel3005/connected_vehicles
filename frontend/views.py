@@ -82,4 +82,4 @@ def loginView(request):
 
 def logoutView(request):
     logout(request)
-    indexView(request)
+    return redirect('Home')
