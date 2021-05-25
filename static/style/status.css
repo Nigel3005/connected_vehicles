@@ -59,7 +59,7 @@ li a:hover.active {
 }
 
 table, td, th {
-  border: 1px solid #ddd;
+  border: 1px solid black;
   text-align: left;
 }
 
