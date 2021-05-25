@@ -10,7 +10,7 @@ from django.contrib.auth import login, logout, authenticate
 
 def indexView(request):
     template_name = 'index.html'
-    return render(request, 'default.html', {'page': template_name, 'user1': request.user})
+    return render(request, 'default.html', {'page': template_name})
 
 def activateView(request, uidb64, token):
     try:
@@ -26,7 +26,7 @@ def activateView(request, uidb64, token):
         login(request, user)
         return redirect('/home')
     else:
-        render(request, 'default.html', {'page': 'registration/account-activation-invalid.html', 'user': request.user})
+        render(request, 'default.html', {'page': 'registration/account-activation-invalid.html'})
 
 
 def account_activation_sendView(request):
@@ -38,13 +38,13 @@ def statusView(request):
         vehicleid = request.user.profile.vehicle_id
         if vehicleid != None:
             vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid)
-            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'user': request.user}
+            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses}
             return render(request, 'default.html', args)
         else:
-            args = {'page': 'status.html', 'vehicle_statusses': None, 'user': request.user}
+            args = {'page': 'status.html', 'vehicle_statusses': None}
             return render(request, 'default.html', args)
     else:
-        args = {'page': 'status.html', 'vehicle_statusses': None, 'user': request.user}
+        args = {'page': 'status.html', 'vehicle_statusses': None}
         return render(request, 'default.html', args)
 
 
@@ -60,7 +60,7 @@ def registerView(request):
             return redirect('Login')
     else:
         form = SignUpForm()
-    return render(request, 'default.html', {'page': 'registration/register.html', 'form': form, 'user': request.user})
+    return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
 
 def loginView(request):
     if request.method == 'POST':
@@ -73,17 +73,17 @@ def loginView(request):
                     return redirect('/status')
                 else:
                     form = LoginForm
-                    return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated', 'user': request.user})
+                    return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated'})
             else:
                 form = LoginForm
-                return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.', 'user': request.user})
+                return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
         except:
             form = LoginForm
-            return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Invalid Form', 'user': request.user})
+            return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Invalid Form'})
 
     else:
         form = LoginForm
-        return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': "", 'user': request.user})
+        return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': ""})
 
 def logoutView(request):
     logout(request)
