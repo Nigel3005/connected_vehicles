@@ -15,7 +15,7 @@
                     <th>Motor temparatuur: </th>
                     <th>Laatst Online: </th>
                 </tr>
-            {% for status in vehicle_statusses %}
+            {% for status in reversed_list %}
                     <tr>
                         <th>{{ status.vehicle_name }}</th>
                         <th>{{ status.vehicleid }}</th>
