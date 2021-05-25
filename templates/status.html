@@ -14,7 +14,12 @@
                     <th>Cell percentage: </th>
                     <th>Motor temparatuur: </th>
                     <th>Laatst Online: </th>
-                </tr><br>
+                </tr>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             {% for status in vehicle_statusses %}
                     <tr>
                         <th>{{ status.vehicle_name }}</th>
@@ -26,27 +31,8 @@
                         <th>{{ status.motor_temp }}%</th>
                         <th>{{ status.time }}</th>
                     </tr>
-
-                    </table>
-
-
-
-
-
-
-
-{#                <table>#}
-{#                    <p>Naam voertuig: {{ status.vehicle_name }}</p>#}
-{#                    <p>Kenteken: {{ status.vehicleid }}</p>#}
-{#                    <p>Laden: {{ status.laden }}</p>#}
-{#                    <p>Cell spanning: {{ status.cell_spanning }}</p>#}
-{#                    <p>Accu spanning: {{ status.accu_spanning }}%</p>#}
-{#                    <p>Cell percentage: {{ status.cell_perc }}%</p>#}
-{#                    <p>Motor temparatuur: {{ status.motor_temp }}%</p>#}
-{#                    <p>Laatst Online: {{ status.time }}</p>#}
-{#                    <br>#}
-{#                </table>#}
             {% endfor %}
+                    </table>
         {% else %}
             <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicleid }} ) </p>
         {% endif %}
