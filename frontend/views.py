@@ -69,12 +69,6 @@ def loginView(request):
             password = request.POST.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
-                if user.is_active:
-                    return redirect('/status')
-                else:
-                    form = LoginForm
-                    return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated'})
-            else:
                 form = LoginForm
                 return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
         except:
