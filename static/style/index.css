@@ -79,11 +79,12 @@ input {
 
 
 footer {
-    color: black;
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: black;
+   text-align: center;
 }
 
 /*footer{*/
