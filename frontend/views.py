@@ -68,7 +68,7 @@ def loginView(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None:
+            if user is None:
                 form = LoginForm
                 return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
         except:
