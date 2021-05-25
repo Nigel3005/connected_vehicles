@@ -52,23 +52,15 @@ def registerView(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            # user can't login until link confirmed
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            subject = 'Activate Your connected vehicles Account'
-            message = render_to_string('registration/account-activation-email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
-            user.email_user(subject, message)
-            return redirect('account-activation-send')
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('login')
     else:
         form = SignUpForm()
-        return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
+    return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
 
 def loginView(request):
     if request.method == 'POST':
