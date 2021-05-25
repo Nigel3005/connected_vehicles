@@ -49,6 +49,7 @@ def loginView(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
+                    login(request, user)
                     return redirect('/status')
                 else:
                     form = LoginForm
