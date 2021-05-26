@@ -6,15 +6,13 @@
             {% if vehicle_statusses|length > 0 %}
                 <h2> Voertuigen </h2>
                 <table>
-                    <tr>
-                        <th>Kenteken: </th>
-                    </tr>
-                {% for status in vehicle_statusses %}
+                    {% for status in vehicle_statusses %}
                         <tr>
+                            <th>Kenteken: </th>
                             <th>{{ status.vehicleid }}</th>
                         </tr>
-                {% endfor %}
-                        </table>
+                    {% endfor %}
+                </table>
             {% else %}
                 <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicleid }} ) </p>
             {% endif %}
