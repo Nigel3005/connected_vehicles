@@ -7,8 +7,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    vehicle_id = models.CharField(max_length=11, null=True)
-
+    vehicle_ids = models.CharField(max_length=240, null=True)
 
     def __str__(self):
         return self.user.username
