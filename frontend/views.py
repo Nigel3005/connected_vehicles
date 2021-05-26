@@ -47,7 +47,6 @@ def logboekView(request):
             else:
                 vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
                 if len(vehicle_statusses) > 0:
-                    status = vehicle_statusses[0]
                     column_names = [f.name.replace("_", " ").capitalize() for f in vehicleStatus._meta.get_fields()]
                 else:
                     column_names = None
