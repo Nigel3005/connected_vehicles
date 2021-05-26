@@ -42,15 +42,13 @@ def logboekView(request):
             selected_vehicle_id = request.GET.get('vehicle_id')
             if selected_vehicle_id == None:
                 vehicle_statusses = "No Selection Made"
-                # column_names = ["Selected vehicle ids = None"]
-                column_names = [f.name for f in vehicleStatus._meta.get_fields()]
+                column_names = ["Selected vehicle ids = None"]
 
             else:
                 vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
                 if len(vehicle_statusses) > 0:
                     status = vehicle_statusses[0]
-                    column_names = [attr for attr in dir(status) if
-                                    not callable(getattr(status, attr)) and not attr.startswith("__")]
+                    column_names = [f.name.replace("_", " ").capitalize() for f in vehicleStatus._meta.get_fields()]
                 else:
                     column_names = ["vehicle statusses = 0"]
             # Render template
