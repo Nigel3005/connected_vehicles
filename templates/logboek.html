@@ -48,17 +48,17 @@
                         <th>{{ name }}</th>
                     {% endfor %}
                 </tr>
-{#                    {% for status in vehicle_statusses %}#}
-{#                            <tr>#}
-{#                                <th>{{ status.vehicleid }}</th>#}
-{#                                <th>{{ status.laden }}</th>#}
-{#                                <th>{{ status.cell_spanning }}</th>#}
-{#                                <th>{{ status.accu_spanning }}%</th>#}
-{#                                <th>{{ status.cell_perc }}%</th>#}
-{#                                <th>{{ status.motor_temp }}%</th>#}
-{#                                <th>{{ status.time }}</th>#}
-{#                            </tr>#}
-{#                    {% endfor %}#}
+                    {% for status in vehicle_statusses %}
+                            <tr>
+                                <th>{{ status.vehicleid }}</th>
+                                <th>{{ status.laden }}</th>
+                                <th>{{ status.cell_spanning }}</th>
+                                <th>{{ status.accu_spanning }}%</th>
+                                <th>{{ status.cell_perc }}%</th>
+                                <th>{{ status.motor_temp }}%</th>
+                                <th>{{ status.time }}</th>
+                            </tr>
+                    {% endfor %}
             </table>
          {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
