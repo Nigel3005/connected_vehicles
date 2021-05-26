@@ -41,15 +41,13 @@ def logboekView(request):
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
             selected_vehicle_id = request.GET.get('vehicle_id')
             if selected_vehicle_id == None:
-                vehicle_statusses = None
+                selected_vehicle_id = vehicle_ids[0]
+            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
+            if len(vehicle_statusses) > 0:
+                column_names = [f.name.replace("_", " ").capitalize() for f in vehicleStatus._meta.get_fields()]
+            else:
                 column_names = None
 
-            else:
-                vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
-                if len(vehicle_statusses) > 0:
-                    column_names = [f.name.replace("_", " ").capitalize() for f in vehicleStatus._meta.get_fields()]
-                else:
-                    column_names = None
             # Render template
             args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id}
             return render(request, 'default.html', args)
