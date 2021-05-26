@@ -39,13 +39,12 @@ def logboekView(request):
             # Sepperate vehicle statusses
             vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
-            selected_vehicle_ids = request.GET.get('vehicle_id')
-            if selected_vehicle_ids == None:
+            selected_vehicle_id = request.GET.get('vehicle_id')
+            if selected_vehicle_id == None:
                 vehicle_statusses = "No Selection Made"
                 column_names = ["Selected vehicle ids = None"]
             else:
-                selected_vehicle_ids = [n.upper() for n in selected_vehicle_ids]
-                vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_ids).order_by('time').reverse()
+                vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
                 if len(vehicle_statusses) > 0:
                     status = vehicle_statusses[0]
                     column_names = [attr.replace("_", " ").capitalize() for attr in dir(status) if
