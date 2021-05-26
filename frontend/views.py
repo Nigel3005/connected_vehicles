@@ -42,7 +42,7 @@ def logboekView(request):
             selected_vehicle_ids = request.GET.get('vehicle_id')
             if selected_vehicle_ids == None:
                 vehicle_statusses = "No Selection Made"
-                column_names = []
+                column_names = ["Selected vehicle ids = None"]
             else:
                 selected_vehicle_ids = [n.upper() for n in selected_vehicle_ids]
                 vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_ids).order_by('time').reverse()
@@ -51,7 +51,7 @@ def logboekView(request):
                     column_names = [attr.replace("_", " ").capitalize() for attr in dir(status) if
                                     not callable(getattr(status, attr)) and not attr.startswith("__")]
                 else:
-                    column_names = []
+                    column_names = ["vehicle statusses = 0"]
             # Render template
             args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names}
             return render(request, 'default.html', args)
