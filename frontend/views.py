@@ -51,7 +51,7 @@ def logboekView(request):
                 else:
                     column_names = None
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names}
+            args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
