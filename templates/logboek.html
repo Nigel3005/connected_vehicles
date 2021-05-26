@@ -56,7 +56,7 @@
             <br>
             {% if vehicle_statusses == None %}
                 <p>Selecteer een kenteken a.u.b.</p>
-            {% else if vehicle_statusses|length > 0 %}
+            {% elif vehicle_statusses|length > 0 %}
                 <table>
                     <tr>
                         {% for name in column_names %}
