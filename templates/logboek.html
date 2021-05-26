@@ -3,7 +3,7 @@
         var href = new URL(window.location.href)
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         href.searchParams.set('vehicle_id',vehicle_id)
-        window.location.assign(href.href)
+        window.location.href = href.href
     }
 </script>
 
