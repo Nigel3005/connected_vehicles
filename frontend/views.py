@@ -100,3 +100,6 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     return redirect('Home')
+
+def analyticsView(request):
+    return redirect('Data-Analytics')

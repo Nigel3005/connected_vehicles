@@ -1,0 +1,19 @@
+<body>
+    <h1>Data Analytics</h1>
+    <br>
+    {% if user.is_authenticated %}
+        {% if vehicleid != None %}
+            {% if vehicle_statusses|length > 0 %}
+                <h2> Data Analytics </h2>
+
+
+            {% else %}
+                <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicleid }} ) </p>
+            {% endif %}
+         {% else %}
+            <p>Er is geen kenteken aan dit account gekoppeld.</p>
+        {% endif %}
+    {% else %}
+        <p>Om de status van uw voertuig(en) te zien moet u eerst <a href="/login">inloggen</a>.</p>
+    {% endif %}
+</body>
