@@ -1,3 +1,12 @@
+<script>
+    function filter(){
+        var href = new URL(window.location.href)
+        var vehicle_id = document.getElementById("vehicle_id_filter").value;
+        href.searchParams.set(vehicle_id)
+        console.log(href.href)
+    }
+</script>
+
 <body>
     <h1>Logboek</h1>
     <br>
@@ -6,11 +15,14 @@
             {% if vehicle_statusses|length > 0 %}
                 <h2> Voertuigen </h2>
                 <h3>Kenteken: </h3>
-                <select>
-                    {% for n in vehicle_ids %}
-                        <option value="{{ n }}">{{ n }}</option>
-                    {% endfor %}
-                </select>
+                <form>
+                    <select id="vehicle_id_filter" >
+                        {% for n in vehicle_ids %}
+                            <option value="{{ n }}">{{ n }}</option>
+                        {% endfor %}
+                    </select>
+                    <button onclick="filter()">Filter</button>
+                </form>
                 <br>
                 <br>
                 <br>
