@@ -4,7 +4,6 @@
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         href.searchParams.set('vehicle_id',vehicle_id)
         window.location.replace(href.href)
-        console.log(href.href)
         return false
     }
 </script>
@@ -23,6 +22,20 @@
                             <option value="{{ n }}">{{ n }}</option>
                         {% endfor %}
                     </select>
+                    <div class="multiselect">
+                    <div class="selectBox" onclick="showCheckboxes()">
+                        <select>
+                            <option>Select an option</option>
+                        </select>
+                            <div class="overSelect"></div>
+                        </div>
+                        <div id="checkboxes">
+                            {% for name in column_names %}
+                            <label for="{{ name }}">
+                                <input type="checkbox" id="{{ name }}" />First checkbox</label>
+                            {% endfor %}
+                        </div>
+                      </div>
                     <button onclick="return filter()">Filter</button>
                 </form>
                 <br>
@@ -31,28 +44,22 @@
                 <br>
                 <table>
                     <tr>
-                        <th>Naam voertuig: </th>
-                        <th>Kenteken: </th>
-                        <th>Laden: </th>
-                        <th>Cell spanning: </th>
-                        <th>Accu spanning: </th>
-                        <th>Cell percentage: </th>
-                        <th>Motor temparatuur: </th>
-                        <th>Laatst Online: </th>
+                        {% for name in column_names %}
+                            <th>{{ name }}</th>
+                        {% endfor %}
                     </tr>
-                {% for status in vehicle_statusses %}
-                        <tr>
-                            <th>{{ status.vehicle_name }}</th>
-                            <th>{{ status.vehicleid }}</th>
-                            <th>{{ status.laden }}</th>
-                            <th>{{ status.cell_spanning }}</th>
-                            <th>{{ status.accu_spanning }}%</th>
-                            <th>{{ status.cell_perc }}%</th>
-                            <th>{{ status.motor_temp }}%</th>
-                            <th>{{ status.time }}</th>
-                        </tr>
-                {% endfor %}
-                        </table>
+{#                    {% for status in vehicle_statusses %}#}
+{#                            <tr>#}
+{#                                <th>{{ status.vehicleid }}</th>#}
+{#                                <th>{{ status.laden }}</th>#}
+{#                                <th>{{ status.cell_spanning }}</th>#}
+{#                                <th>{{ status.accu_spanning }}%</th>#}
+{#                                <th>{{ status.cell_perc }}%</th>#}
+{#                                <th>{{ status.motor_temp }}%</th>#}
+{#                                <th>{{ status.time }}</th>#}
+{#                            </tr>#}
+{#                    {% endfor %}#}
+                </table>
             {% else %}
                 <p>Er zijn geen gegevens bekend bij deze kenteken(s) ( {{ vehicle_ids }} ) </p>
             {% endif %}

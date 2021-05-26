@@ -19,8 +19,8 @@ class createVehicleStatus(APIView):
             accu_spanning = int(payload[3:4])/10
             cell_perc = int(payload[5:6])
             motor_temp = int(payload[7:8])-100
-            vehicleid = request.headers.get('vehicleid')
-            vehicle_status = vehicleStatus(vehicleid=vehicleid, payload=payload, laden=laden, cell_spanning=cell_spanning, accu_spanning=accu_spanning, cell_perc=cell_perc, motor_temp=motor_temp)
+            vehicleid = request.headers.get('vehicleid').upper()
+            vehicle_status = vehicleStatus(vehicleid=vehicleid, laden=laden, cell_spanning=cell_spanning, accu_spanning=accu_spanning, cell_perc=cell_perc, motor_temp=motor_temp)
             vehicle_status.save()
             return Response({'Good request': 'saved'}, status=status.HTTP_201_CREATED)
         except:

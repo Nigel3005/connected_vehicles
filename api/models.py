@@ -4,7 +4,6 @@ class vehicleStatus(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     vehicle_name = models.CharField(max_length=200)
     vehicleid = models.CharField(max_length=11)
-    payload = models.CharField(max_length=200)
     laden = models.CharField(max_length=200)
     cell_spanning = models.CharField(max_length=200)
     accu_spanning = models.CharField(max_length=200)

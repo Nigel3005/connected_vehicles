@@ -39,19 +39,21 @@ def logboekView(request):
             # Sepperate vehicle statusses
             vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
-
-            # Get Vehicle statusses for every vehicle id
-            vehicle_statusses = []
-            for n in vehicle_ids_sep:
-                statusses = vehicleStatus.objects.filter(vehicleid=n).order_by('time').reverse()
-                vehicle_statusses.append(statusses)
-
+            selected_vehicle_id = request.GET.get('vehicle_id').upper()
+            if selected_vehicle_id == None:
+                vehicle_statusses = "No Selection Made"
+                column_names = []
+            else:
+                vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
+                status = vehicle_statusses[0]
+                column_names = [attr.replace("_", " ").capitalize() for attr in dir(status) if
+                                not callable(getattr(status, attr)) and not attr.startswith("__")]
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses[0], 'vehicle_ids': vehicle_ids_sep}
+            args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
-    args = {'page': 'logboek.html', 'vehicle_statusses': None}
+    args = {'page': 'logboek.html'}
     return render(request, 'default.html', args)
 
 def profielView(request):
