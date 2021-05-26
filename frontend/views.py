@@ -42,7 +42,9 @@ def logboekView(request):
             selected_vehicle_id = request.GET.get('vehicle_id')
             if selected_vehicle_id == None:
                 vehicle_statusses = "No Selection Made"
-                column_names = ["Selected vehicle ids = None"]
+                # column_names = ["Selected vehicle ids = None"]
+                column_names = [vehicleStatus._meta.fields]
+
             else:
                 vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
                 if len(vehicle_statusses) > 0:
