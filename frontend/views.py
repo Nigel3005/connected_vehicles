@@ -47,7 +47,7 @@ def logboekView(request):
                 vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
                 if len(vehicle_statusses) > 0:
                     status = vehicle_statusses[0]
-                    column_names = [attr.replace("_", " ").capitalize() for attr in dir(status) if
+                    column_names = [attr for attr in dir(status) if
                                     not callable(getattr(status, attr)) and not attr.startswith("__")]
                 else:
                     column_names = ["vehicle statusses = 0"]
