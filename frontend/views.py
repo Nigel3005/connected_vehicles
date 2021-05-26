@@ -34,18 +34,25 @@ def statusView(request):
 
 def logboekView(request):
     if not request.user.is_anonymous:
-        vehicleid = request.user.profile.vehicle_ids
-        if vehicleid != None:
-            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
-            args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
+        vehicle_ids = request.user.profile.vehicle_ids
+        if vehicle_ids != None:
+            # Sepperate vehicle statusses
+            vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
+            vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
 
+            # Get Vehicle statusses for every vehicle id
+            vehicle_statusses = []
+            for n in vehicle_ids_sep:
+                statusses = vehicleStatus.objects.filter(vehicleid=n).order_by('time').reverse()
+                vehicle_statusses.append(statusses)
+
+            # Render template
+            args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses[0], 'vehicle_ids': vehicle_ids_sep}
             return render(request, 'default.html', args)
-        else:
-            args = {'page': 'logboek.html', 'vehicle_statusses': None, 'vehicleid': vehicleid}
-            return render(request, 'default.html', args)
-    else:
-        args = {'page': 'logboek.html', 'vehicle_statusses': None}
-        return render(request, 'default.html', args)
+
+    # Render template without statusses and without vehicle id
+    args = {'page': 'logboek.html', 'vehicle_statusses': None}
+    return render(request, 'default.html', args)
 
 def profielView(request):
     if not request.user.is_anonymous:

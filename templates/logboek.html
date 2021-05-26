@@ -2,12 +2,14 @@
     <h1>Logboek</h1>
     <br>
     {% if user.is_authenticated %}
-        {% if vehicleid != None %}
+        {% if vehicle_ids != None %}
             {% if vehicle_statusses|length > 0 %}
                 <h2> Voertuigen </h2>
                 <h3>Kenteken: </h3>
                 <select>
-                    <option value="{{ user.profile.vehicle_id }}">{{ user.profile.vehicle_id }}</option>
+                    {% for n in vehicle_ids %}
+                        <option value="{{ n }}">{{ n }}</option>
+                    {% endfor %}
                 </select>
                 <br>
                 <br>
@@ -38,7 +40,7 @@
                 {% endfor %}
                         </table>
             {% else %}
-                <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicleid }} ) </p>
+                <p>Er zijn geen gegevens bekend bij deze kenteken(s) ( {{ vehicle_ids }} ) </p>
             {% endif %}
          {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
