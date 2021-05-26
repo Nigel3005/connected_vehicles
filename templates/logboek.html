@@ -13,41 +13,40 @@
     <br>
     {% if user.is_authenticated %}
         {% if vehicle_ids != None %}
-            {% if vehicle_statusses|length > 0 %}
-                <h2> Voertuigen </h2>
-                <h3>Kenteken: </h3>
-                <form>
-                    <select id="vehicle_id_filter" >
-                        {% for n in vehicle_ids %}
-                            <option value="{{ n }}">{{ n }}</option>
-                        {% endfor %}
+            <h2> Voertuigen </h2>
+            <h3>Kenteken: </h3>
+            <form>
+                <select id="vehicle_id_filter" >
+                    {% for n in vehicle_ids %}
+                        <option value="{{ n }}">{{ n }}</option>
+                    {% endfor %}
+                </select>
+                <div class="multiselect">
+                <div class="selectBox" onclick="showCheckboxes()">
+                    <select>
+                        <option>Select an option</option>
                     </select>
-                    <div class="multiselect">
-                    <div class="selectBox" onclick="showCheckboxes()">
-                        <select>
-                            <option>Select an option</option>
-                        </select>
-                            <div class="overSelect"></div>
-                        </div>
-                        <div id="checkboxes">
-                            {% for name in column_names %}
-                            <label for="{{ name }}">
-                                <input type="checkbox" id="{{ name }}" />First checkbox</label>
-                            {% endfor %}
-                        </div>
-                      </div>
-                    <button onclick="return filter()">Filter</button>
-                </form>
-                <br>
-                <br>
-                <br>
-                <br>
-                <table>
-                    <tr>
+                        <div class="overSelect"></div>
+                    </div>
+                    <div id="checkboxes">
                         {% for name in column_names %}
-                            <th>{{ name }}</th>
+                        <label for="{{ name }}">
+                            <input type="checkbox" id="{{ name }}" />First checkbox</label>
                         {% endfor %}
-                    </tr>
+                    </div>
+                  </div>
+                <button onclick="return filter()">Filter</button>
+            </form>
+            <br>
+            <br>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    {% for name in column_names %}
+                        <th>{{ name }}</th>
+                    {% endfor %}
+                </tr>
 {#                    {% for status in vehicle_statusses %}#}
 {#                            <tr>#}
 {#                                <th>{{ status.vehicleid }}</th>#}
@@ -59,10 +58,7 @@
 {#                                <th>{{ status.time }}</th>#}
 {#                            </tr>#}
 {#                    {% endfor %}#}
-                </table>
-            {% else %}
-                <p>Er zijn geen gegevens bekend bij deze kenteken(s) ( {{ vehicle_ids }} ) </p>
-            {% endif %}
+            </table>
          {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
         {% endif %}
