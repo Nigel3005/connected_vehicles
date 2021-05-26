@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render
+import pandas as pd
+from matplotlib import pyplot as plt
 
 
 
@@ -27,6 +29,8 @@ def statusView(request):
     else:
         args = {'page': 'status.html', 'vehicle_statusses': None}
         return render(request, 'default.html', args)
+
+
 
 def logboekView(request):
     if not request.user.is_anonymous:
