@@ -101,5 +101,19 @@ def logoutView(request):
     logout(request)
     return redirect('Home')
 
+
+
 def analyticsView(request):
-    return redirect('/data-analytics')
+    if not request.user.is_anonymous:
+        vehicleid = request.user.profile.vehicle_id
+        if vehicleid != None:
+            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
+            args = {'page':'data-analytics.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
+
+            return render(request, 'default.html', args)
+        else:
+            args = {'page': 'data-analytics.html', 'vehicle_statusses': None, 'vehicleid': vehicleid}
+            return render(request, 'default.html', args)
+    else:
+        args = {'page': 'data-analytics.html', 'vehicle_statusses': None}
+        return render(request, 'default.html', args)
