@@ -3,36 +3,32 @@
     <br>
     {% if user.is_authenticated %}
         {% if vehicleid != None %}
-            {% if vehicle_statusses|length > 0 %}
-                <h2> Voertuigen </h2>
-                <table>
+            <h2> Voertuigen </h2>
+            <table>
+                <tr>
+                    <th>Naam voertuig: </th>
+                    <th>Kenteken: </th>
+                    <th>Laden: </th>
+                    <th>Cell spanning: </th>
+                    <th>Accu spanning: </th>
+                    <th>Cell percentage: </th>
+                    <th>Motor temparatuur: </th>
+                    <th>Laatst Online: </th>
+                </tr>
+            {% for status in vehicle_statusses %}
                     <tr>
-                        <th>Naam voertuig: </th>
-                        <th>Kenteken: </th>
-                        <th>Laden: </th>
-                        <th>Cell spanning: </th>
-                        <th>Accu spanning: </th>
-                        <th>Cell percentage: </th>
-                        <th>Motor temparatuur: </th>
-                        <th>Laatst Online: </th>
+                        <th>{{ status.vehicle_name }}</th>
+                        <th>{{ status.vehicleid }}</th>
+                        <th>{{ status.laden }}</th>
+                        <th>{{ status.cell_spanning }}</th>
+                        <th>{{ status.accu_spanning }}%</th>
+                        <th>{{ status.cell_perc }}%</th>
+                        <th>{{ status.motor_temp }}%</th>
+                        <th>{{ status.time }}</th>
                     </tr>
-                {% for status in vehicle_statusses %}
-                        <tr>
-                            <th>{{ status.vehicle_name }}</th>
-                            <th>{{ status.vehicleid }}</th>
-                            <th>{{ status.laden }}</th>
-                            <th>{{ status.cell_spanning }}</th>
-                            <th>{{ status.accu_spanning }}%</th>
-                            <th>{{ status.cell_perc }}%</th>
-                            <th>{{ status.motor_temp }}%</th>
-                            <th>{{ status.time }}</th>
-                        </tr>
-                {% endfor %}
-                        </table>
-            {% else %}
-                <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicleid }} ) </p>
-            {% endif %}
-         {% else %}
+            {% endfor %}
+            </table>}
+        {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
         {% endif %}
     {% else %}
