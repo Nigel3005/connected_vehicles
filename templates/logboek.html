@@ -6,6 +6,19 @@
         window.location.replace(href.href)
         return false
     }
+
+    var expanded = false;
+
+    function showCheckboxes() {
+      var checkboxes = document.getElementById("checkboxes");
+      if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+      } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+      }
+    }
 </script>
 
 <body>
@@ -30,8 +43,8 @@
                     </div>
                     <div id="checkboxes">
                         {% for name in column_names %}
-                        <label for="{{ name }}">
-                            <input type="checkbox" id="{{ name }}" />First checkbox</label>
+                            <label for="{{ name }}">
+                                <input type="checkbox" id="{{ name }}" />First checkbox</label>
                         {% endfor %}
                     </div>
                   </div>
@@ -41,7 +54,6 @@
             <br>
             <br>
             <br>
-            <p>{{ column_names }}</p>
             <table>
                 <tr>
                     {% for name in column_names %}
