@@ -39,7 +39,7 @@ def logboekView(request):
             # Sepperate vehicle statusses
             vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
-            selected_vehicle_ids = request.GET.get('vehicle_id').upper()
+            selected_vehicle_ids = request.GET.get('vehicle_id')
             if selected_vehicle_ids == None:
                 vehicle_statusses = "No Selection Made"
                 column_names = []
