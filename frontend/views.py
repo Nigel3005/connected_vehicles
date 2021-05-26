@@ -41,7 +41,7 @@ def logboekView(request):
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
             selected_vehicle_id = request.GET.get('vehicle_id')
             if selected_vehicle_id == None:
-                vehicle_statusses = "No Selection Made"
+                vehicle_statusses = None
                 column_names = None
 
             else:
