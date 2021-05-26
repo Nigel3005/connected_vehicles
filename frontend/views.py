@@ -41,7 +41,7 @@ def logboekView(request):
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
             selected_vehicle_id = request.GET.get('vehicle_id')
             if selected_vehicle_id == None:
-                selected_vehicle_id = vehicle_ids[0]
+                selected_vehicle_id = vehicle_ids_sep[0]
             vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
             if len(vehicle_statusses) > 0:
                 column_names = [f.name.replace("_", " ").capitalize() for f in vehicleStatus._meta.get_fields()]
