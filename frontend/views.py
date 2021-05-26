@@ -102,5 +102,4 @@ def logoutView(request):
     return redirect('Home')
 
 def analyticsView(request):
-    template_name = 'Data-Analytics'
-    return render(request, 'default.html', {'page': template_name})
+    return render(request, 'default.html', {'page': 'data-analytics'})
