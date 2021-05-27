@@ -6,8 +6,8 @@ class vehicleStatus(models.Model):
     laden = models.CharField(max_length=200)
     cell_spanning = models.CharField(max_length=200)
     accu_spanning = models.CharField(max_length=200)
-    cell_perc = models.CharField(max_length=200)
-    motor_temp = models.CharField(max_length=200)
+    cell_percentage = models.CharField(max_length=200)
+    motor_temparatuur = models.CharField(max_length=200)
 
     def __str__(self):
         return self.vehicleid
