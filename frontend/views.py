@@ -165,7 +165,7 @@ def analyticsView(request):
 
 # FUNCTIONS
 def format_column_names(column_names_unf):
-    column_names = []
+    column_names = None * len(column_names_unf)
     for i in range(len(column_names_unf)):
         unformatted = column_names_unf[i]
         formatted = unformatted.replace("_", " ").capitalize()
