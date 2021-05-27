@@ -61,7 +61,7 @@ def logboekView(request):
             status_matrix, column_names_form = [],[]
             if len(vehicle_statusses) > 0:
                 # Check if user filtered on columns else use all column names
-                if selected_column_names_unf is None:
+                if selected_column_names_unf is None or '':
                     column_names = column_names_all
                 else:
                     column_names_unf = selected_column_names_unf.split(",")
