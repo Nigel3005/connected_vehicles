@@ -55,86 +55,46 @@
         padding: 4px;
     }
 
-    .btn{
-        width: 100%;
-        background: none;
-        border: 3px solid black;
-        padding: 5px;
-        font-size: 18px;
-        cursor: pointer;
-        margin: 12px 0;
+        .topnav {
+        overflow: hidden;
+        background-color: #282D3C;
+        position: relative;
     }
 
-    .btn:hover{
-        width: 100%;
-        background: none;
-        border: 3px solid ghostwhite;
-        padding: 5px;
-        font-size: 18px;
-        cursor: pointer;
-        margin: 12px 0;
+    .topnav #myLinks {
+        display: none;
     }
 
-    .btn:active{
-        width: 100%;
-        background: none;
-        border: 3px solid ghostwhite;
-        padding: 5px;
-        font-size: 18px;
-        cursor: pointer;
-        margin: 12px 0;
+    .topnav a {
+        background: #282D3C;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
     }
 
-    ul {
-      list-style-type: none;
-      margin: 0;
-      margin-left: 10px;
-      margin-right: 20px;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    li {
-      float: left;
-      border-right:1px solid #bbb;
-    }
-
-    li:last-child {
-      border-right: none;
-    }
-
-    li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
+    .topnav a.icon {
+        background: #282D3C;
+        color: white;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 
 }
 
 
 
-li a:hover:not(.active) {
-  background-color: #111;
-}
 
-li a:hover.active {
-  background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-/*background: linear-gradient(90deg, rgba(52,206,255,1) 0%, rgba(0,129,255,1) 24%, rgba(52,206,255,1) 50%, rgba(0,129,255,1) 75%, rgba(52,206,255,1) 100%);*/
-}
 
 .errormsg{
     color: red;
 }
 
 table, td, th {
-  border: 1px solid black;
+  border: 1px solid #ffffff;
   text-align: left;
 }
 
@@ -243,7 +203,7 @@ th, td {
     }
 
     input {
-        border: 2px solid #4CAF50;
+        border: 2px solid #000000;
         border-radius: 0px;
         padding: 4px;
     }
