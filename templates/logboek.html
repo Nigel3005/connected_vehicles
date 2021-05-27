@@ -82,13 +82,13 @@
                 <table>
                     <tr>
                         {% for name in column_names %}
-                            <th>{{ name.1 }}</th>
+                            <td>{{ name.1 }}</td>
                         {% endfor %}
                     </tr>
                     {% for status in vehicle_statusses %}
                         <tr>
                             {% for value in status %}
-                                <td>{{ value }}</td>
+                                <th>{{ value }}</th>
                             {% endfor %}
                         </tr>
                     {% endfor %}
