@@ -3,19 +3,19 @@
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         href.searchParams.set('vehicle_id', vehicle_id);
-        href.searchParams.append('column_names', column_names);
+        href.searchParams.append('column_names', getColumnNames());
         window.location.replace(href.href);
         return false;
     }
 
-    var column_names = "";
-    function getCheckboxes(){
+    function getColumnNames(){
         var column_names = "";
         var checkboxes = getElementsByClassName("checkbox")
         var i;
         for (i = 0; i < checkboxes.length; i++) {
           column_names += checkboxes[i].value + ",";
         }
+        return column_names
     }
 
     var expanded;
