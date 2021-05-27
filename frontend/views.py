@@ -20,11 +20,11 @@ def statusView(request):
         vehicleid = request.user.profile.vehicle_ids
         if vehicleid != None:
             vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
-            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
+            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicleid}
 
             return render(request, 'default.html', args)
         else:
-            args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicleid': vehicleid}
+            args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicle_id': vehicleid}
             return render(request, 'default.html', args)
     else:
         args = {'page': 'status.html', 'vehicle_statusses': None}
@@ -44,12 +44,20 @@ def logboekView(request):
                 selected_vehicle_id = vehicle_ids_sep[0]
             vehicle_statusses = vehicleStatus.objects.filter(vehicleid=selected_vehicle_id).order_by('time').reverse()
             if len(vehicle_statusses) > 0:
-                column_names = [f.name.replace("_", " ").capitalize() for f in vehicleStatus._meta.get_fields()]
+                column_names = [f.name for f in vehicleStatus._meta.get_fields()]
+                column_names_form = [name.replace("_", " ").capitalize() for name in column_names]
+                status_matrix = []
+                for status in vehicle_statusses:
+                    row = []
+                    for name in column_names:
+                        row.append(exec("status." + str(name)))
+                    status_matrix.append(row)
+
             else:
                 column_names = None
 
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id}
+            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names_form, 'vehicle_id': selected_vehicle_id}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
@@ -61,11 +69,11 @@ def profielView(request):
         vehicleid = request.user.profile.vehicle_ids
         if vehicleid != None:
             vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
-            args = {'page': 'profiel.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
+            args = {'page': 'profiel.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicleid}
 
             return render(request, 'default.html', args)
         else:
-            args = {'page': 'profiel.html', 'vehicle_statusses': None, 'vehicleid': vehicleid}
+            args = {'page': 'profiel.html', 'vehicle_statusses': None, 'vehicle_id': vehicleid}
             return render(request, 'default.html', args)
     else:
         args = {'page': 'profiel.html', 'vehicle_statusses': None}
@@ -121,11 +129,11 @@ def analyticsView(request):
         vehicleid = request.user.profile.vehicle_ids
         if vehicleid != None:
             vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
-            args = {'page':'data-analytics.html', 'vehicle_statusses': vehicle_statusses, 'vehicleid': vehicleid}
+            args = {'page':'data-analytics.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicleid}
 
             return render(request, 'default.html', args)
         else:
-            args = {'page': 'data-analytics.html', 'vehicle_statusses': None, 'vehicleid': vehicleid}
+            args = {'page': 'data-analytics.html', 'vehicle_statusses': None, 'vehicle_id': vehicleid}
             return render(request, 'default.html', args)
     else:
         args = {'page': 'data-analytics.html', 'vehicle_statusses': None}

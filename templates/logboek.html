@@ -74,19 +74,21 @@
                             <th>{{ name }}</th>
                         {% endfor %}
                     </tr>
-                    <tr>
-                        {% for status in vehicle_statusses %}
-                            <th>{{ status }}</th>
-                        {% endfor %}
-                    </tr>
+                    {% for status in vehicle_statusses %}
+                        <tr>
+                            {% for value in status %}
+                                <td>{{ status }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
 
 
 
 {#                        {% for status in vehicle_statusses %}#}
 {#                            <tr>#}
-{#                                <th>{{ status.vehicleid }}</th>#}
+{#                                <th>{{ status.vehicle_id }}</th>#}
 {#                                <th>{{ status.time }}</th>#}
-{#                                <th>{{ status.vehicleid }}</th>#}
+{#                                <th>{{ status.vehicle_id }}</th>#}
 {#                                <th>{{ status.laden }}</th>#}
 {#                                <th>{{ status.cell_spanning }}</th>#}
 {#                                <th>{{ status.accu_spanning }}%</th>#}
