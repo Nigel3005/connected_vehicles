@@ -3,6 +3,7 @@
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
+        console.log(filtered_column_names)
         if (filtered_column_names === ['']){
             params = new URLSearchParams({
                 'vehicle_id': vehicle_id
