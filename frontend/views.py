@@ -50,7 +50,7 @@ def logboekView(request):
                 if selected_column_names is None:
                     column_names_unf = [f.name for f in vehicleStatus._meta.get_fields()]
                 else:
-                    column_names_unf = selected_column_names
+                    column_names_unf = selected_column_names.split(",")
                 column_names_form = [name.replace("_", " ").capitalize() for name in column_names_unf]
                 column_names = [None] * len(column_names_unf)
                 for i in range(len(column_names_unf)):
