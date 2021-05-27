@@ -183,11 +183,6 @@ th, td {
         color: white;
   }
 
-    body {
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 0;
-    }
   a {
       text-decoration: none;
       color: #1E1E23;
@@ -197,15 +192,15 @@ th, td {
       font-weight: 400;
       transition: 200ms;
     }
+
   a:hover {
       opacity:0.5;
     }
+
   ul {
       padding: 0;
       list-style-type: none;
     }
-
-
 
   .container {
       margin-top: 50px;
@@ -213,6 +208,7 @@ th, td {
       justify-content: center;
       align-items: center;
     }
+
   .phone {
       background-color: #36383F;
       border-radius: 40px;
