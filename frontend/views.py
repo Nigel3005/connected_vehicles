@@ -40,6 +40,7 @@ def logboekView(request):
             vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
             selected_vehicle_id = request.GET.get('vehicle_id')
+            error = request.GET.get('column_names')
             if selected_vehicle_id == None:
                 selected_vehicle_id = vehicle_ids_sep[0]
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
@@ -62,7 +63,7 @@ def logboekView(request):
                 column_names = None
 
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id}
+            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, "error": error}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id

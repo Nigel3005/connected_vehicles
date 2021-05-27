@@ -63,6 +63,7 @@
                   </div>
                 <button onclick="return filter()">Filter</button>
             </form>
+            {{ error }}
             <br>
             <br>
             <br>
@@ -73,7 +74,7 @@
                 <table>
                     <tr>
                         {% for name in column_names %}
-                            <th>{{ name }}</th>
+                            <th>{{ name.1 }}</th>
                         {% endfor %}
                     </tr>
                     {% for status in vehicle_statusses %}
