@@ -13,7 +13,7 @@
         var checkboxes = document.getElementsByClassName("checkbox")
         var i;
         for (i = 0; i < checkboxes.length; i++) {
-          column_names += checkboxes[i].value + ",";
+          column_names += checkboxes[i].value + ";";
         }
         return column_names
     }
@@ -74,18 +74,26 @@
                             <th>{{ name }}</th>
                         {% endfor %}
                     </tr>
+                    <tr>
                         {% for status in vehicle_statusses %}
-                            <tr>
-                                <th>{{ status.vehicleid }}</th>
-                                <th>{{ status.time }}</th>
-                                <th>{{ status.vehicleid }}</th>
-                                <th>{{ status.laden }}</th>
-                                <th>{{ status.cell_spanning }}</th>
-                                <th>{{ status.accu_spanning }}%</th>
-                                <th>{{ status.cell_percentage }}%</th>
-                                <th>{{ status.motor_temparatuur }}%</th>
-                            </tr>
+                            <th>{{ status }}</th>
                         {% endfor %}
+                    </tr>
+
+
+
+{#                        {% for status in vehicle_statusses %}#}
+{#                            <tr>#}
+{#                                <th>{{ status.vehicleid }}</th>#}
+{#                                <th>{{ status.time }}</th>#}
+{#                                <th>{{ status.vehicleid }}</th>#}
+{#                                <th>{{ status.laden }}</th>#}
+{#                                <th>{{ status.cell_spanning }}</th>#}
+{#                                <th>{{ status.accu_spanning }}%</th>#}
+{#                                <th>{{ status.cell_percentage }}%</th>#}
+{#                                <th>{{ status.motor_temparatuur }}%</th>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
                 </table>
             {% else %}
                 <p>Er zijn geen logboekgegevens beschikbaar van kenteken {{ vehicle_id }}.</p>
