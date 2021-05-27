@@ -34,20 +34,20 @@
 
 <!-- Top Navigation Menu -->
     <div class="topnav">
-        <a class="active" href="/home">Home</a>
+        <a href="/home">Home</a>
         <div id="myLinks">
             {% if user.is_authenticated %}
 
-                    <ul>
-                        <li style="float:right"><a href="/logout">Logout</a></li>
-                        <li style="float:right"><a href="/profiel">Profiel</a></li>
-                        <li style="float:right"><a href="/logboek">logboek</a></li>
-                        <li style="float:right"><a href="/data-analytics">Data</a></li>
-                    </ul>
+                <li style="float:right"><a href="/logout">Logout</a></li>
+                <li style="float:right"><a href="/profiel">Profiel</a></li>
+                <li style="float:right"><a href="/logboek">logboek</a></li>
+                <li style="float:right"><a href="/data-analytics">Data</a></li>
 
             {% else %}
+
                 <li style="float:right"><a href="/login">Login</a></li>
                 <li style="float:right"><a href="/register">Register</a></li>
+
             {% endif %}
         </div>
 
