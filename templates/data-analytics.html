@@ -2,19 +2,19 @@
     <h1>Data Analytics</h1>
     <br>
     {% if user.is_authenticated %}
-        {% if vehicleid != None %}
+        {% if vehicle_id != None %}
             {% if vehicle_statusses|length > 0 %}
                 <h2> Voertuigen </h2>
                 <table>
                     {% for status in vehicle_statusses %}
                         <tr>
                             <th>Kenteken: </th>
-                            <th>{{ status.vehicleid }}</th>
+                            <th>{{ status.vehicle_id }}</th>
                         </tr>
                     {% endfor %}
                 </table>
             {% else %}
-                <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicleid }} ) </p>
+                <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicle_id }} ) </p>
             {% endif %}
          {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>

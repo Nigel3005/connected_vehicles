@@ -2,7 +2,7 @@
     <h1>Status</h1>
     <br>
     {% if user.is_authenticated %}
-        {% if vehicleid != None %}
+        {% if vehicle_id != None %}
             <h2> Voertuigen </h2>
             <table>
                 <tr>
@@ -18,7 +18,7 @@
             {% for status in vehicle_statusses %}
                     <tr>
                         <th>{{ status.vehicle_name }}</th>
-                        <th>{{ status.vehicleid }}</th>
+                        <th>{{ status.vehicle_id }}</th>
                         <th>{{ status.laden }}</th>
                         <th>{{ status.cell_spanning }}</th>
                         <th>{{ status.accu_spanning }}%</th>

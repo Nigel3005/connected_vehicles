@@ -17,14 +17,14 @@ def indexView(request):
 
 def statusView(request):
     if not request.user.is_anonymous:
-        vehicleid = request.user.profile.vehicle_ids
-        if vehicleid != None:
-            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
-            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicleid}
+        vehicle_id = request.user.profile.vehicle_ids
+        if vehicle_id != None:
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=vehicle_id).order_by('time').reverse()
+            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicle_id}
 
             return render(request, 'default.html', args)
         else:
-            args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicle_id': vehicleid}
+            args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicle_id': vehicle_id}
             return render(request, 'default.html', args)
     else:
         args = {'page': 'status.html', 'vehicle_statusses': None}
@@ -66,14 +66,14 @@ def logboekView(request):
 
 def profielView(request):
     if not request.user.is_anonymous:
-        vehicleid = request.user.profile.vehicle_ids
-        if vehicleid != None:
-            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
-            args = {'page': 'profiel.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicleid}
+        vehicle_id = request.user.profile.vehicle_ids
+        if vehicle_id != None:
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=vehicle_id).order_by('time').reverse()
+            args = {'page': 'profiel.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicle_id}
 
             return render(request, 'default.html', args)
         else:
-            args = {'page': 'profiel.html', 'vehicle_statusses': None, 'vehicle_id': vehicleid}
+            args = {'page': 'profiel.html', 'vehicle_statusses': None, 'vehicle_id': vehicle_id}
             return render(request, 'default.html', args)
     else:
         args = {'page': 'profiel.html', 'vehicle_statusses': None}
@@ -126,14 +126,14 @@ def logoutView(request):
 
 def analyticsView(request):
     if not request.user.is_anonymous:
-        vehicleid = request.user.profile.vehicle_ids
-        if vehicleid != None:
-            vehicle_statusses = vehicleStatus.objects.filter(vehicleid=vehicleid).order_by('time').reverse()
-            args = {'page':'data-analytics.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicleid}
+        vehicle_id = request.user.profile.vehicle_ids
+        if vehicle_id != None:
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=vehicle_id).order_by('time').reverse()
+            args = {'page':'data-analytics.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicle_id}
 
             return render(request, 'default.html', args)
         else:
-            args = {'page': 'data-analytics.html', 'vehicle_statusses': None, 'vehicle_id': vehicleid}
+            args = {'page': 'data-analytics.html', 'vehicle_statusses': None, 'vehicle_id': vehicle_id}
             return render(request, 'default.html', args)
     else:
         args = {'page': 'data-analytics.html', 'vehicle_statusses': None}
