@@ -51,7 +51,8 @@ def logboekView(request):
                 for status in vehicle_statusses:
                     row = []
                     for name in column_names:
-                        row.append(exec("status." + str(name)))
+                        exec("value = status." + str(name))
+                        row.append(value)
                     status_matrix.append(row)
 
             else:
