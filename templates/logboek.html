@@ -2,8 +2,7 @@
     function filter(){
         var href = new URL(window.location.hostname);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
-        href.searchParams = new URLSearchParams();
-        href.searchParams.set('vehicle_id', vehicle_id);
+        href.searchParams.append('vehicle_id', vehicle_id);
         href.searchParams.append('column_names', getSelectedCheckboxValues("column_names_filter_box"));
         window.location.replace(href.href);
         return false;
