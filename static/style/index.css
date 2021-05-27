@@ -6,6 +6,7 @@ body{
 
 body h1{
     text-align: center;
+    color: white;
 }
 
 .login-box{
@@ -178,7 +179,7 @@ th, td {
 @media only screen and (max-width: 400px) {
     body {
         font-family: sans-serif;
-        background: black;
+        background: #282D3C;
         color: white;
   }
 }
