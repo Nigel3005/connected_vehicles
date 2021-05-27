@@ -8,6 +8,7 @@
     <title>Connected Vehicles</title>
     <link rel="stylesheet" href="{% static 'style/index.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Work+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="icon" href="{% static 'python.ico' %}">
 </head>
@@ -29,37 +30,78 @@
 {#        {% endif %}#}
 {#    </ul>#}
 
+    <!-- Simulate a smartphone / tablet -->
+<div class="mobile-container">
 
-    <div class="container">
-        <div class="phone">
-        <div class="content">
-            <nav role="navigation">
-                <div id="menuToggle">
-                    <input type="checkbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <ul id="menu">
-                        <li><a class="active" href="/home">Home</a></li>
-                        {% if user.is_authenticated %}
-                            <ul>
-                            <li style="float:right"><a href="/logout">Logout</a></li>
-                            <li style="float:right"><a href="/profiel">Profiel</a></li>
-                            <li style="float:right"><a href="/logboek">logboek</a></li>
-                            <li style="float:right"><a href="/data-analytics">Data</a></li>
-                            </ul>
-                        {% else %}
-                            <li style="float:right"><a href="/login">Login</a></li>
-                            <li style="float:right"><a href="/register">Register</a></li>
-                        {% endif %}
+<!-- Top Navigation Menu -->
+    <div class="topnav">
+        <a class="active" href="/home">Home</a>
+        <div id="myLinks">
+            {% if user.is_authenticated %}
+
+                    <ul>
+                        <li style="float:right"><a href="/logout">Logout</a></li>
+                        <li style="float:right"><a href="/profiel">Profiel</a></li>
+                        <li style="float:right"><a href="/logboek">logboek</a></li>
+                        <li style="float:right"><a href="/data-analytics">Data</a></li>
                     </ul>
-                </div>
-            </nav>
+
+            {% else %}
+                <li style="float:right"><a href="/login">Login</a></li>
+                <li style="float:right"><a href="/register">Register</a></li>
+            {% endif %}
         </div>
-        </div>
+
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
     </div>
 
+<!-- End smartphone / tablet look -->
+</div>
 
+
+
+{#    <div class="container">#}
+{#        <div class="phone">#}
+{#        <div class="content">#}
+{#            <nav role="navigation">#}
+{#                <div id="menuToggle">#}
+{#                    <input type="checkbox" />#}
+{#                    <span></span>#}
+{#                    <span></span>#}
+{#                    <span></span>#}
+{#                    <ul id="menu">#}
+{#                        <li><a class="active" href="/home">Home</a></li>#}
+{#                        {% if user.is_authenticated %}#}
+{#                            <ul>#}
+{#                            <li style="float:right"><a href="/logout">Logout</a></li>#}
+{#                            <li style="float:right"><a href="/profiel">Profiel</a></li>#}
+{#                            <li style="float:right"><a href="/logboek">logboek</a></li>#}
+{#                            <li style="float:right"><a href="/data-analytics">Data</a></li>#}
+{#                            </ul>#}
+{#                        {% else %}#}
+{#                            <li style="float:right"><a href="/login">Login</a></li>#}
+{#                            <li style="float:right"><a href="/register">Register</a></li>#}
+{#                        {% endif %}#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </nav>#}
+{#        </div>#}
+{#        </div>#}
+{#    </div>#}
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+</script>
 
 </header>
 
