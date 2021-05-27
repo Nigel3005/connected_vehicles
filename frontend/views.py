@@ -40,14 +40,17 @@ def logboekView(request):
             vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
             selected_vehicle_id = request.GET.get('vehicle_id')
-            error = request.GET.get('column_names')
+            selected_column_names = request.GET.get('column_names')
             if selected_vehicle_id == None:
                 selected_vehicle_id = vehicle_ids_sep[0]
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
             status_matrix = []
             column_names_form = []
             if len(vehicle_statusses) > 0:
-                column_names_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+                if selected_column_names == None
+                    column_names_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+                else:
+                    column_names_unf = selected_column_names
                 column_names_form = [name.replace("_", " ").capitalize() for name in column_names_unf]
                 column_names = [None] * len(column_names_unf)
                 for i in range(len(column_names_unf)):
