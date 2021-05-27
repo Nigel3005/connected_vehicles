@@ -2,10 +2,17 @@
     function filter(){
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
-        params = new URLSearchParams({
-            'vehicle_id': vehicle_id,
-            'column_names': getSelectedCheckboxValues("column_names_filter_box")
-        })
+        var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
+        if (filtered_column_names === ['']){
+            params = new URLSearchParams({
+                'vehicle_id': vehicle_id
+            })
+        } else {
+            params = new URLSearchParams({
+                'vehicle_id': vehicle_id,
+                'column_names': getSelectedCheckboxValues("column_names_filter_box")
+            })
+        }
         href.search = params;
         window.location.replace(href.href);
         return false;
