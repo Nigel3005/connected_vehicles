@@ -2,7 +2,8 @@
     function filter(){
         var href = new URL(window.location.href)
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
-        href.searchParams.set('vehicle_id',vehicle_id)
+        var column_names = document.getElementById("column_names_filter").value;
+        href.searchParams.set('vehicle_id',vehicle_id, 'column_names',column_names)
         window.location.replace(href.href)
         return false
     }
@@ -36,7 +37,7 @@
                 </select>
                 <div class="multiselect">
                 <div class="selectBox" onclick="showCheckboxes()">
-                    <select>
+                    <select id="column_names_filter">
                         <option>Select an option</option>
                     </select>
                         <div class="overSelect"></div>
