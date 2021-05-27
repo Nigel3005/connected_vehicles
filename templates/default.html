@@ -30,35 +30,32 @@
 
 <body>
 
-    <div class="container">
-      <div class="phone">
-        <div class="content">
-
-          <nav role="navigation">
+<div class="container">
+    <div class="content">
+        <nav role="navigation">
             <div id="menuToggle">
-              <input type="checkbox" />
+                <input type="checkbox" />
                 <span></span>
                 <span></span>
                 <span></span>
-                    <ul>
-                        <li><a class="active" href="/home">Home</a></li>
-                        {% if user.is_authenticated %}
-                            <ul>
-                                <li style="float:right"><a href="/logout">Logout</a></li>
-                                <li style="float:right"><a href="/profiel">Profiel</a></li>
-                                <li style="float:right"><a href="/logboek">logboek</a></li>
-                                <li style="float:right"><a href="/data-analytics">Data</a></li>
-                            </ul>
-                        {% else %}
-                            <li style="float:right"><a href="/login">Login</a></li>
-                            <li style="float:right"><a href="/register">Register</a></li>
-                        {% endif %}
-                    </ul>
-           </div>
-          </nav>
-        </div>
-       </div>
+                <ul>
+                    <li><a class="active" href="/home">Home</a></li>
+                    {% if user.is_authenticated %}
+                        <ul>
+                        <li style="float:right"><a href="/logout">Logout</a></li>
+                        <li style="float:right"><a href="/profiel">Profiel</a></li>
+                        <li style="float:right"><a href="/logboek">logboek</a></li>
+                        <li style="float:right"><a href="/data-analytics">Data</a></li>
+                        </ul>
+                    {% else %}
+                        <li style="float:right"><a href="/login">Login</a></li>
+                        <li style="float:right"><a href="/register">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
     </div>
+</div>
 
 </body>
 
