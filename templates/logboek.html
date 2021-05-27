@@ -3,7 +3,8 @@
         var href = new URL(window.location.href)
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         var column_names = document.getElementById("checkboxes").value;
-        href.searchParams.set('vehicle_id',vehicle_id, 'column_names',column_names)
+        href.searchParams.append('vehicle_id', vehicle_id)
+        href.searchParams.append('column_names', column_names)
         window.location.replace(href.href)
         return false
     }
