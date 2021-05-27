@@ -1,6 +1,7 @@
 body{
     font-family: sans-serif;
-    background: linear-gradient(to right, rgb(167, 202, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(167, 202, 255));
+    background: #282D3C;
+    /*background: linear-gradient(to right, rgb(167, 202, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(167, 202, 255));*/
 }
 
 body h1{
