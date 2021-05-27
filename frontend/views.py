@@ -43,10 +43,10 @@ def logboekView(request):
             if selected_vehicle_id == None:
                 selected_vehicle_id = vehicle_ids_sep[0]
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
+            status_matrix = []
             if len(vehicle_statusses) > 0:
                 column_names = [f.name for f in vehicleStatus._meta.get_fields()]
                 column_names_form = [name.replace("_", " ").capitalize() for name in column_names]
-                status_matrix = []
                 for status in vehicle_statusses:
                     row = []
                     for name in column_names:
