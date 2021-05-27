@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='vehiclestatus',
             old_name='motor_temp',
-            new_name='motor_temparatuur',
+            new_name='motor_temperatuur',
         ),
     ]

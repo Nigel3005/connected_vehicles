@@ -7,7 +7,7 @@ class vehicleStatus(models.Model):
     cell_spanning = models.CharField(max_length=200)
     accu_spanning = models.CharField(max_length=200)
     cell_percentage = models.CharField(max_length=200)
-    motor_temparatuur = models.CharField(max_length=200)
+    motor_temperatuur = models.CharField(max_length=200)
 
     def __str__(self):
         return self.vehicle_id
