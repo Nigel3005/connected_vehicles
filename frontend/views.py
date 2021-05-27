@@ -35,7 +35,7 @@ def statusView(request):
 def logboekView(request):
     if not request.user.is_anonymous:
         vehicle_ids = request.user.profile.vehicle_ids
-        if vehicle_ids != None:
+        if vehicle_ids is not None:
             # Sepperate vehicle statusses
             vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
             vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter empty
@@ -66,7 +66,7 @@ def logboekView(request):
                 column_names = None
 
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, "error": error}
+            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
