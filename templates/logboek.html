@@ -12,7 +12,7 @@
         const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
         let values = [];
         checkboxes.forEach((checkbox) => {
-            values.push(checkbox.value);
+            values.push(checkbox.checked);
         });
         return values;
     }
