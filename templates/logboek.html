@@ -1,15 +1,24 @@
 <script>
     function filter(){
-        var href = new URL(window.location.href)
+        var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
-        var column_names = document.getElementById("checkboxes").value;
-        href.searchParams.append('vehicle_id', vehicle_id)
-        href.searchParams.append('column_names', column_names)
-        window.location.replace(href.href)
-        return false
+        href.searchParams.set('vehicle_id', vehicle_id);
+        href.searchParams.append('column_names', column_names);
+        window.location.replace(href.href);
+        return false;
     }
 
-    var expanded = false;
+    var column_names = "";
+    function getCheckboxes(){
+        var column_names = "";
+        var checkboxes = getElementsByClassName("checkbox")
+        var i;
+        for (i = 0; i < checkboxes.length; i++) {
+          column_names += checkboxes[i].value + ",";
+        }
+    }
+
+    var expanded;
 
     function showCheckboxes() {
       var checkboxes = document.getElementById("checkboxes");
@@ -46,7 +55,7 @@
                     <div id="checkboxes">
                         {% for name in column_names %}
                             <label for="{{ name }}">
-                                <input type="checkbox" id="{{ name }}" />{{ name }}</label>
+                                <input class="checkbox" type="checkbox" id="{{ name }}" />{{ name }}</label>
                         {% endfor %}
                     </div>
                   </div>
