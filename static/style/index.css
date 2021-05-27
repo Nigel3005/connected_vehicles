@@ -169,3 +169,10 @@ th, td {
 #checkboxes label:hover {
   background-color: #1e90ff;
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: black;
+        color: white;
+  }
+}
