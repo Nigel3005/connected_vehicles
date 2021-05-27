@@ -4,7 +4,7 @@
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
         console.log(filtered_column_names)
-        if (filtered_column_names === []){
+        if (filtered_column_names.length === 0){
             params = new URLSearchParams({
                 'vehicle_id': vehicle_id
             })
