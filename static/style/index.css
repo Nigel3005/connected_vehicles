@@ -174,7 +174,7 @@ th, td {
   background-color: #1e90ff;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
     body {
         font-family: sans-serif;
         background: black;
