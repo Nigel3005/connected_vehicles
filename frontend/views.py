@@ -47,7 +47,7 @@ def logboekView(request):
             status_matrix = []
             column_names_form = []
             if len(vehicle_statusses) > 0:
-                if selected_column_names == None:
+                if selected_column_names is None:
                     column_names_unf = [f.name for f in vehicleStatus._meta.get_fields()]
                 else:
                     column_names_unf = selected_column_names
