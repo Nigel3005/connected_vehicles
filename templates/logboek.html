@@ -56,8 +56,8 @@
                     </div>
                     <div id="checkboxes">
                         {% for name in column_names %}
-                            <label for="{{ name }}">
-                                <input name="column_names_filter_box" type="checkbox" value="{{ name }}" />{{ name }}</label>
+                            <label for="{{ name.0 }}">
+                                <input name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}</label>
                         {% endfor %}
                     </div>
                   </div>

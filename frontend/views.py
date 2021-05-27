@@ -46,20 +46,23 @@ def logboekView(request):
             status_matrix = []
             column_names_form = []
             if len(vehicle_statusses) > 0:
-                column_names = [f.name for f in vehicleStatus._meta.get_fields()]
-                column_names_form = [name.replace("_", " ").capitalize() for name in column_names]
+                column_names_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+                column_names_form = [name.replace("_", " ").capitalize() for name in column_names_unf]
+                column_names = [None] * len(column_names_unf)
+                for i in range(len(column_names_unf)):
+                    column_names[i] = [column_names_unf[i],column_names_form[i]]
                 for status in vehicle_statusses:
                     row = []
                     dict = vars(status)
                     for name in column_names:
-                        row.append(dict[name])
+                        row.append(dict[name[0]])
                     status_matrix.append(row)
 
             else:
                 column_names = None
 
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names_form, 'vehicle_id': selected_vehicle_id}
+            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
