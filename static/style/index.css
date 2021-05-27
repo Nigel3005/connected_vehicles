@@ -297,15 +297,6 @@ th, td {
         list-style-type: none;
     }
 
-    .mobile-container {
-        max-width: 480px;
-        margin: auto;
-        background-color: #555;
-        height: 500px;
-        color: white;
-        border-radius: 10px;
-    }
-
     .topnav {
         overflow: hidden;
         background-color: #333;
@@ -333,8 +324,8 @@ th, td {
     }
 
     .topnav a:hover {
-        background-color: #ddd;
-        color: black;
+        background-color: #282D3C;
+        color: white;
     }
 
     .active {
