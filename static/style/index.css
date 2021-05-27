@@ -202,31 +202,32 @@ th, td {
     }
 
   .login-box{
-    width: 280px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-55%, -50%);
-    color: black;
-    /*background-color: rgba(228, 228, 228, 0.4);*/
-    background-color: white;
-    padding: 25px;
-    box-shadow: -1px 1px 10px  6px rgba(0, 0, 0, 0.562);
+        width: 280px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-55%, -50%);
+        color: black;
+        /*background-color: rgba(228, 228, 228, 0.4);*/
+        background-color: rgba(255, 255, 255, 0);
+        padding: 25px;
+        box-shadow: -1px 1px 10px  6px rgba(0, 0, 0, 0.562);
   }
 
   .login-box h1{
-    font-size: 40px;
-    border-bottom: 6px solid ghostwhite;
-    padding:10px 0px;
+      font-size: 40px;
+      border-bottom: 6px solid ghostwhite;
+      padding:10px 0px;
+      color: white;
   }
 
   .textbox{
-    width: 100%;
-    overflow: hidden;
-    font-size: 20px;
-    padding: 8px 0;
-    margin: 8px 0;
-    border-bottom: 2px solid ghostwhite;
+        width: 100%;
+        overflow: hidden;
+        font-size: 20px;
+        padding: 8px 0;
+        margin: 8px 0;
+        border-bottom: 2px solid ghostwhite;
   }
 
 
