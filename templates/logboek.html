@@ -55,7 +55,7 @@
                         <div class="overSelect"></div>
                     </div>
                     <div id="checkboxes">
-                        {% for name in column_names %}
+                        {% for name in column_names_all %}
                             <label for="{{ name.0 }}">
                                 <input name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}</label>
                         {% endfor %}

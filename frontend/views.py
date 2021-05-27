@@ -46,9 +46,10 @@ def logboekView(request):
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
             status_matrix = []
             column_names_form = []
+            column_names_all = [f.name for f in vehicleStatus._meta.get_fields()]
             if len(vehicle_statusses) > 0:
                 if selected_column_names is None:
-                    column_names_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+                    column_names_unf = column_names_all
                 else:
                     column_names_unf = selected_column_names.split(",")
                 column_names_form = [name.replace("_", " ").capitalize() for name in column_names_unf]
@@ -66,7 +67,7 @@ def logboekView(request):
                 column_names = None
 
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id}
+            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, 'column_names_all': column_names_all}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
