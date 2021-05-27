@@ -287,7 +287,8 @@ th, td {
     }
 
     .topnav a.icon {
-        background: black;
+        background: #282D3C;
+        color: white;
         display: block;
         position: absolute;
         right: 0;
