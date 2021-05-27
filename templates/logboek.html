@@ -10,7 +10,7 @@
 
     function getColumnNames(){
         var column_names = "";
-        var checkboxes = getElementsByClassName("checkbox")
+        var checkboxes = document.getElementsByClassName("checkbox")
         var i;
         for (i = 0; i < checkboxes.length; i++) {
           column_names += checkboxes[i].value + ",";
