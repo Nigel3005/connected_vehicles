@@ -52,9 +52,6 @@ def logboekView(request):
                     row = []
                     dict = vars(status)
                     for name in column_names:
-                        # ldict = {}
-                        # exec("value = status." + str(name), globals(), ldict)
-                        # value = ldict['value']
                         row.append(dict[name])
                     status_matrix.append(row)
 

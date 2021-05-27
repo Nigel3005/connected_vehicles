@@ -3,19 +3,18 @@
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         href.searchParams.set('vehicle_id', vehicle_id);
-        href.searchParams.append('column_names', getColumnNames());
+        href.searchParams.append('column_names', getSelectedCheckboxValues("column_names_filter_box"));
         window.location.replace(href.href);
         return false;
     }
 
-    function getColumnNames(){
-        var column_names = "";
-        var checkboxes = document.getElementsByClassName("checkbox")
-        var i;
-        for (i = 0; i < checkboxes.length; i++) {
-          column_names += checkboxes[i].value + ";";
-        }
-        return column_names
+    function getSelectedCheckboxValues(name) {
+        const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+        let values = [];
+        checkboxes.forEach((checkbox) => {
+            values.push(checkbox.value);
+        });
+        return values;
     }
 
     var expanded;
@@ -55,7 +54,7 @@
                     <div id="checkboxes">
                         {% for name in column_names %}
                             <label for="{{ name }}">
-                                <input class="checkbox" type="checkbox" id="{{ name }}" />{{ name }}</label>
+                                <input name="column_names_filter_box" type="checkbox" id="{{ name }}" />{{ name }}</label>
                         {% endfor %}
                     </div>
                   </div>
