@@ -11,57 +11,51 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="icon" href="{% static 'python.ico' %}">
 </head>
-{#<header>#}
-
-{#</header>#}
 
 <header>
 
-    {% if min-width >= 400px %}
-        <ul>
-            <li><a class="active" href="/home">Home</a></li>
-            {% if user.is_authenticated %}
-                <ul>
-                    <li style="float:right"><a href="/logout">Logout</a></li>
-                    <li style="float:right"><a href="/profiel">Profiel</a></li>
-                    <li style="float:right"><a href="/logboek">logboek</a></li>
-                    <li style="float:right"><a href="/data-analytics">Data</a></li>
-                </ul>
-            {% else %}
-                <li style="float:right"><a href="/login">Login</a></li>
-                <li style="float:right"><a href="/register">Register</a></li>
-            {% endif %}
-        </ul>
+    <ul>
+        <li><a class="active" href="/home">Home</a></li>
+        {% if user.is_authenticated %}
+            <ul>
+                <li style="float:right"><a href="/logout">Logout</a></li>
+                <li style="float:right"><a href="/profiel">Profiel</a></li>
+                <li style="float:right"><a href="/logboek">logboek</a></li>
+                <li style="float:right"><a href="/data-analytics">Data</a></li>
+            </ul>
+        {% else %}
+            <li style="float:right"><a href="/login">Login</a></li>
+            <li style="float:right"><a href="/register">Register</a></li>
+        {% endif %}
+    </ul>
 
-    {% else %}
 
-        <div class="container">
-            <div class="content">
-                <nav role="navigation">
-                    <div id="menuToggle">
-                        <input type="checkbox" />
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <ul id="menu">
-                            <li><a class="active" href="/home">Home</a></li>
-                            {% if user.is_authenticated %}
-                                <ul>
-                                <li style="float:right"><a href="/logout">Logout</a></li>
-                                <li style="float:right"><a href="/profiel">Profiel</a></li>
-                                <li style="float:right"><a href="/logboek">logboek</a></li>
-                                <li style="float:right"><a href="/data-analytics">Data</a></li>
-                                </ul>
-                            {% else %}
-                                <li style="float:right"><a href="/login">Login</a></li>
-                                <li style="float:right"><a href="/register">Register</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+    <div class="container">
+        <div class="content">
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <li><a class="active" href="/home">Home</a></li>
+                        {% if user.is_authenticated %}
+                            <ul>
+                            <li style="float:right"><a href="/logout">Logout</a></li>
+                            <li style="float:right"><a href="/profiel">Profiel</a></li>
+                            <li style="float:right"><a href="/logboek">logboek</a></li>
+                            <li style="float:right"><a href="/data-analytics">Data</a></li>
+                            </ul>
+                        {% else %}
+                            <li style="float:right"><a href="/login">Login</a></li>
+                            <li style="float:right"><a href="/register">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
         </div>
-    {% endif %}
+    </div>
 
 
 
