@@ -92,25 +92,28 @@
         color: white;
     }
 
+    .errormsg{
+        color: red;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
 }
 
 
 
 
 
-.errormsg{
-    color: red;
-}
+
+
 
 table, td, th {
   border: 1px solid #ffffff;
   text-align: left;
     color: white;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
 }
 
 th, td {
@@ -264,6 +267,19 @@ th, td {
         position: absolute;
         right: 0;
         top: 0;
+    }
+
+        label {
+        color: white;
+    }
+
+    .errormsg {
+        color: red;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
     }
 
 }

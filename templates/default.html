@@ -15,23 +15,6 @@
 
 <header>
 
-{#    <ul>#}
-{#        <li><a class="active" href="/home">Home</a></li>#}
-{#        {% if user.is_authenticated %}#}
-{#            <ul>#}
-{#                <li style="float:right"><a href="/logout">Logout</a></li>#}
-{#                <li style="float:right"><a href="/profiel">Profiel</a></li>#}
-{#                <li style="float:right"><a href="/logboek">logboek</a></li>#}
-{#                <li style="float:right"><a href="/data-analytics">Data</a></li>#}
-{#            </ul>#}
-{#        {% else %}#}
-{#            <li style="float:right"><a href="/login">Login</a></li>#}
-{#            <li style="float:right"><a href="/register">Register</a></li>#}
-{#        {% endif %}#}
-{#    </ul>#}
-
-    <!-- Simulate a smartphone / tablet -->
-
 <!-- Top Navigation Menu -->
     <div class="topnav">
         <a href="/home">Home</a>
@@ -50,57 +33,21 @@
 
             {% endif %}
         </div>
-
-
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
         </a>
     </div>
 
-<!-- End smartphone / tablet look -->
-
-
-
-
-{#    <div class="container">#}
-{#        <div class="phone">#}
-{#        <div class="content">#}
-{#            <nav role="navigation">#}
-{#                <div id="menuToggle">#}
-{#                    <input type="checkbox" />#}
-{#                    <span></span>#}
-{#                    <span></span>#}
-{#                    <span></span>#}
-{#                    <ul id="menu">#}
-{#                        <li><a class="active" href="/home">Home</a></li>#}
-{#                        {% if user.is_authenticated %}#}
-{#                            <ul>#}
-{#                            <li style="float:right"><a href="/logout">Logout</a></li>#}
-{#                            <li style="float:right"><a href="/profiel">Profiel</a></li>#}
-{#                            <li style="float:right"><a href="/logboek">logboek</a></li>#}
-{#                            <li style="float:right"><a href="/data-analytics">Data</a></li>#}
-{#                            </ul>#}
-{#                        {% else %}#}
-{#                            <li style="float:right"><a href="/login">Login</a></li>#}
-{#                            <li style="float:right"><a href="/register">Register</a></li>#}
-{#                        {% endif %}#}
-{#                    </ul>#}
-{#                </div>#}
-{#            </nav>#}
-{#        </div>#}
-{#        </div>#}
-{#    </div>#}
-
-<script>
-    function myFunction() {
-      var x = document.getElementById("myLinks");
-      if (x.style.display === "block") {
-        x.style.display = "none";
-      } else {
-        x.style.display = "block";
-      }
-    }
-</script>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myLinks");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+    </script>
 
 </header>
 
