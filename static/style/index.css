@@ -70,10 +70,11 @@
         position: relative;
         background-color: #ffffff;
         border: none;
-        font-size: 12px;
+        font-size: 16px;
         color: #000000;
         padding: 20px;
-        width: 100px;
+        /*width: 100px;*/
+        /*height: 50px;*/
         text-align: center;
         transition-duration: 0.4s;
         text-decoration: none;
