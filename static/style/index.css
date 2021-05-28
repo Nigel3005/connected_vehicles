@@ -68,12 +68,12 @@
 
     button {
         position: relative;
-        background-color: #4CAF50;
+        background-color: #ffffff;
         border: none;
         font-size: 28px;
-        color: #FFFFFF;
+        color: #000000;
         padding: 20px;
-        width: 200px;
+        width: 100px;
         text-align: center;
         transition-duration: 0.4s;
         text-decoration: none;
