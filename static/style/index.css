@@ -60,12 +60,6 @@
         padding: 4px;
     }
 
-    button{
-        text-align: center;
-        color: white;
-        background: rgba(0, 0, 0, 0.62);
-    }
-
     .topnav {
         overflow: hidden;
         background-color: #282D3C;
