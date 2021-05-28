@@ -3,6 +3,7 @@
         font-family: sans-serif;
         background: #282D3C;
         /*background: linear-gradient(to right, rgb(167, 202, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(167, 202, 255));*/
+        color: white;
     }
 
     body h1{
@@ -50,12 +51,12 @@
 }
 
     input {
-        border: 2px solid #4CAF50;
+        border: 2px solid black;
         border-radius: 0px;
         padding: 4px;
     }
 
-        .topnav {
+    .topnav {
         overflow: hidden;
         background-color: #282D3C;
         position: relative;
