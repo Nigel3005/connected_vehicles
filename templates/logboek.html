@@ -1,4 +1,10 @@
 <script>
+
+    document.addEventListener("DOMContentLoaded", function(){
+        setCheckboxValues();
+        setVehicleId();
+    });
+
     function filter(){
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
@@ -28,8 +34,25 @@
         return values;
     }
 
-    var expanded;
+    function setCheckboxValues() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const column_names_str = urlParams.get('column_names');
+        const column_names = column_names_str.split(',');
 
+        column_names.forEach((column_name) => {
+            const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
+            checkbox.checked = true;
+        })
+    }
+
+    function setVehicleId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const vehicle_id = urlParams.get('vehicle_id');
+        document.getElementById("vehicle_id_filter").value = vehicle_id;
+        console.log(vehicle_id)
+    }
+
+    var expanded;
     function showCheckboxes() {
       var checkboxes = document.getElementById("checkboxes");
       if (!expanded) {
@@ -64,8 +87,9 @@
                     </div>
                     <div id="checkboxes">
                         {% for name in column_names_all %}
-                            <label for="{{ name.0 }}">
-                                <input name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}</label>
+                            <label>
+                                <input name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
+                            </label>
                         {% endfor %}
                     </div>
                   </div>

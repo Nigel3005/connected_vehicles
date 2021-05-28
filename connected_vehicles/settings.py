@@ -127,7 +127,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 LOGIN_REDIRECT_URL = '/home'
 LOGIN_URL = '/login'
-# SECURE_HSTS_SECONDS = 31536000
+
+# LOCAL STATIC
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),) # new
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) # new
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage' # new

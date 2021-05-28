@@ -18,7 +18,7 @@
 <!-- Top Navigation Menu -->
     <div class="topnav">
         <a href="/home">Home</a>
-        <div id="myLinks">
+        <div id="navbar">
             {% if user.is_authenticated %}
 
                 <a href="/data-analytics">Data</a>
@@ -33,14 +33,14 @@
 
             {% endif %}
         </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="hamburger()">
         <i class="fa fa-bars"></i>
         </a>
     </div>
 
     <script>
-        function myFunction() {
-          var x = document.getElementById("myLinks");
+        function hamburger() {
+          var x = document.getElementById("navbar");
           if (x.style.display === "block") {
             x.style.display = "none";
           } else {
