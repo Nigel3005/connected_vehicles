@@ -72,11 +72,11 @@
 
     .topnav a {
         background: #282D3C;
+        float: left;
         color: white;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
-        display: block;
     }
 
     .topnav a.icon {
