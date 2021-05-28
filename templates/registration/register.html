@@ -1,7 +1,7 @@
 <body>
 
     <div class="login-box">
-        <h1>Sign up</h1>
+        <h1>Registreren</h1>
         <form method="POST">
             {% csrf_token %}
             {% for field in form %}
@@ -16,7 +16,7 @@
             {% endfor %}
         </p>
     {% endfor %}
-            <button>Sign up</button>
+            <button>Registreer</button>
         </form>
     </div>
 

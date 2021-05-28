@@ -3,31 +3,24 @@
     <br>
     {% if user.is_authenticated %}
         {% if vehicle_id != None %}
-            <h2> Voertuigen </h2>
-            <table>
-                <tr>
-                    <th>Naam voertuig: </th>
-                    <th>Kenteken: </th>
-                    <th>Laden: </th>
-                    <th>Cell spanning: </th>
-                    <th>Accu spanning: </th>
-                    <th>Cell percentage: </th>
-                    <th>Motor temparatuur: </th>
-                    <th>Laatst Online: </th>
-                </tr>
-            {% for status in vehicle_statusses %}
-                    <tr>
-                        <th>{{ status.vehicle_name }}</th>
-                        <th>{{ status.vehicle_id }}</th>
-                        <th>{{ status.laden }}</th>
-                        <th>{{ status.cell_spanning }}</th>
-                        <th>{{ status.accu_spanning }}%</th>
-                        <th>{{ status.cell_perc }}%</th>
-                        <th>{{ status.motor_temp }}%</th>
-                        <th>{{ status.time }}</th>
-                    </tr>
-            {% endfor %}
-            </table>}
+            <div class="grid-container">
+                <div class="grid-box">
+                    <h3>Vermogen</h3>
+                    <h1>30 kW</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Batterij</h3>
+                    <h1>20%</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Actieradius</h3>
+                    <h1>5 uur</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Opladen</h3>
+                    <h1>Ja</h1>
+                </div>
+            </div>
         {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
         {% endif %}
