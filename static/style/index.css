@@ -331,4 +331,26 @@ th, td {
         width: 80%;
     }
 
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0px 0px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .grid-box {
+        background-color: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .grid-box h1, h3 {
+        color: #282D3C;
+        margin: 0px;
+    }
+
 }
