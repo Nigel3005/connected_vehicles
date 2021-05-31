@@ -148,19 +148,57 @@ def logoutView(request):
 
 def analyticsView(request):
     if not request.user.is_anonymous:
-        vehicle_id = request.user.profile.vehicle_ids
-        if vehicle_id != None:
-            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=vehicle_id).order_by('time').reverse()
-            args = {'page':'data-analytics.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicle_id}
+        vehicle_ids = request.user.profile.vehicle_ids
 
-            return render(request, 'default.html', args)
-        else:
-            args = {'page': 'data-analytics.html', 'vehicle_statusses': None, 'vehicle_id': vehicle_id}
-            return render(request, 'default.html', args)
-    else:
-        args = {'page': 'data-analytics.html', 'vehicle_statusses': None}
-        return render(request, 'default.html', args)
+        # check if user has vehicle ids in profile
+        if vehicle_ids is not None:
+            # Sepperate vehicle ids
+            vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
+            vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter spaces
 
+            # Get querys from request
+            selected_vehicle_id = request.GET.get('vehicle_id')
+            selected_column_names_unf = request.GET.get('column_names')
+
+            # Check if user filtered on vehicle id else set selected vehicle id to first vehicle id in profile
+            if selected_vehicle_id is None:
+                selected_vehicle_id = vehicle_ids_sep[0]
+
+            # Get all vehicle statusses with selected vehicle id
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
+
+            # Get all possible variables in model
+            column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+            column_names_all = format_column_names(column_names_all_unf)
+
+            # Check if there are statusses with selected vehicle id
+            status_matrix, column_names_form = [],[]
+            if len(vehicle_statusses) > 0:
+                # Check if user filtered on columns else use all column names
+                if selected_column_names_unf is None:
+                    column_names = column_names_all
+                else:
+                    column_names_unf = selected_column_names_unf.split(",")
+                    column_names = format_column_names(column_names_unf)
+
+                # Create table matrix
+                for status in vehicle_statusses:
+                    row = []
+                    dict = vars(status)
+                    for name in column_names:
+                        row.append(dict[name[0]])
+                    status_matrix.append(row)
+
+            else:
+                column_names = None
+
+            # Render template
+            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, 'column_names_all': column_names_all}
+            return render(request, 'default.html', args)
+
+    # Render template without statusses and without vehicle id
+    args = {'page': 'logboek.html'}
+    return render(request, 'default.html', args)
 
 
 # FUNCTIONS

@@ -1,9 +1,5 @@
 <script>
 
-    $(document).ready(function(){
-        {% block jquery %}{% endblock %}
-    })
-
     document.addEventListener("DOMContentLoaded", function(){
         setCheckboxValues();
         setVehicleId();
@@ -107,15 +103,24 @@
             {% if vehicle_statusses == None %}
                 <p>Selecteer een kenteken a.u.b.</p>
             {% elif vehicle_statusses|length > 0 %}
-                    <div class='container'>
-                        {% block content %}
-                        {% endblock content %}
-                    </div>
+                <table>
+                    <tr>
+                        {% for name in column_names %}
+                            <td>{{ name.1 }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% for status in vehicle_statusses %}
+                        <tr>
+                            {% for value in status %}
+                                <th>{{ value }}</th>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
                 </table>
             {% else %}
                 <p>Er zijn geen logboekgegevens beschikbaar van kenteken {{ vehicle_id }}.</p>
             {% endif %}
-        {% else %}
+         {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
         {% endif %}
     {% else %}
@@ -123,4 +128,3 @@
     {% endif %}
 
 </body>
-
