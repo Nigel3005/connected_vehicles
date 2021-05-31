@@ -368,7 +368,6 @@ th, td {
         grid-template-rows: repeat(2, 1fr);
         gap: 0px 0px;
         width: 100%;
-        /*transform: translate(-50%, -50%);*/
     }
 
     .grid-box {

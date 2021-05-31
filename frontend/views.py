@@ -125,7 +125,7 @@ def loginView(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('/home')
+                    return redirect('/status')
                 else:
                     form = LoginForm
                     return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated'})
