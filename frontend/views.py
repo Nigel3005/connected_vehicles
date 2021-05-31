@@ -175,24 +175,24 @@ def format_column_names(column_names_unf):
 
 
 
-def get_data(request, *args, **kwargs):
-    data = {
-        "sales": 100,
-        "customers": 10,
-    }
-    return JsonResponse(data) # http response
-
-
-class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
-
-    def get(self, request, format=None):
-        qs_count = User.objects.all().count()
-        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        default_items = [qs_count, 23, 2, 3, 12, 2]
-        data = {
-                "labels": labels,
-                "default": default_items,
-        }
-        return Response(data)
+# def get_data(request, *args, **kwargs):
+#     data = {
+#         "sales": 100,
+#         "customers": 10,
+#     }
+#     return JsonResponse(data) # http response
+#
+#
+# class ChartData(APIView):
+#     authentication_classes = []
+#     permission_classes = []
+#
+#     def get(self, request, format=None):
+#         qs_count = User.objects.all().count()
+#         labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
+#         default_items = [qs_count, 23, 2, 3, 12, 2]
+#         data = {
+#                 "labels": labels,
+#                 "default": default_items,
+#         }
+#         return Response(data)
