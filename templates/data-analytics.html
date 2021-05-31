@@ -4,26 +4,116 @@
         {% block jquery %}{% endblock %}
     })
 
+    document.addEventListener("DOMContentLoaded", function(){
+        setCheckboxValues();
+        setVehicleId();
+    });
+
+    function filter(){
+        var href = new URL(window.location.href);
+        var vehicle_id = document.getElementById("vehicle_id_filter").value;
+        var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
+        console.log(filtered_column_names)
+        if (filtered_column_names.length === 0){
+            params = new URLSearchParams({
+                'vehicle_id': vehicle_id
+            })
+        } else {
+            params = new URLSearchParams({
+                'vehicle_id': vehicle_id,
+                'column_names': getSelectedCheckboxValues("column_names_filter_box")
+            })
+        }
+        href.search = params;
+        window.location.replace(href.href);
+        return false;
+    }
+
+    function getSelectedCheckboxValues(name) {
+        const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+        let values = [];
+        checkboxes.forEach((checkbox) => {
+            values.push(checkbox.value);
+        });
+        return values;
+    }
+
+    function setCheckboxValues() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const column_names_str = urlParams.get('column_names');
+        const column_names = column_names_str.split(',');
+
+        column_names.forEach((column_name) => {
+            const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
+            checkbox.checked = true;
+        })
+    }
+
+    function setVehicleId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const vehicle_id = urlParams.get('vehicle_id');
+        document.getElementById("vehicle_id_filter").value = vehicle_id;
+        console.log(vehicle_id)
+    }
+
+    var expanded;
+    function showCheckboxes() {
+      var checkboxes = document.getElementById("checkboxes");
+      if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+      } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+      }
+    }
 </script>
 
-
 <body>
-    <h1>Data Analytics</h1>
+    <h1>Logboek</h1>
     <br>
     {% if user.is_authenticated %}
-        {% if vehicle_id != None %}
-            {% if vehicle_statusses|length > 0 %}
-                <h2> Voertuigen </h2>
-                <table>
-                    {% for status in vehicle_statusses %}
-                        <div class='container'>
-                            {% block content %}
-                            {% endblock content %}
-                        </div>
+        {% if vehicle_ids != None %}
+            <h2> Voertuigen </h2>
+            <h3>Kenteken: </h3>
+            <form>
+                <select id="vehicle_id_filter" >
+                    {% for n in vehicle_ids %}
+                        <option value="{{ n }}">{{ n }}</option>
                     {% endfor %}
+                </select>
+                <div class="multiselect">
+                <div class="selectBox" onclick="showCheckboxes()">
+                    <select id="column_names_filter">
+                        <option>Select an option</option>
+                    </select>
+                        <div class="overSelect"></div>
+                    </div>
+                    <div id="checkboxes">
+                        {% for name in column_names_all %}
+                            <label>
+                                <input name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                  </div>
+                <button class="btn2" onclick="return filter()">Filter</button>
+            </form>
+            {{ error }}
+            <br>
+            <br>
+            <br>
+            <br>
+            {% if vehicle_statusses == None %}
+                <p>Selecteer een kenteken a.u.b.</p>
+            {% elif vehicle_statusses|length > 0 %}
+                    <div class='container'>
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
                 </table>
             {% else %}
-                <p>Er zijn geen gegevens bekend bij dit kenteken ( {{ vehicle_id }} ) </p>
+                <p>Er zijn geen logboekgegevens beschikbaar van kenteken {{ vehicle_id }}.</p>
             {% endif %}
          {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
@@ -31,4 +121,6 @@
     {% else %}
         <p>Om de status van uw voertuig(en) te zien moet u eerst <a href="/login">inloggen</a>.</p>
     {% endif %}
+
 </body>
+
