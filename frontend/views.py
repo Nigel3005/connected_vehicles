@@ -17,18 +17,21 @@ def indexView(request):
 
 def statusView(request):
     if not request.user.is_anonymous:
-        vehicle_id = request.user.profile.vehicle_ids
-        if vehicle_id != None:
-            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=vehicle_id).order_by('time').reverse()
-            args = {'page':'status.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicle_id}
+        vehicle_ids = request.user.profile.vehicle_ids
+        if vehicle_ids is not None:
+            vehicle_ids_sep = split_vehicle_ids(vehicle_ids)
+            selected_vehicle_id = get_selected_vehicle_id(request, vehicle_ids_sep)
 
-            return render(request, 'default.html', args)
-        else:
-            args = {'page': 'status.html', 'vehicle_statusses': None, 'vehicle_id': vehicle_id}
-            return render(request, 'default.html', args)
-    else:
-        args = {'page': 'status.html', 'vehicle_statusses': None}
-        return render(request, 'default.html', args)
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
+            if len(vehicle_statusses) > 0:
+                args = {'page':'status.html', 'vehicle_status': vehicle_statusses[0], 'vehicle_id': selected_vehicle_id}
+                return render(request, 'default.html', args)
+            else:
+                args = {'page': 'status.html', 'vehicle_id': vehicle_id}
+                return render(request, 'default.html', args)
+
+    args = {'page': 'status.html',}
+    return render(request, 'default.html', args)
 
 
 
@@ -39,16 +42,11 @@ def logboekView(request):
         # check if user has vehicle ids in profile
         if vehicle_ids is not None:
             # Sepperate vehicle ids
-            vehicle_ids_sep = vehicle_ids.replace(" ","").split(";")
-            vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0] # Filter spaces
+            vehicle_ids_sep = split_vehicle_ids(vehicle_ids)
 
             # Get querys from request
-            selected_vehicle_id = request.GET.get('vehicle_id')
             selected_column_names_unf = request.GET.get('column_names')
-
-            # Check if user filtered on vehicle id else set selected vehicle id to first vehicle id in profile
-            if selected_vehicle_id is None:
-                selected_vehicle_id = vehicle_ids_sep[0]
+            selected_vehicle_id = get_selected_vehicle_id(request, vehicle_ids_sep)
 
             # Get all vehicle statusses with selected vehicle id
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
@@ -210,8 +208,20 @@ def format_column_names(column_names_unf):
         column_names[i] = [unformatted, formatted]
     return column_names
 
+def split_vehicle_ids(vehicle_ids):
+    vehicle_ids_sep = vehicle_ids.replace(" ", "").split(";")
+    vehicle_ids_sep = [n for n in vehicle_ids_sep if len(n) > 0]  # Filter spaces
+    return vehicle_ids_sep
 
+def get_selected_vehicle_id(request, vehicle_ids_sep):
+    # get query vehicle id
+    selected_vehicle_id = request.GET.get('vehicle_id')
 
+    # Check if user filtered on vehicle id else set selected vehicle id to first vehicle id in profile
+    if selected_vehicle_id is None:
+        selected_vehicle_id = vehicle_ids_sep[0]
+
+    return selected_vehicle_id
 # def get_data(request, *args, **kwargs):
 #     data = {
 #         "sales": 100,
