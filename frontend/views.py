@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from requests import Response
+from responses import Response
 from rest_framework.views import APIView
 
 from api.models import vehicleStatus
