@@ -1,5 +1,9 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.encoding import force_text
+from requests import Response
+from rest_framework.views import APIView
+
 from api.models import vehicleStatus
 from frontend.forms import SignUpForm, LoginForm
 from django.contrib.auth.models import User
@@ -171,3 +175,27 @@ def format_column_names(column_names_unf):
         formatted = unformatted.replace("_", " ").capitalize()
         column_names[i] = [unformatted, formatted]
     return column_names
+
+
+
+def get_data(request, *args, **kwargs):
+    data = {
+        "sales": 100,
+        "customers": 10,
+    }
+    return JsonResponse(data) # http response
+
+
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_count = User.objects.all().count()
+        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        default_items = [qs_count, 23, 2, 3, 12, 2]
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)

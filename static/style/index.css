@@ -87,10 +87,28 @@
         text-transform: uppercase;
     }
 
-    button:hover {
+    .btn1{
+        background-color: #282D3C;
+        color: white;
         border: 3px solid #282D3C;
+    }
+
+    .btn1:hover {
         background-color: white;
         color: #282D3C;
+        border: 3px solid white;
+    }
+
+    .btn2:hover {
+        background-color: #282D3C;
+        color: white;
+        border: 3px solid white;
+    }
+
+    .btn2{
+        background-color: white;
+        color: #282D3C;
+        border: 3px solid white;
     }
 
     .topnav {

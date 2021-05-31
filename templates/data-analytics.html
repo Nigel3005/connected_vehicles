@@ -1,3 +1,12 @@
+<script>
+
+    $(document).ready(function(){
+        {% block jquery %}{% endblock %}
+    })
+
+</script>
+
+
 <body>
     <h1>Data Analytics</h1>
     <br>
@@ -7,10 +16,10 @@
                 <h2> Voertuigen </h2>
                 <table>
                     {% for status in vehicle_statusses %}
-                        <tr>
-                            <th>Kenteken: </th>
-                            <th>{{ status.vehicle_id }}</th>
-                        </tr>
+                        <div class='container'>
+                            {% block content %}
+                            {% endblock content %}
+                        </div>
                     {% endfor %}
                 </table>
             {% else %}
