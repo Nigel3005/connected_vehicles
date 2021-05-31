@@ -367,10 +367,11 @@ th, td {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         gap: 0px 0px;
-        width: 50%;
+        width: 25%;
         margin-left: auto;
         margin-right: auto;
     }
+
     .grid-box {
         background-color: white;
         margin: 20px;
