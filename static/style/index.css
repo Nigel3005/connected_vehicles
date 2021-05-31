@@ -367,17 +367,17 @@ th, td {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         gap: 0px 0px;
-        width: 25%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
+        /*transform: translate(-50%, -50%);*/
     }
 
     .grid-box {
         background-color: white;
-        margin: 20px;
+        margin: 10%;
         padding: 20px;
         border-radius: 20px;
         text-align: center;
+        width: 60%;
     }
 
     .grid-box h1, h3 {
