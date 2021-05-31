@@ -1,17 +1,14 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from django.utils.encoding import force_text
 from requests import Response
 from rest_framework.views import APIView
 
 from api.models import vehicleStatus
 from frontend.forms import SignUpForm, LoginForm
 from django.contrib.auth.models import User
-from django.utils.http import urlsafe_base64_decode
+
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render
-import pandas as pd
-from matplotlib import pyplot as plt
 
 
 
