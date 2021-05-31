@@ -3,24 +3,26 @@
     <br>
     {% if user.is_authenticated %}
         {% if vehicle_id != None %}
-            <div class="grid-container">
-                <div class="grid-box">
-                    <h3>Vermogen</h3>
-                    <h1>30 kW</h1>
+            {% for status in vehicle_ids %}
+                <div class="grid-container">
+                    <div class="grid-box">
+                        <h3>Vermogen</h3>
+                        <h1>{{ status.cell_spanning }}</h1>
+                    </div>
+                    <div class="grid-box">
+                        <h3>Batterij</h3>
+                        <h1>{{ status.accu_spanning}}</h1>
+                    </div>
+                    <div class="grid-box">
+                        <h3>Actieradius</h3>
+                        <h1>{{ status.motor_temperatuur }}</h1>
+                    </div>
+                    <div class="grid-box">
+                        <h3>Opladen</h3>
+                        <h1>{{ status.laden }}</h1>
+                    </div>
                 </div>
-                <div class="grid-box">
-                    <h3>Batterij</h3>
-                    <h1>20%</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>Actieradius</h3>
-                    <h1>5 uur</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>Opladen</h3>
-                    <h1>Ja</h1>
-                </div>
-            </div>
+            {% endfor %}
         {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
         {% endif %}
