@@ -104,7 +104,7 @@
     .btn1:hover {
         background-color: white;
         color: #282D3C;
-        border: 3px solid white;
+        border: 3px solid #282D3C;
     }
 
     .btn2:hover {
@@ -157,10 +157,10 @@
     }
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
         gap: 0px 0px;
-        width: 50%;
+        width: 80%;
         margin-left: auto;
         margin-right: auto;
     }
