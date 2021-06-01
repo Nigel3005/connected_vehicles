@@ -13,7 +13,8 @@ class createVehicleStatus(APIView):
 
     def post(self, request, format=None):
         try:
-            payload = request.data[1]["vs"]
+            payload_enc = request.data[1]["vs"]
+            payload = bytes.fromhex(payload_enc).decode('utf-8')
             laden =  payload[0]
             cell_spanning = int(payload[1:2])/100+2
             accu_spanning = int(payload[3:4])/10
