@@ -6,8 +6,9 @@ from api.models import vehicleStatus
 from frontend.forms import SignUpForm, LoginForm
 from django.contrib.auth.models import User
 
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.shortcuts import render
+from rest_framework.response import Response
 
 
 
@@ -144,7 +145,7 @@ def logoutView(request):
 
 
 
-def analyticsView(request):
+def dataAnalyticsView(request):
     if not request.user.is_anonymous:
         vehicle_ids = request.user.profile.vehicle_ids
 
@@ -191,11 +192,11 @@ def analyticsView(request):
                 column_names = None
 
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, 'column_names_all': column_names_all}
+            args = {'page':'charts.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, 'column_names_all': column_names_all}
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
-    args = {'page': 'logboek.html'}
+    args = {'page': 'charts.html'}
     return render(request, 'default.html', args)
 
 
@@ -222,3 +223,35 @@ def get_selected_vehicle_id(request, vehicle_ids_sep):
         selected_vehicle_id = vehicle_ids_sep[0]
 
     return selected_vehicle_id
+
+
+
+# def DataAnalyticsView(request):
+#
+#     template_name1 = 'charts.html'
+#     return render(request, 'default.html', {'page': template_name1})
+
+
+
+def get_data(request, *args, **kwargs):
+    data = {
+        "sales": 100,
+        "customers": 10,
+    }
+    return JsonResponse(data) # http response
+
+
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_count = User.objects.all().count()
+        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        default_items = [qs_count, 23, 2, 3, 12, 2]
+        data = {
+                "labels": labels,
+                "default": default_items,
+        }
+        return Response(data)
+

@@ -2,12 +2,10 @@
 
     <script>
         {% block jquery %}
-        var endpoint = '/api/chart/data/'
         var defaultData = []
         var labels = [];
         $.ajax({
             method: "GET",
-            url: endpoint,
             success: function(data){
                 labels = data.labels
                 defaultData = data.default
@@ -27,7 +25,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Batterij',
                     data: defaultData,
                     backgroundColor: [
                         'rgba(75, 192, 192, 0.2)',
@@ -54,7 +52,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Accu Spanning',
                     data: defaultData,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -83,16 +81,7 @@
 
     {% block content %}
 
-        <div class='row'>
-            <div class='col-sm-12'>
-                <h1>Hello World</h1>
-                <div class='col-sm-6'>
-                    <canvas id="myChart" width="400" height="400"></canvas>
-                </div>
-                <div class='col-sm-6'>
-                    <canvas id="myChart2" width="400" height="400"></canvas>
-                </div>
-            </div>
-        </div>
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <canvas id="myChart2" width="400" height="400"></canvas>
 
     {% endblock content %}

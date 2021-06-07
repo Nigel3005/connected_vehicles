@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 User = get_user_model()
 
-class DataAnalyticsView(View):
+def DataAnalyticsView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'charts.html', {"customers": 10})
 
