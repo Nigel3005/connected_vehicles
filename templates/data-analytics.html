@@ -63,10 +63,14 @@
         expanded = false;
       }
     }
+
+    $(document).ready(function(){
+        {% block jquery %}{% endblock %}
+    })
 </script>
 
 <body>
-    <h1>Logboek</h1>
+    <h1>Data-analytics</h1>
     <br>
     {% if user.is_authenticated %}
         {% if vehicle_ids != None %}
@@ -103,20 +107,10 @@
             {% if vehicle_statusses == None %}
                 <p>Selecteer een kenteken a.u.b.</p>
             {% elif vehicle_statusses|length > 0 %}
-                <table>
-                    <tr>
-                        {% for name in column_names %}
-                            <td>{{ name.1 }}</td>
-                        {% endfor %}
-                    </tr>
-                    {% for status in vehicle_statusses %}
-                        <tr>
-                            {% for value in status %}
-                                <th>{{ value }}</th>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </table>
+                <div class='container'>
+                    {% block content %}
+                    {% endblock content %}
+                </div>
             {% else %}
                 <p>Er zijn geen logboekgegevens beschikbaar van kenteken {{ vehicle_id }}.</p>
             {% endif %}

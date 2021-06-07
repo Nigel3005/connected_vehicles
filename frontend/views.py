@@ -27,7 +27,7 @@ def statusView(request):
                 args = {'page':'status.html', 'vehicle_status': vehicle_statusses[0], 'vehicle_id': selected_vehicle_id}
                 return render(request, 'default.html', args)
             else:
-                args = {'page': 'status.html', 'vehicle_id': vehicle_id}
+                args = {'page': 'status.html', 'vehicle_id': vehicle_ids}
                 return render(request, 'default.html', args)
 
     args = {'page': 'status.html',}
@@ -222,24 +222,3 @@ def get_selected_vehicle_id(request, vehicle_ids_sep):
         selected_vehicle_id = vehicle_ids_sep[0]
 
     return selected_vehicle_id
-# def get_data(request, *args, **kwargs):
-#     data = {
-#         "sales": 100,
-#         "customers": 10,
-#     }
-#     return JsonResponse(data) # http response
-#
-#
-# class ChartData(APIView):
-#     authentication_classes = []
-#     permission_classes = []
-#
-#     def get(self, request, format=None):
-#         qs_count = User.objects.all().count()
-#         labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
-#         default_items = [qs_count, 23, 2, 3, 12, 2]
-#         data = {
-#                 "labels": labels,
-#                 "default": default_items,
-#         }
-#         return Response(data)
