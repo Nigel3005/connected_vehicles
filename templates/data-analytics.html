@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="{% static 'style/charts.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 </head>
 
@@ -78,6 +82,15 @@
         {% block jquery %}{% endblock %}
     })
 
+    $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+    });
+
+
 </script>
 
 <body>
@@ -88,27 +101,36 @@
             <h2> Voertuigen </h2>
             <h3>Kenteken: </h3>
             <form>
-                <select id="vehicle_id_filter" >
-                    {% for n in vehicle_ids %}
-                        <option value="{{ n }}">{{ n }}</option>
-                    {% endfor %}
-                </select>
-                <div class="multiselect">
-                <div class="selectBox" onclick="showCheckboxes()">
-                    <select id="column_names_filter">
-                        <option>Select an option</option>
+                <div class="custom-select">
+                    <select id="vehicle_id_filter" >
+                        <div class="dropdown">
+                            {% for n in vehicle_ids %}
+                                <option value="{{ n }}">{{ n }}</option>
+                            {% endfor %}
+                        </div>
                     </select>
+                </div>
+                <div class="multiselect">
+                    <div class="selectBox" onclick="showCheckboxes()">
+                        <select id="column_names_filter">
+                            <option>Select an option</option>
+                        </select>
                         <div class="overSelect"></div>
                     </div>
-                    <div id="checkboxes">
+                    <div class="dropdown" id="checkboxes">
                         {% for name in column_names_all %}
                             <label>
                                 <input class="inputbox" name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
                             </label>
                         {% endfor %}
                     </div>
-                  </div>
-                <button class="btn2" onclick="return filter()">Filter</button>
+                </div>
+                <div>
+                    <input type="text" name="daterange" class="daterange" />
+                </div>
+                <div>
+                    <button class="btn2" onclick="return filter()">Filter</button>
+                </div>
             </form>
             {{ error }}
             <br>
@@ -120,6 +142,7 @@
             {% elif vehicle_statusses|length > 0 %}
                 <div class="graph">
                     {% block content %}
+
                     {% endblock content %}
                 </div>
             {% else %}
