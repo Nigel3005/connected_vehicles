@@ -2,47 +2,126 @@
 /* Computer */
 @media only screen and (min-width: 400px) {
 
-    th{
+    .tablelogboek,.thlogboek{
         color: white;
     }
 
-    table {
+    .tablelogboek {
         border-collapse: collapse;
         width: 100%;
     }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-        gap: 0px 0px;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .grid-box {
-        background-color: white;
-        margin: 20px;
-        padding: 20px;
-        border-radius: 20px;
-        text-align: center;
-    }
-
-    .grid-box h1, h3 {
-        color: white;
-        margin: 0px;
-    }
-
-    table, td, th {
+    .tablelogboek,.tdlogboek,.thlogboek {
         border: 1px solid #ffffff;
         text-align: left;
         color: white;
     }
 
-    th, td {
+    .tablelogboek, .thlogboek, .tdlogboek {
         padding: 15px;
         color: white;
+    }
+
+    select{
+        color: #282D3C;
+        background-color: white;
+        border: 1px #dadada solid;
+        border-radius: 15px;
+        padding: 15px 32px;
+    }
+
+    select > option *{
+        border: 1px solid white;
+        border-radius: 10px;
+        display: block;
+        background-color: black;
+    }
+    select > option:focus-visible{
+        background-color: black;
+    }
+
+    form {
+        position: relative;
+    }
+
+    form > div{
+        width: 230px;
+        padding: 20px;
+        margin: 10px;
+        display: inline-block;
+        position: relative;
+        text-transform: uppercase
+    }
+
+    .checkboxes {
+        position: absolute;
+    }
+
+    .daterange{
+        color: #282D3C;
+        background-color: white;
+        border: 1px #dadada solid;
+        border-radius: 15px;
+        padding: 15px 32px;
+    }
+
+    .daterange td{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    thead th{
+        color: black;
+        background-color: white;
+    }
+
+    td.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    td.today.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    td.weekend.available{
+        color: #282D3C;
+        background-color: white;
+    }
+    td.off.ends.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    td.weekend.off.ends.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    th.month{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    /*td.in-range.available{*/
+    /*    color: white;*/
+    /*    background-color: green;*/
+    /*}*/
+
+    td.today.active.start-date.available{
+        color: white;
+        background-color: black;
+    }
+
+    td.active.start-date.available{
+        color: white;
+        background-color: black;
+    }
+
+    td.active.end-date.in-range.available{
+        color: white;
+        background-color: black;
     }
 
 }
@@ -92,40 +171,157 @@
         padding: 15px;
         color: white;
     }
+
+        .daterange{
+        color: #282D3C;
+        background-color: white;
+        border: 1px #dadada solid;
+        border-radius: 15px;
+        padding: 15px 32px;
+    }
+
+        select{
+        color: #282D3C;
+        background-color: white;
+        border: 1px #dadada solid;
+        border-radius: 15px;
+        padding: 15px 32px;
+    }
+
+    select > option *{
+        border: 1px solid white;
+        border-radius: 10px;
+        display: block;
+        background-color: black;
+    }
+    select > option:focus-visible{
+        background-color: black;
+    }
+
+    form {
+        position: relative;
+    }
+
+    form > div{
+        width: 100px;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+        position: relative;
+    }
+
+    .checkboxes {
+        position: absolute;
+    }
+
+    .daterange td{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    thead th{
+        color: black;
+        background-color: white;
+    }
+
+    td.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    td.today.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    td.weekend.available{
+        color: #282D3C;
+        background-color: white;
+    }
+    td.off.ends.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    td.weekend.off.ends.available{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    th.month{
+        color: #282D3C;
+        background-color: white;
+    }
+
+    /*td.in-range.available{*/
+    /*    color: white;*/
+    /*    background-color: green;*/
+    /*}*/
+
+    td.today.active.start-date.available{
+        color: white;
+        background-color: black;
+    }
+
+    td.active.start-date.available{
+        color: white;
+        background-color: black;
+    }
+
+    td.active.end-date.in-range.available{
+        color: white;
+        background-color: black;
+    }
 }
 
 
 /* Dropdown menu filter*/
-.multiselect {
-  width: 200px;
-}
+/*.multiselect {*/
+/*    width: 400px;*/
+/*}*/
 
 .selectBox {
-  position: relative;
+    position: relative;
 }
 
 .selectBox select {
-  width: 100%;
-  font-weight: bold;
+    width: 100%;
 }
 
 .overSelect {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
-#checkboxes {
-  display: none;
-  border: 1px #dadada solid;
+.dropdown {
+    display: none;
+    border-radius: 25px;
+    margin-top: 20px;
+    background-color: white;
+    color: #282D3C;
+    position: absolute;
+    box-shadow: 0px 0px 10px black;
+    border: 10px solid white;
+    padding: 5px;
+    padding-right: 10px;
 }
 
-#checkboxes label {
-  display: block;
+.dropdown label {
+    display: block;
+    padding: 5px;
+    color: #282D3C;
 }
 
-#checkboxes label:hover {
-  background-color: #1e90ff;
+.dropdown label:hover {
+    background-color: #282D3C;
+    color: white;
+    border-radius: 10px;
+}
+
+#vehicle_id_filter{
+    width: 230px;
+    text-transform: uppercase;
 }

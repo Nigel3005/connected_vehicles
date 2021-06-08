@@ -1,5 +1,13 @@
 {% load static %}
 
+<head>
+    <link rel="stylesheet" href="{% static 'style/logboek.css' %}">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
 <script>
 
     document.addEventListener("DOMContentLoaded", function(){
@@ -68,27 +76,15 @@
         }
     }
 
-    {#$(function() {#}
-    {#    $('input[name="daterange"]').daterangepicker({#}
-    {#        opens: 'left'#}
-    {#    }, function(start, end, label) {#}
-    {#        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));#}
-    {#    });#}
-    {# }); #}
-
-    $('input[name="dates"]').daterangepicker();
+    $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+    });
 
 </script>
-
-
-<head>
-    <link rel="stylesheet" href="{% static 'style/logboek.css' %}">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-</head>
-
 
 <body>
     <h1>Logboek</h1>
@@ -98,28 +94,36 @@
             <h2> Voertuigen </h2>
             <h3>Kenteken: </h3>
             <form>
-                <select id="vehicle_id_filter" >
-                    {% for n in vehicle_ids %}
-                        <option value="{{ n }}">{{ n }}</option>
-                    {% endfor %}
-                </select>
-                <div class="multiselect">
-                <div class="selectBox" onclick="showCheckboxes()">
-                    <select id="column_names_filter">
-                        <option>Select an option</option>
+                <div class="custom-select">
+                    <select id="vehicle_id_filter" >
+                        <div class="dropdown">
+                            {% for n in vehicle_ids %}
+                                <option value="{{ n }}">{{ n }}</option>
+                            {% endfor %}
+                        </div>
                     </select>
+                </div>
+                <div class="multiselect">
+                    <div class="selectBox" onclick="showCheckboxes()">
+                        <select id="column_names_filter">
+                            <option>Select an option</option>
+                        </select>
                         <div class="overSelect"></div>
                     </div>
-                    <div id="checkboxes">
+                    <div class="dropdown" id="checkboxes">
                         {% for name in column_names_all %}
                             <label>
                                 <input class="inputbox" name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
                             </label>
                         {% endfor %}
                     </div>
-                  </div>
-                <input type="text" name="daterange" />
-                <button class="btn2" onclick="return filter()">Filter</button>
+                </div>
+                <div>
+                    <input type="text" name="daterange" class="daterange" />
+                </div>
+                <div>
+                    <button class="btn2" onclick="return filter()">Filter</button>
+                </div>
             </form>
             {{ error }}
             <br>
@@ -129,16 +133,16 @@
             {% if vehicle_statusses == None %}
                 <p>Selecteer een kenteken a.u.b.</p>
             {% elif vehicle_statusses|length > 0 %}
-                <table>
-                    <tr>
+                <table class="tablelogboek">
+                    <tr class="trlogboek">
                         {% for name in column_names %}
-                            <td>{{ name.1 }}</td>
+                            <td class="tdlogboek">{{ name.1 }}</td>
                         {% endfor %}
                     </tr>
                     {% for status in vehicle_statusses %}
                         <tr>
                             {% for value in status %}
-                                <th>{{ value }}</th>
+                                <th class="thlogboek">{{ value }}</th>
                             {% endfor %}
                         </tr>
                     {% endfor %}
