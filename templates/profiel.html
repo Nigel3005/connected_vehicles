@@ -1,8 +1,14 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'style/profiel.css' %}">
+</head>
+
+
 <body>
-    <h1>Logboek</h1>
+    <h1> Profiel </h1>
     <br>
     {% if user.is_authenticated %}
-        <h2> Profiel </h2>
         <table>
             <tr>
                 <th>Naam: </th>

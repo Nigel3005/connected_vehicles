@@ -1,72 +1,55 @@
-body{
-    font-family: sans-serif;
-    background: linear-gradient(to right, rgb(167, 202, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(167, 202, 255));
+
+/* Computer */
+@media only screen and (min-width: 400px) {
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 0px 0px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .grid-box {
+        background-color: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .grid-box h1, h3 {
+        color: #282D3C;
+        margin: 0px;
+    }
 
 }
 
-body h1,h2,h3,p{
-    color: black;
-    padding-left: 10px;
-}
+/* Phone */
+@media only screen and (max-width: 400px) {
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  margin-left: 10px;
-  margin-right: 20px;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0px 0px;
+        width: 100%;
+    }
 
-li {
-  float: left;
-  border-right:1px solid #bbb;
-}
+    .grid-box {
+        background-color: white;
+        margin: 10%;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+        width: 60%;
+    }
 
-li:last-child {
-  border-right: none;
-}
+    .grid-box h1, h3 {
+        color: #282D3C;
+        margin: 0px;
+    }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-
-li a:hover.active {
-  background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-/*background: linear-gradient(90deg, rgba(52,206,255,1) 0%, rgba(0,129,255,1) 24%, rgba(52,206,255,1) 50%, rgba(0,129,255,1) 75%, rgba(52,206,255,1) 100%);*/
-}
-
-table, td, th {
-  border: 1px solid black;
-  text-align: left;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 15px;
-}
-
-@media only screen and (max-width: 1000px) {
-    body {
-        font-family: sans-serif;
-        background-color: black;
-        color: white;
-  }
 }

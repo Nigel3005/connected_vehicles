@@ -1,0 +1,91 @@
+
+/* Computer */
+@media only screen and (min-width: 400px) {
+
+    label{
+        color: white;
+        width: 100%;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .graph {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 0px 0px;
+        width: 20%;
+    }
+}
+
+
+
+/* Phone */
+@media only screen and (max-width: 400px) {
+
+    label {
+        color: white;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+    }
+
+    .graph {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 0px 0px;
+        width: 40%;
+    }
+
+    canvas{
+        margin: 5px;
+        padding: 10px;
+        border-radius: 25px;
+        background-color: whitesmoke;
+    }
+
+}
+
+
+
+
+/* Dropdown menu filter*/
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}

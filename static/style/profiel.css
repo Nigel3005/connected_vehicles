@@ -1,0 +1,49 @@
+
+/* Computer */
+@media only screen and (min-width: 400px) {
+
+    th {
+        color: white;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table, td, th {
+        border: 1px solid #ffffff;
+        text-align: left;
+        color: white;
+    }
+
+    th, td {
+        padding: 15px;
+        color: white;
+    }
+}
+
+
+/* Phone */
+@media only screen and (max-width: 400px) {
+
+    th {
+        color: white;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+    }
+
+    table, td, th {
+        border: 1px solid #ffffff;
+        text-align: left;
+        color: white;
+    }
+
+    th, td {
+        padding: 15px;
+        color: white;
+    }
+}

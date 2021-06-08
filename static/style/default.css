@@ -1,0 +1,179 @@
+
+/* Computer */
+@media only screen and (min-width: 400px) {
+
+    body {
+        font-family: sans-serif;
+        background: #282D3C;
+        color: white;
+    }
+
+    body h1{
+        text-align: center;
+        color: white;
+    }
+
+    button {
+        float: right;
+        background-color: #282D3C;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        border: 3px solid #282D3C;
+        border-radius: 15px;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    .btn1{
+        background-color: #282D3C;
+        color: white;
+        border: 3px solid #282D3C;
+    }
+
+    .btn1:hover {
+        background-color: white;
+        color: #282D3C;
+        border: 3px solid #282D3C;
+    }
+
+    .btn2:hover {
+        background-color: #282D3C;
+        color: white;
+        border: 3px solid white;
+    }
+
+    .btn2{
+        background-color: white;
+        color: #282D3C;
+        border: 3px solid white;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: #282D3C;
+        position: relative;
+    }
+
+    .topnav #navbar {
+        /*display: none;*/
+    }
+
+    .topnav a {
+        background: #282D3C;
+        float: left;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a.icon {
+        display: None;
+    }
+
+    .errormsg{
+        color: red;
+    }
+
+}
+
+
+/* Phone */
+@media only screen and (max-width: 400px) {
+
+    body {
+        font-family: sans-serif;
+        background: #282D3C;
+        color: white;
+    }
+
+    body h1{
+        text-align: center;
+        color: white;
+    }
+
+    button {
+        float: right;
+        background-color: #282D3C;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        border: 3px solid #282D3C;
+        border-radius: 15px;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    button:hover {
+        border: 3px solid #282D3C;
+        background-color: white;
+        color: #282D3C;
+    }
+
+    a {
+        text-decoration: none;
+        color: #1E1E23;
+        opacity:1;
+        font-family: 'work sans', sans serif;
+        font-size: 1.5em;
+        font-weight: 400;
+        transition: 200ms;
+    }
+
+    a:hover {
+        opacity:0.5;
+    }
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: #282D3C;
+        position: relative;
+    }
+
+    .topnav #navbar {
+        display: none;
+    }
+
+    .topnav a {
+        background: #282D3C;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+    }
+
+    .topnav a.icon {
+        background: #282D3C;
+        color: white;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .errormsg {
+        color: red;
+    }
+
+}

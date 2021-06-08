@@ -1,0 +1,131 @@
+
+/* Computer */
+@media only screen and (min-width: 400px) {
+
+    th{
+        color: white;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 0px 0px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .grid-box {
+        background-color: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .grid-box h1, h3 {
+        color: white;
+        margin: 0px;
+    }
+
+    table, td, th {
+        border: 1px solid #ffffff;
+        text-align: left;
+        color: white;
+    }
+
+    th, td {
+        padding: 15px;
+        color: white;
+    }
+
+}
+
+
+/* Phone */
+@media only screen and (max-width: 400px) {
+
+    th{
+        color: white;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0px 0px;
+        width: 100%;
+    }
+
+    .grid-box {
+        background-color: white;
+        margin: 10%;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+        width: 60%;
+    }
+
+    .grid-box h1, h3 {
+        color: white;
+        margin: 0px;
+    }
+
+    table, td, th {
+        border: 1px solid #ffffff;
+        text-align: left;
+        color: white;
+    }
+
+    th, td {
+        padding: 15px;
+        color: white;
+    }
+}
+
+
+/* Dropdown menu filter*/
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}

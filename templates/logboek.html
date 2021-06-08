@@ -1,3 +1,5 @@
+{% load static %}
+
 <script>
 
     document.addEventListener("DOMContentLoaded", function(){
@@ -54,16 +56,39 @@
 
     var expanded;
     function showCheckboxes() {
-      var checkboxes = document.getElementById("checkboxes");
-      if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-      } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-      }
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        }
+
+        else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
     }
+
+    {#$(function() {#}
+    {#    $('input[name="daterange"]').daterangepicker({#}
+    {#        opens: 'left'#}
+    {#    }, function(start, end, label) {#}
+    {#        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));#}
+    {#    });#}
+    {# }); #}
+
+    $('input[name="dates"]').daterangepicker();
+
 </script>
+
+
+<head>
+    <link rel="stylesheet" href="{% static 'style/logboek.css' %}">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
 
 <body>
     <h1>Logboek</h1>
@@ -93,6 +118,7 @@
                         {% endfor %}
                     </div>
                   </div>
+                <input type="text" name="daterange" />
                 <button class="btn2" onclick="return filter()">Filter</button>
             </form>
             {{ error }}

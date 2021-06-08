@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.shortcuts import render
 from rest_framework.response import Response
-
+import datetime as datetime
 
 
 def indexView(request):
@@ -78,7 +78,14 @@ def logboekView(request):
                 column_names = None
 
             # Render template
-            args = {'page':'logboek.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, 'column_names_all': column_names_all}
+            args = {'page':'logboek.html',
+                    'vehicle_statusses': status_matrix,
+                    'vehicle_ids': vehicle_ids_sep,
+                    'column_names': column_names,
+                    'vehicle_id': selected_vehicle_id,
+                    'column_names_all': column_names_all,
+                    'chart_date_range': get_chart_date_range(),
+                    }
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
@@ -224,34 +231,9 @@ def get_selected_vehicle_id(request, vehicle_ids_sep):
 
     return selected_vehicle_id
 
+def get_chart_date_range():
+    second_date = datetime.date.today()
+    first_date = datetime.date(second_date.year,second_date.month-1,second_date.day)
+    range_string = first_date.strftime('%m/%d/%Y') + " - " + second_date.strftime('%m/%d/%Y')
 
-
-# def DataAnalyticsView(request):
-#
-#     template_name1 = 'charts.html'
-#     return render(request, 'default.html', {'page': template_name1})
-
-
-
-def get_data(request, *args, **kwargs):
-    data = {
-        "sales": 100,
-        "customers": 10,
-    }
-    return JsonResponse(data) # http response
-
-
-class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
-
-    def get(self, request, format=None):
-        qs_count = User.objects.all().count()
-        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        default_items = [qs_count, 23, 2, 3, 12, 2]
-        data = {
-                "labels": labels,
-                "default": default_items,
-        }
-        return Response(data)
-
+    return range_string
