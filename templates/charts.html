@@ -1,21 +1,11 @@
-{% extends 'data-analytics.html' %}
 
     <script>
         {% block jquery %}
         var defaultData = []
         var labels = [];
-        $.ajax({
-            method: "GET",
-            success: function(data){
-                labels = data.labels
-                defaultData = data.default
-                setChart()
-            },
-            error: function(error_data){
-                console.log("error")
-                console.log(error_data)
-            }
-        })
+        setChart()
+
+
 
         function setChart() {
             var ctx1 = document.getElementById("myChart1");
@@ -29,10 +19,10 @@
             var myChart = new Chart(ctx1, {
                 type: 'line',
                 data: {
-                    labels: labels,
+                    labels: [1,2,3,4,5,6,7,8],
                     datasets: [{
                         label: 'Batterij',
-                        data: defaultData,
+                        data: [1, 2,3 ,4 ,5 ,6 ,7 ,1],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
                         ],

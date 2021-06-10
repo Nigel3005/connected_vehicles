@@ -1,7 +1,6 @@
 {% load static %}
 
 <head>
-
     <link rel="stylesheet" href="{% static 'style/charts.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
@@ -9,7 +8,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
 </head>
 
 <script>
@@ -63,24 +61,19 @@
         const urlParams = new URLSearchParams(window.location.search);
         const vehicle_id = urlParams.get('vehicle_id');
         document.getElementById("vehicle_id_filter").value = vehicle_id;
-        console.log(vehicle_id)
     }
 
     var expanded;
     function showCheckboxes() {
-      var checkboxes = document.getElementById("checkboxes");
-      if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-      } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-      }
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
     }
-
-    $(document).ready(function(){
-        {% block jquery %}{% endblock %}
-    })
 
     $(function() {
         $('input[name="daterange"]').daterangepicker({
@@ -89,7 +82,6 @@
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
         });
     });
-
 
 </script>
 
@@ -141,9 +133,11 @@
                 <p>Selecteer een kenteken a.u.b.</p>
             {% elif vehicle_statusses|length > 0 %}
                 <div class="graph">
-                    {% block content %}
-
-                    {% endblock content %}
+                    {% for chart in charts %}
+                    <div>
+                        <canvas id="{{ chart.name }}"></canvas>
+                    </div>
+                    {% endfor %}
                 </div>
             {% else %}
                 <p>Er zijn geen logboekgegevens beschikbaar van kenteken {{ vehicle_id }}.</p>
@@ -156,3 +150,42 @@
     {% endif %}
 
 </body>
+
+<script>
+    {% for chart in charts %}
+    setChart("{{ chart.name }}", {{ chart.x }}, {{ chart.y }})
+    {% endfor %}
+
+
+    function setChart(name, x, y) {
+        var ctx1 = document.getElementById(name);
+        var myChart = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: x,
+                datasets: [{
+                    label: name,
+                    data: y,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+    }
+
+
+</script>

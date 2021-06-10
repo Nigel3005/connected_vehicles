@@ -172,7 +172,7 @@
         color: white;
     }
 
-        .daterange{
+    .daterange{
         color: #282D3C;
         background-color: white;
         border: 1px #dadada solid;
@@ -180,7 +180,7 @@
         padding: 15px 32px;
     }
 
-        select{
+    select{
         color: #282D3C;
         background-color: white;
         border: 1px #dadada solid;
@@ -198,16 +198,10 @@
         background-color: black;
     }
 
-    form {
-        position: relative;
-    }
-
     form > div{
         width: 100px;
         padding: 10px;
         margin: 10px;
-        display: inline-block;
-        position: relative;
     }
 
     .checkboxes {
@@ -279,6 +273,10 @@
 /*.multiselect {*/
 /*    width: 400px;*/
 /*}*/
+
+.multiselect {
+    width: 200px;
+}
 
 .selectBox {
     position: relative;

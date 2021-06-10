@@ -13,6 +13,11 @@
         color: white;
     }
 
+    body h2, h3{
+        color: white;
+        margin-left: 40px;
+    }
+
     button {
         background-color: #282D3C;
         color: white;

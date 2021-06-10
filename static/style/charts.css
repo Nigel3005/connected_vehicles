@@ -149,24 +149,17 @@
 
     .graph {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-        gap: 0px 0px;
-        width: 40%;
-    }
-
-    canvas{
-        margin: 5px;
+        justify-content: center;
+        grid-template-columns: 90%; /*Make the grid smaller than the container*/
         padding: 10px;
-        border-radius: 25px;
-        background-color: whitesmoke;
+        gap: 5px;
     }
 
-        .graph > div {
+    .graph > div {
         background-color: white;
         text-align: center;
-        padding: 20px;
-        font-size: 30px;
+        padding: 10px;
+        font-size: 10px;
         margin: 20px;
         border-radius: 25px;
     }
@@ -185,20 +178,16 @@
         display: block;
         background-color: black;
     }
+
     select > option:focus-visible{
         background-color: black;
-    }
-
-    form {
-        position: relative;
     }
 
     form > div{
         width: 100px;
         padding: 10px;
         margin: 10px;
-        display: inline-block;
-        position: relative;
+
     }
 
     .checkboxes {

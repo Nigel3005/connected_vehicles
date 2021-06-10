@@ -10,6 +10,8 @@ from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.shortcuts import render
 from rest_framework.response import Response
 import datetime as datetime
+import numpy as np
+from django.db import models
 
 
 def indexView(request):
@@ -171,7 +173,7 @@ def dataAnalyticsView(request):
                 selected_vehicle_id = vehicle_ids_sep[0]
 
             # Get all vehicle statusses with selected vehicle id
-            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time')
 
             # Get all possible variables in model
             column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
@@ -195,15 +197,34 @@ def dataAnalyticsView(request):
                         row.append(dict[name[0]])
                     status_matrix.append(row)
 
+                    charts = []
+                    for i in range(len(column_names)):
+                        name_list = column_names[i]
+                        name = name_list[0]
+                        y = []
+                        for row in status_matrix:
+                            val = int(row[i])
+                            y.append(val)
+                        x = list(range(len(y)))
+                        chart = Chart(name, x, y)
+                        charts.append(chart)
             else:
                 column_names = None
+                charts = None
 
             # Render template
-            args = {'page':'charts.html', 'vehicle_statusses': status_matrix, 'vehicle_ids': vehicle_ids_sep, 'column_names': column_names, 'vehicle_id': selected_vehicle_id, 'column_names_all': column_names_all}
+            args = {'page':'data-analytics.html',
+                    'vehicle_statusses': status_matrix,
+                    'vehicle_ids': vehicle_ids_sep,
+                    'column_names': column_names,
+                    'vehicle_id': selected_vehicle_id,
+                    'column_names_all': column_names_all,
+                    'charts': charts,
+                    }
             return render(request, 'default.html', args)
 
     # Render template without statusses and without vehicle id
-    args = {'page': 'charts.html'}
+    args = {'page': 'data-analytics.html'}
     return render(request, 'default.html', args)
 
 
@@ -237,3 +258,10 @@ def get_chart_date_range():
     range_string = first_date.strftime('%m/%d/%Y') + " - " + second_date.strftime('%m/%d/%Y')
 
     return range_string
+
+
+class Chart:
+    def __init__(self, name, x, y):
+        self.name = name
+        self.x = x
+        self.y = y
