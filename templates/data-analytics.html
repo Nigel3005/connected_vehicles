@@ -7,30 +7,34 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/daterangepicker.js' %}"></script>
 
 </head>
 
 <script>
 
-    document.addEventListener("DOMContentLoaded", function(){
+    function pageLoad() {
         setCheckboxValues();
         setVehicleId();
-    });
+        setDateRange();
+        console.log("ANOES")
+    }
 
     function filter(){
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
-        console.log(filtered_column_names)
+        var selected_date_range = document.getElementById("date_range").value;
         if (filtered_column_names.length === 0){
             params = new URLSearchParams({
-                'vehicle_id': vehicle_id
+                'vehicle_id': vehicle_id,
+                'daterange': selected_date_range,
             })
         } else {
             params = new URLSearchParams({
                 'vehicle_id': vehicle_id,
-                'column_names': getSelectedCheckboxValues("column_names_filter_box")
+                'column_names': getSelectedCheckboxValues("column_names_filter_box"),
+                'daterange': selected_date_range,
             })
         }
         href.search = params;
@@ -64,6 +68,13 @@
         document.getElementById("vehicle_id_filter").value = vehicle_id;
     }
 
+    function setDateRange(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const daterange = urlParams.get('daterange');
+        document.getElementById("date_range").value = daterange;
+        console.log(daterange)
+    }
+
     var expanded;
     function showCheckboxes() {
         var checkboxes = document.getElementById("checkboxes");
@@ -78,7 +89,10 @@
 
     $(function() {
         $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
+            opens: 'left',
+            locale: {
+              format: 'DD-MM-YYYY'
+            }
         }, function(start, end, label) {
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
         });
@@ -86,7 +100,7 @@
 
 </script>
 
-<body>
+<body onload="pageLoad()">
     <h1>Data-analytics</h1>
     <br>
     {% if user.is_authenticated %}
@@ -119,16 +133,13 @@
                     </div>
                 </div>
                 <div>
-                    <input type="text" name="daterange" class="daterange" />
+                    <input type="text" id="date_range" name="daterange" class="daterange" />
                 </div>
                 <div>
                     <button class="btn2" onclick="return filter()">Filter</button>
                 </div>
             </form>
             {{ error }}
-            <br>
-            <br>
-            <br>
             <br>
             {% if vehicle_statusses == None %}
                 <p>Selecteer een kenteken a.u.b.</p>
@@ -187,6 +198,4 @@
             }
         });
     }
-
-
 </script>
