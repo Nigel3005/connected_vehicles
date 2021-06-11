@@ -1,6 +1,24 @@
+{% load static %}
+
+<head>
+
+    <link rel="stylesheet" href="{% static 'style/index.css' %}">
+
+</head>
+
 <body>
-    <br>
-    <h1>Welkom {{ user.username }}</h1>
+
+    {% if user.is_authenticated %}
+
+        <br>
+        <h1>Welkom {{ user.username }}</h1>
+
+    {% else %}
+
+        <h1>Welkom,</h1>
+        <h2>Beste gebruiker om gegevens te kunnen zien moet u eerst inloggen. </h2>
+
+    {% endif %}
 
 </body>
 

@@ -168,6 +168,7 @@ def dataAnalyticsView(request):
             selected_vehicle_id = request.GET.get('vehicle_id')
             selected_column_names_unf = request.GET.get('column_names')
 
+
             # Check if user filtered on vehicle id else set selected vehicle id to first vehicle id in profile
             if selected_vehicle_id is None:
                 selected_vehicle_id = vehicle_ids_sep[0]
@@ -176,7 +177,15 @@ def dataAnalyticsView(request):
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time')
 
             # Get all possible variables in model
-            column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+            column_names_all_unf_unfilt = [f.name for f in vehicleStatus._meta.get_fields()]
+            arr = np.array(list(column_names_all_unf_unfilt))
+            filter_arr = []
+            for element in arr:
+                if ((element == "vehicle_id") or (element == "time") or (element == 'id')):
+                    filter_arr.append(False)
+                else:
+                    filter_arr.append(True)
+            column_names_all_unf = arr[filter_arr]
             column_names_all = format_column_names(column_names_all_unf)
 
             # Check if there are statusses with selected vehicle id
@@ -208,6 +217,7 @@ def dataAnalyticsView(request):
                         x = list(range(len(y)))
                         chart = Chart(name, x, y)
                         charts.append(chart)
+
             else:
                 column_names = None
                 charts = None

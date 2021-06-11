@@ -2,9 +2,19 @@
 /* Computer */
 @media only screen and (min-width: 400px) {
 
+    body h2{
+        text-align: center;
+        color: white;
+    }
+
 }
 
 /* Phone */
 @media only screen and (max-width: 400px) {
+
+    body h4{
+        text-align: center;
+        color: white;
+    }
 
 }
