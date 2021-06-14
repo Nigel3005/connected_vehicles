@@ -18,6 +18,10 @@
         margin-left: 40px;
     }
 
+    a{
+        color: white;
+    }
+
     button {
         background-color: #282D3C;
         color: white;
@@ -102,6 +106,10 @@
 
     body h1{
         text-align: center;
+        color: white;
+    }
+
+    a{
         color: white;
     }
 
