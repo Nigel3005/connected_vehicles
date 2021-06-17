@@ -223,7 +223,7 @@ def dataAnalyticsView(request):
                         name = name_list[0]
                         y = []
                         for row in status_matrix:
-                            val = int(row[i])
+                            val = float(row[i])
                             y.append(val)
                         x = list(range(len(y)))
                         chart = Chart(name, x, y)
