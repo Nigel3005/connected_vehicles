@@ -2,8 +2,6 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 
-from api.models import vehicleStatus
-from frontend.forms import SignUpForm, LoginForm
 from django.contrib.auth.models import User
 
 from django.contrib.auth import login, logout, authenticate, get_user_model
@@ -12,6 +10,9 @@ from rest_framework.response import Response
 import datetime as datetime
 import numpy as np
 from django.db import models
+
+from api.models import vehicleStatus
+from frontend.forms import SignUpForm, LoginForm
 
 
 def indexView(request):
@@ -167,16 +168,23 @@ def dataAnalyticsView(request):
             # Get querys from request
             selected_vehicle_id = request.GET.get('vehicle_id')
             selected_column_names_unf = request.GET.get('column_names')
-            selected_date_range_unf = request.GET.get("daterange")
+            selected_startDate_unf = request.GET.get("startDate")
+            selected_endDate_unf = request.GET.get("endDate")
 
             # Check if user filtered on vehicle id else set selected vehicle id to first vehicle id in profile
             if selected_vehicle_id is None:
                 selected_vehicle_id = vehicle_ids_sep[0]
 
+            if (selected_startDate_unf is None) or (selected_endDate_unf is None):
+                today = datetime.date.today()
+                date = (today, today)
+            else:
+                start_date = datetime.datetime.strptime(selected_startDate_unf, '%d/%m/%Y %H:%M')
+                end_date = datetime.datetime.strptime(selected_endDate_unf, '%d/%m/%Y %H:%M')
+                date = (start_date, end_date)
+
             # Get all vehicle statusses with selected vehicle id
-            start_date = "2021-05-11"
-            end_date = "2021-05-28"
-            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=[start_date,end_date]).order_by('time')
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time')
 
 
             # Get all possible variables in model

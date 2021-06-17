@@ -1,7 +1,10 @@
 {% load static %}
 
 <head>
+
+    <title>Status</title>
     <link rel="stylesheet" href="{% static 'style/status.css' %}">
+
 </head>
 
 
@@ -12,24 +15,68 @@
         {% if vehicle_id != None %}
             <div class="grid-container">
                 <div class="grid-box">
-                    <h3>Vermogen</h3>
-                    <h1>{{ vehicle_status.cell_spanning }}</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>Batterij</h3>
-                    <h1>{{ vehicle_status.accu_spanning}}</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>Actieradius</h3>
-                    <h1>{{ vehicle_status.motor_temperatuur }}</h1>
-                </div>
-                <div class="grid-box">
                     <h3>Opladen</h3>
                     {% if vehicle_status.laden == "1" %}
                         <h1>Ja</h1>
                     {% else %}
                         <h1>Nee</h1>
                     {% endif %}
+                </div>
+                <div class="grid-box">
+                    <h3>Snelheid</h3>
+                    <h1>{{ vehicle_status.snelheid }} km/u</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>trilling</h3>
+                    <h1>{{ vehicle_status.trilling}}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>vermogen</h3>
+                    <h1>{{ vehicle_status.vermogen}}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Airco</h3>
+                    {% if vehicle_status.airco == "1" %}
+                        <h1>Ja</h1>
+                    {% else %}
+                        <h1>Nee</h1>
+                    {% endif %}
+                </div>
+                <div class="grid-box">
+                    <h3>Verwarming</h3>
+                    {% if vehicle_status.verwarming == "1" %}
+                        <h1>Ja</h1>
+                    {% else %}
+                        <h1>Nee</h1>
+                    {% endif %}
+                </div>
+                <div class="grid-box">
+                    <h3>Batterij perc</h3>
+                    <h1>{{ vehicle_status.batterij_percentage}}%</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Batterij gem</h3>
+                    <h1>{{ vehicle_status.batterij_gemiddeld}}%</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Batterij temp</h3>
+                    <h1>{{ vehicle_status.batterij_temperatuur}}°C</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Motor temp</h3>
+                    <h1>{{ vehicle_status.motor_temperatuur}}°C</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Controller temp</h3>
+                    <h1>{{ vehicle_status.controller_temperatuur}}°C</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Actieradius</h3>
+                    <h1>{{ vehicle_status.actieradius }} km</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Errors</h3>
+                    <h1>{{ vehicle_status.error }}</h1>
                 </div>
             </div>
         {% else %}
