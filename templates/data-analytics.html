@@ -23,12 +23,19 @@
 </head>
 
 <script>
+{##}
+{#    function pageLoad() {#}
+{#        setCheckboxValues();#}
+{#        setVehicleId();#}
+{#        setDate();#}
+{#    }#}
 
-    function pageLoad() {
+    document.addEventListener("DOMContentLoaded", function(){
         setCheckboxValues();
         setVehicleId();
-        setDate();
-    }
+        setDate()
+    });
+
 
     function filter(){
         var href = new URL(window.location.href);
@@ -36,7 +43,7 @@
         var startDate = document.getElementById("startDate").value;
         var endDate = document.getElementById("endDate").value;
         var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
-        {#var selected_date_range = document.getElementById("date_range").value;#}
+        console.log(filtered_column_names)
         if (filtered_column_names.length === 0){
             params = new URLSearchParams({
                 'vehicle_id': vehicle_id,
@@ -65,22 +72,35 @@
         return values;
     }
 
+    {#function setCheckboxValues() {#}
+    {#    const urlParams = new URLSearchParams(window.location.search);#}
+    {#    const column_names_str = urlParams.get('column_names');#}
+    {#    if (column_names_str != null){#}
+    {#        const column_names = column_names_str.split(',');#}
+    {#        column_names.forEach((column_name) => {#}
+    {#            const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);#}
+    {#            checkbox.checked = true;#}
+    {#        })#}
+    {#    }#}
+    {# }#}
+
+
     function setCheckboxValues() {
         const urlParams = new URLSearchParams(window.location.search);
         const column_names_str = urlParams.get('column_names');
-        if (column_names_str != null){
-            const column_names = column_names_str.split(',');
-            column_names.forEach((column_name) => {
-                const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
-                checkbox.checked = true;
-            })
-        }
-    }
+        const column_names = column_names_str.split(',');
+
+        column_names.forEach((column_name) => {
+            const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
+            checkbox.checked = true;
+        })
+     }
 
     function setVehicleId() {
         const urlParams = new URLSearchParams(window.location.search);
         const vehicle_id = urlParams.get('vehicle_id');
         document.getElementById("vehicle_id_filter").value = vehicle_id;
+        console.log(vehicle_id)
     }
 
     function setDate() {

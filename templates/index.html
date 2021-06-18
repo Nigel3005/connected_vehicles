@@ -1,9 +1,12 @@
 {% load static %}
-
+<!DOCTYPE html>
 <head>
 
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'style/index.css' %}">
+    <link rel="stylesheet" href="{% static 'style/phone.css' %}">
+    <link rel="stylesheet" href="{% static 'style/laptop.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
@@ -17,6 +20,24 @@
     {% else %}
 
         <h1>Welkom,</h1>
+        <br>
+        <br>
+
+        <div class="smartphone">
+            <div class="content">
+                <img src="{% static 'status-view-phone.png' %}" alt="" class="fit">
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="laptop">
+            <div class="content">
+                <img src="{% static 'logboek-view.png' %}" alt="" class="fit">
+            </div>
+        </div>
+
         <h2>Beste gebruiker om gegevens te kunnen zien moet u eerst <a href="/login">inloggen</a>. </h2>
 
     {% endif %}
