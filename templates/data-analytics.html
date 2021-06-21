@@ -9,6 +9,8 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -216,12 +218,24 @@
 
 
     function setChart(name, x, y) {
-        var ctx1 = document.getElementById(name);
+        var ctx1 = document.getElementById(name).getContext('2d');
         var myChart = new Chart(ctx1, {
-            type: 'line',
+            {#type: 'line',#}
             data: {
                 labels: x,
                 datasets: [{
+                    type: 'bar',
+                    label: name,
+                    data: y,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }, {
+                    type: 'line',
                     label: name,
                     data: y,
                     backgroundColor: [
@@ -234,6 +248,15 @@
                 }]
             },
             options: {
+                {#animations: {#}
+                {#    tension: {#}
+                {#        duration: 1000,#}
+                {#        easing: 'linear',#}
+                {#        from: 1,#}
+                {#        to: 0,#}
+                {#        loop: true#}
+                {#    }#}
+                {# }, #}
                 scales: {
                     yAxes: [{
                         ticks: {
