@@ -6,7 +6,19 @@
         text-align: center;
         color: white;
     }
+    #wrapper {
+        overflow: hidden; /* add this to contain floated children */
+    }
 
+    #first {
+        float:right; /* add this */
+        margin: 10px;
+    }
+
+    #second {
+        float: right; /* add this */
+        margin: 10px;
+    }
 }
 
 /* Phone */
