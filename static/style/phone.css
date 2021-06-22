@@ -12,6 +12,7 @@
         border-top-width: 60px;
         border-bottom-width: 60px;
         border-radius: 36px;
+        transform: translate(-55%, 0%);
     }
 
     /* The horizontal line on the top of the device */
@@ -53,6 +54,5 @@
         width: 100%;
         height: 100%;
     }
-
 
 }

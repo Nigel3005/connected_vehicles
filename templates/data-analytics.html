@@ -25,19 +25,12 @@
 </head>
 
 <script>
-{##}
-{#    function pageLoad() {#}
-{#        setCheckboxValues();#}
-{#        setVehicleId();#}
-{#        setDate();#}
-{#    }#}
 
-    document.addEventListener("DOMContentLoaded", function(){
+    function pageLoad() {
         setCheckboxValues();
         setVehicleId();
-        setDate()
-    });
-
+        setDate();
+    }
 
     function filter(){
         var href = new URL(window.location.href);
@@ -56,8 +49,8 @@
             params = new URLSearchParams({
                 'vehicle_id': vehicle_id,
                 'column_names': getSelectedCheckboxValues("column_names_filter_box"),
-                'startdate': startDate,
-                'enddate': endDate,
+                'startDate': startDate,
+                'endDate': endDate,
             })
         }
         href.search = params;
@@ -74,29 +67,17 @@
         return values;
     }
 
-    {#function setCheckboxValues() {#}
-    {#    const urlParams = new URLSearchParams(window.location.search);#}
-    {#    const column_names_str = urlParams.get('column_names');#}
-    {#    if (column_names_str != null){#}
-    {#        const column_names = column_names_str.split(',');#}
-    {#        column_names.forEach((column_name) => {#}
-    {#            const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);#}
-    {#            checkbox.checked = true;#}
-    {#        })#}
-    {#    }#}
-    {# }#}
-
-
     function setCheckboxValues() {
         const urlParams = new URLSearchParams(window.location.search);
         const column_names_str = urlParams.get('column_names');
-        const column_names = column_names_str.split(',');
-
-        column_names.forEach((column_name) => {
-            const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
-            checkbox.checked = true;
-        })
-     }
+        if (column_names_str > 0){
+            const column_names = column_names_str.split(',');
+            column_names.forEach((column_name) => {
+                const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
+                checkbox.checked = true;
+            })
+        }
+    }
 
     function setVehicleId() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -107,10 +88,20 @@
 
     function setDate() {
         const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById("endDate").value = endDate;
+        document.getElementById("startDate").value = startDate;
         const startDate = urlParams.get('startDate');
         const endDate = urlParams.get('endDate');
-        document.getElementById("startDate").value = startDate;
-        document.getElementById("endDate").value = endDate;
+
+        if (startDate == null){
+            document.getElementById("startDate").value = datetime.date.today();
+            document.getElementById("endDate").value = datetime.date.today();
+        }
+        else {
+            document.getElementById("startDate").value = startDate;
+            document.getElementById("endDate").value = endDate;
+        }
+        console.log(startDate, endDate)
     }
 
     var expanded;
@@ -124,7 +115,6 @@
             expanded = false;
         }
     }
-
 
     {# Datepicker #}
 
@@ -174,18 +164,19 @@
                     </div>
                 </div>
 
-{#                <div>#}
-{#                    <input type="text" id="date_range" name="daterange" class="daterange" />#}
-{#                </div>#}
+                {# Date selector #}
                 <div>
                     <input id="startDate" type="text" class="daterange">
                 </div>
                 <div>
                     <input id="endDate" type="text" class="daterange">
                 </div>
+
+                {# Filter button#}
                 <div>
                     <button class="btn2" onclick="return filter()">Filter</button>
                 </div>
+
             </form>
             {{ error }}
             <br>

@@ -7,29 +7,43 @@
     <link rel="stylesheet" href="{% static 'style/logboek.css' %}">
     <link rel="stylesheet" href="{% static 'style/datepicker.css' %}">
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- XDSoft DateTimePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
 
 </head>
 
 <script>
 
-    document.addEventListener("DOMContentLoaded", function(){
+    function pageLoad() {
         setCheckboxValues();
         setVehicleId();
-    });
+        setDate();
+    }
 
     function filter(){
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
         var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
         console.log(filtered_column_names)
         if (filtered_column_names.length === 0){
             params = new URLSearchParams({
-                'vehicle_id': vehicle_id
+                'vehicle_id': vehicle_id,
+                'startDate': startDate,
+                'endDate': endDate,
             })
         } else {
             params = new URLSearchParams({
                 'vehicle_id': vehicle_id,
-                'column_names': getSelectedCheckboxValues("column_names_filter_box")
+                'column_names': getSelectedCheckboxValues("column_names_filter_box"),
+                'startDate': startDate,
+                'endDate': endDate,
             })
         }
         href.search = params;
@@ -49,12 +63,13 @@
     function setCheckboxValues() {
         const urlParams = new URLSearchParams(window.location.search);
         const column_names_str = urlParams.get('column_names');
-        const column_names = column_names_str.split(',');
-
-        column_names.forEach((column_name) => {
-            const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
-            checkbox.checked = true;
-        })
+        if (column_names_str > 0){
+            const column_names = column_names_str.split(',');
+            column_names.forEach((column_name) => {
+                const checkbox = document.querySelector(`input[type='checkbox'][value="${column_name}"]`);
+                checkbox.checked = true;
+            })
+        }
     }
 
     function setVehicleId() {
@@ -62,6 +77,24 @@
         const vehicle_id = urlParams.get('vehicle_id');
         document.getElementById("vehicle_id_filter").value = vehicle_id;
         console.log(vehicle_id)
+    }
+
+    function setDate() {
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById("endDate").value = endDate;
+        document.getElementById("startDate").value = startDate;
+        const startDate = urlParams.get('startDate');
+        const endDate = urlParams.get('endDate');
+
+        if (startDate == null){
+            document.getElementById("startDate").value = datetime.date.today();
+            document.getElementById("endDate").value = datetime.date.today();
+        }
+        else {
+            document.getElementById("startDate").value = startDate;
+            document.getElementById("endDate").value = endDate;
+        }
+        console.log(startDate, endDate)
     }
 
     var expanded;
@@ -78,9 +111,22 @@
         }
     }
 
+    {# Datepicker #}
+
+    $(function () {
+        $("#startDate").datetimepicker({
+            format: 'd/m/Y H:i',
+        });
+    });
+    $(function () {
+        $("#endDate").datetimepicker({
+            format: 'd/m/Y H:i',
+        });
+    });
+
 </script>
 
-<body>
+<body onload="pageLoad()">
     <h1>Logboek</h1>
     <br>
     {% if user.is_authenticated %}
@@ -113,7 +159,10 @@
                     </div>
                 </div>
                 <div>
-                    <input type="text" name="daterange" class="daterange" />
+                    <input id="startDate" type="text" class="daterange">
+                </div>
+                <div>
+                    <input id="endDate" type="text" class="daterange">
                 </div>
                 <div>
                     <button class="btn2" onclick="return filter()">Filter</button>
