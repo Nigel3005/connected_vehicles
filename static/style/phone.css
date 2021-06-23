@@ -245,7 +245,7 @@
         border-top-width: 60px;
         border-bottom-width: 60px;
         border-radius: 36px;
-        transform: translate(0%, 10%);
+        transform: translate(0%, -2%);
     }
 
     /* The horizontal line on the top of the device */
