@@ -52,21 +52,21 @@ class createVehicleStatus(APIView):
 
             # decode alarm
             alarm = '{0:08b}'.format(int(alarm_enc))
-            laden =  alarm[0]
-            error_g = alarm[1]
-            tanken = alarm[2]
-            baterij_temp = alarm[4]
-            batterij_span_laag = alarm[5]
-            batterij_span_hoog = alarm[6]
+            laden =  bool(alarm[0])
+            error_g = bool(alarm[1])
+            tanken = bool(alarm[2])
+            baterij_temp = bool(alarm[4])
+            batterij_span_laag = bool(alarm[5])
+            batterij_span_hoog = bool(alarm[6])
 
             # decode info
             info = '{0:08b}'.format(int(info_enc))
-            airco_actief = info[1]
-            error_12v = info[2]
-            hoogspanningserror = info[3]
-            motor_temperatuur_alarm = info[5]
-            controller_temperatuur_alarm = info[6]
-            airco_aan = info[7]
+            airco_actief = bool(info[1])
+            error_12v = bool(info[2])
+            hoogspanningserror = bool(info[3])
+            motor_temperatuur_alarm = bool(info[5])
+            controller_temperatuur_alarm = bool(info[6])
+            airco_aan = bool(info[7])
 
             # decode satalliet
             satelliet = '{0:08b}'.format(int(satelliet_enc))
