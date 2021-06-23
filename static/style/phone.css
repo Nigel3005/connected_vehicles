@@ -238,14 +238,14 @@
     /* The device with borders */
     .smartphone {
         position: relative;
-        width: 220px;
-        height: 350px;
+        width: 300px;
+        height: 540px;
         margin: auto;
         border: 16px black solid;
         border-top-width: 60px;
         border-bottom-width: 60px;
         border-radius: 36px;
-        transform: translate(-30%, -2%);
+        transform: translate(-95%, 0%);
     }
 
     /* The horizontal line on the top of the device */
@@ -278,8 +278,8 @@
 
     /* The screen (or content) of the device */
     .smartphone .content {
-        width: 220px;
-        height: 350px;
+        width: 300px;
+        height: 540px;
         background: white;
     }
 
