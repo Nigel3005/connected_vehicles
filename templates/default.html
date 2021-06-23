@@ -32,6 +32,7 @@
 
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
+                <a id="dimensions"></a>
 
             {% endif %}
         </div>
@@ -49,6 +50,23 @@
             x.style.display = "block";
           }
         }
+
+
+    dbm = false
+
+    if(dbm === true){
+        window.onresize = displayWindowSize;
+        window.onload = displayWindowSize;
+
+        function displayWindowSize() {
+            myWidth = window.innerWidth;
+            myHeight = window.innerHeight;
+            // your size calculation code here
+            document.getElementById("dimensions").innerHTML = myWidth + " x " + myHeight;
+        };
+    }
+
+
 
     </script>
 
