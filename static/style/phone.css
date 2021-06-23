@@ -238,8 +238,8 @@
     /* The device with borders */
     .smartphone {
         position: relative;
-        width: 300px;
-        height: 540px;
+        width: 200px;
+        height: 320px;
         margin: auto;
         border: 16px black solid;
         border-top-width: 60px;
@@ -278,8 +278,8 @@
 
     /* The screen (or content) of the device */
     .smartphone .content {
-        width: 300px;
-        height: 540px;
+        width: 200px;
+        height: 320px;
         background: white;
     }
 
