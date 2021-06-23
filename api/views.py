@@ -78,23 +78,23 @@ class createVehicleStatus(APIView):
             bedrijfstijd = int(bedrijfstijd_highbyte + bedrijfstijd_lowbyte, 2)
 
             vehicle_id = request.headers.get('vehicleid').upper()
-            # vehicle_status = vehicleStatus(vehicle_id=vehicle_id, laden=laden, snelheid=snelheid,
-            #                                vermogen=vermogen, batterij_percentage=batterij_percentage, batterij_temperatuur=batterij_temperatuur,
-            #                                motor_temperatuur=motor_temperatuur, controller_temperatuur=controller_temperatuur, actieradius=actieradius,
-            #                                batterijspanning_minimum=batterijspanning_minimum, batterijspanning_gemiddeld=batterijspanning_gemiddeld,
-            #                                batterijspanning_maximum=batterijspanning_maximum, spanning_12v=spanning_12v,
-            #                                gemiddeld_verbruik=gemiddeld_verbruik,satelliet=satelliet,kabine_temperatuur=kabine_temperatuur,
-            #                                kabine_ingestelde_temperatuur=kabine_ingestelde_temperatuur,olie_temperatuur=olie_temperatuur,
-            #                                versnelling_x_richting=versnelling_x_richting, versnelling_y_richting=versnelling_y_richting,
-            #                                versnelling_z_richting=versnelling_z_richting,
-            #                                bedrijfstijd_lowbyte=bedrijfstijd_lowbyte,bedrijfstijd_highbyte=bedrijfstijd_highbyte,
-            #                                error_g=error_g,tanken=tanken,baterij_temp=baterij_temp,batterij_span_laag=batterij_span_laag,
-            #                                batterij_span_hoog=batterij_span_hoog,airco_actief=airco_actief,error_12v=error_12v,
-            #                                hoogspanningserror=hoogspanningserror,motor_temperatuur_alarm=motor_temperatuur_alarm,
-            #                                controller_temperatuur_alarm=controller_temperatuur_alarm,airco_aan=airco_aan,
-            #                                aantal_satellieten=aantal_satellieten,bedrijfstijd=bedrijfstijd,
-            #                                )
-            # vehicle_status.save()
+            vehicle_status = vehicleStatus(vehicle_id=vehicle_id, laden=laden, snelheid=snelheid,
+                                           vermogen=vermogen, batterij_percentage=batterij_percentage, batterij_temperatuur=batterij_temperatuur,
+                                           motor_temperatuur=motor_temperatuur, controller_temperatuur=controller_temperatuur, actieradius=actieradius,
+                                           batterijspanning_minimum=batterijspanning_minimum, batterijspanning_gemiddeld=batterijspanning_gemiddeld,
+                                           batterijspanning_maximum=batterijspanning_maximum, spanning_12v=spanning_12v,
+                                           gemiddeld_verbruik=gemiddeld_verbruik,satelliet=satelliet,kabine_temperatuur=kabine_temperatuur,
+                                           kabine_ingestelde_temperatuur=kabine_ingestelde_temperatuur,olie_temperatuur=olie_temperatuur,
+                                           versnelling_x_richting=versnelling_x_richting, versnelling_y_richting=versnelling_y_richting,
+                                           versnelling_z_richting=versnelling_z_richting,
+                                           bedrijfstijd_lowbyte=bedrijfstijd_lowbyte,bedrijfstijd_highbyte=bedrijfstijd_highbyte,
+                                           error_g=error_g,tanken=tanken,baterij_temp=baterij_temp,batterij_span_laag=batterij_span_laag,
+                                           batterij_span_hoog=batterij_span_hoog,airco_actief=airco_actief,error_12v=error_12v,
+                                           hoogspanningserror=hoogspanningserror,motor_temperatuur_alarm=motor_temperatuur_alarm,
+                                           controller_temperatuur_alarm=controller_temperatuur_alarm,airco_aan=airco_aan,
+                                           aantal_satellieten=aantal_satellieten,bedrijfstijd=bedrijfstijd,
+                                           )
+            vehicle_status.save()
             return Response({'Good request': 'saved'}, status=status.HTTP_201_CREATED)
         except:
             return Response({'Failed': 'bad request'}, status=status.HTTP_409_CONFLICT)

@@ -45,22 +45,22 @@ class vehicleStatus(models.Model):
     def __str__(self):
         return self.vehicle_id
 
-    def chartdata(self):
-        return [
-            self.laden,
-            self.snelheid,
-            self.trilling,
-            self.vermogen,
-            self.airco,
-            self.verwarming,
-            self.batterij_percentage,
-            self.batterij_gemiddeld,
-            self.batterij_temperatuur,
-            self.motor_temperatuur,
-            self.controller_temperatuur,
-            self.actieradius,
-            self.error
-        ]
+    # def chartdata(self):
+    #     return [
+    #         self.laden,
+    #         self.snelheid,
+    #         self.trilling,
+    #         self.vermogen,
+    #         self.airco,
+    #         self.verwarming,
+    #         self.batterij_percentage,
+    #         self.batterij_gemiddeld,
+    #         self.batterij_temperatuur,
+    #         self.motor_temperatuur,
+    #         self.controller_temperatuur,
+    #         self.actieradius,
+    #         self.error
+    #     ]
 
     class Meta:
         verbose_name_plural = "vehicle statusses"
