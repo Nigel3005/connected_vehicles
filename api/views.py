@@ -94,10 +94,10 @@ class createVehicleStatus(APIView):
                                            controller_temperatuur_alarm=controller_temperatuur_alarm,airco_aan=airco_aan,
                                            aantal_satellieten=aantal_satellieten,bedrijfstijd=bedrijfstijd,
                                            )
-            vehicle_status.save()
+            # vehicle_status.save()
             return Response({'Good request': 'saved'}, status=status.HTTP_201_CREATED)
         except:
-            return Response({'Failed': str(payload)}, status=status.HTTP_409_CONFLICT)
+            return Response({'Failed': 'bad request'}, status=status.HTTP_409_CONFLICT)
 
 
 

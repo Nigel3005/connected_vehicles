@@ -42,16 +42,6 @@ class vehicleStatus(models.Model):
     versnelling_z_richting = models.IntegerField()
     bedrijfstijd = models.IntegerField()
 
-
-
-
-
-
-
-
-
-
-
     def __str__(self):
         return self.vehicle_id
 
@@ -74,5 +64,3 @@ class vehicleStatus(models.Model):
 
     class Meta:
         verbose_name_plural = "vehicle statusses"
-
-
