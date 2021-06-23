@@ -190,8 +190,9 @@ def dataAnalyticsView(request):
                 selected_vehicle_id = vehicle_ids_sep[0]
 
             if (selected_startDate_unf is None) or (selected_endDate_unf is None):
-                start_date = datetime.time(00, 00, 00)
-                end_date = datetime.time(23, 59, 59)
+                now = datetime.datetime.now()
+                start_date = datetime.datetime(now.year,now.month,now.day,0,0)
+                end_date = datetime.datetime(now.year,now.month,now.day,23,59)
             else:
                 start_date = datetime.datetime.strptime(selected_startDate_unf, '%d/%m/%Y %H:%M')
                 end_date = datetime.datetime.strptime(selected_endDate_unf, '%d/%m/%Y %H:%M')
