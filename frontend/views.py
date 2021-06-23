@@ -190,16 +190,15 @@ def dataAnalyticsView(request):
                 selected_vehicle_id = vehicle_ids_sep[0]
 
             if (selected_startDate_unf is None) or (selected_endDate_unf is None):
-                today = datetime.date.today()
-                date = (today, today)
+                start_date = datetime.time(00, 00, 00)
+                end_date = datetime.time(23, 59, 59)
             else:
                 start_date = datetime.datetime.strptime(selected_startDate_unf, '%d/%m/%Y %H:%M')
                 end_date = datetime.datetime.strptime(selected_endDate_unf, '%d/%m/%Y %H:%M')
-                date = (start_date, end_date)
+            date = (start_date, end_date)
 
-            # Get all vehicle statusses with selected vehicle id
+            # Get all vehicle statusses with selected vehicle id and selected date range
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time')
-
 
             # Get all possible variables in model
             column_names_all_unf_unfilt = [f.name for f in vehicleStatus._meta.get_fields()]
@@ -224,6 +223,7 @@ def dataAnalyticsView(request):
                     column_names = format_column_names(column_names_unf)
 
                 # Create table matrix
+                charts = []
                 for status in vehicle_statusses:
                     row = []
                     dict = vars(status)
@@ -231,7 +231,6 @@ def dataAnalyticsView(request):
                         row.append(dict[name[0]])
                     status_matrix.append(row)
 
-                    charts = []
                     for i in range(len(column_names)):
                         name_list = column_names[i]
                         name = name_list[0]
@@ -255,6 +254,8 @@ def dataAnalyticsView(request):
                     'vehicle_id': selected_vehicle_id,
                     'column_names_all': column_names_all,
                     'charts': charts,
+                    'start_date': start_date,
+                    'end_date': end_date,
                     }
             return render(request, 'default.html', args)
 
