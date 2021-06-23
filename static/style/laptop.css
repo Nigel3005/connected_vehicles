@@ -74,11 +74,11 @@
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: scale(.6) translate(-50%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
-        transform: scale(.6) translate(-50%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
+        transform: scale(.6) translate(-25%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
         left: 30%;
         position: absolute;
-        width: 1166px;
-        height: 600px;
+        width: 450px;
+        height: 200px;
         border-radius: 6px;
         border-style: solid;
         border-color: black;
@@ -92,9 +92,9 @@
         content: '';
         display: block;
         position: absolute;
-        width: 1400px;
-        height: 60px;
-        margin: 80px 0 0 -110px;
+        width: 550px;
+        height: 50px;
+        margin: 80px 0 0 -50px;
         background: black;
         border-radius: 6px;
     }
@@ -118,8 +118,8 @@
 
     /* The screen (or content) of the device */
     .laptop .content {
-        width: 1166px;
-        height: 600px;
+        width: 450px;
+        height: 200px;
         overflow: hidden;
         border: none;
     }
