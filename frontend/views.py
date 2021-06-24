@@ -58,16 +58,17 @@ def logboekView(request):
             if selected_vehicle_id is None:
                 selected_vehicle_id = vehicle_ids_sep[0]
 
-            # if (selected_startDate_unf is None) or (selected_endDate_unf is None):
-            #     today = datetime.date.today()
-            #     date = (today, today)
-            # else:
-            #     start_date = datetime.datetime.strptime(selected_startDate_unf, '%d/%m/%Y %H:%M')
-            #     end_date = datetime.datetime.strptime(selected_endDate_unf, '%d/%m/%Y %H:%M')
-            #     date = (start_date, end_date)
+            if (selected_startDate_unf is None) or (selected_endDate_unf is None):
+                now = datetime.datetime.now()
+                start_date = datetime.datetime(now.year, now.month, now.day, 0, 0)
+                end_date = datetime.datetime(now.year, now.month, now.day, 23, 59)
+            else:
+                start_date = datetime.datetime.strptime(selected_startDate_unf, '%d/%m/%Y %H:%M')
+                end_date = datetime.datetime.strptime(selected_endDate_unf, '%d/%m/%Y %H:%M')
+            date = (start_date, end_date)
 
             # Get all vehicle statusses with selected vehicle id
-            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time')
 
             # Get all possible variables in model
             column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
@@ -102,6 +103,8 @@ def logboekView(request):
                     'vehicle_id': selected_vehicle_id,
                     'column_names_all': column_names_all,
                     'chart_date_range': get_chart_date_range(),
+                    'start_date': start_date.strftime('%d/%m/%Y %H:%M'),
+                    'end_date': end_date.strftime('%d/%m/%Y %H:%M'),
                     }
             return render(request, 'default.html', args)
 
@@ -255,8 +258,8 @@ def dataAnalyticsView(request):
                     'vehicle_id': selected_vehicle_id,
                     'column_names_all': column_names_all,
                     'charts': charts,
-                    'start_date': start_date,
-                    'end_date': end_date,
+                    'start_date': start_date.strftime('%d/%m/%Y %H:%M'),
+                    'end_date': end_date.strftime('%d/%m/%Y %H:%M'),
                     }
             return render(request, 'default.html', args)
 

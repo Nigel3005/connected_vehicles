@@ -19,9 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
-
-
-
 </head>
 
 <script>
@@ -80,34 +77,13 @@
     }
 
     function setVehicleId() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const vehicle_id = urlParams.get('vehicle_id');
-        document.getElementById("vehicle_id_filter").value = vehicle_id;
-        console.log(vehicle_id)
+        document.getElementById("vehicle_id_filter").value = "{{ vehicle_id }}";
     }
 
-        function setDate() {
-        const urlParams = new URLSearchParams(window.location.search);
-        document.getElementById("endDate").value = endDate;
-        document.getElementById("startDate").value = startDate;
-        const startDate = urlParams.get('startDate');
-        const endDate = urlParams.get('endDate');
-
-        if (startDate == null){
-            document.getElementById("startDate").value = datetime.date.today();
-            document.getElementById("endDate").value = datetime.date.today();
-        }
-        else {
-            document.getElementById("startDate").value = startDate;
-            document.getElementById("endDate").value = endDate;
-        }
-        console.log(startDate, endDate)
-    }
-
-    {#function setDate() {#}
-    {#    document.getElementById("startDate").value = {{ start_date }};#}
-    {#    document.getElementById("endDate").value = {{ end_date }};#}
-    {# }#}
+    function setDate() {
+        document.getElementById("startDate").value = "{{ start_date }}";
+        document.getElementById("endDate").value = "{{ end_date }}";
+     }
 
     var expanded;
     function showCheckboxes() {
@@ -181,7 +157,6 @@
                 <div>
                     <button class="btn2" onclick="return filter()">Filter</button>
                 </div>
-
             </form>
             {{ error }}
             <br>
@@ -209,7 +184,7 @@
 
 <script>
     {% for chart in charts %}
-    setChart("{{ chart.name }}", {{ chart.x }}, {{ chart.y }})
+        setChart("{{ chart.name }}", {{ chart.x }}, {{ chart.y }})
     {% endfor %}
 
 
