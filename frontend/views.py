@@ -227,7 +227,7 @@ def dataAnalyticsView(request):
                     column_names = format_column_names(column_names_unf)
 
                 # Create table matrix
-                charts = []
+
                 for status in vehicle_statusses:
                     row = []
                     dict = vars(status)
@@ -235,17 +235,18 @@ def dataAnalyticsView(request):
                         row.append(dict[name[0]])
                     status_matrix.append(row)
 
-                    for i in range(len(column_names)):
-                        name_list = column_names[i]
-                        name = name_list[0]
-                        y = []
-                        for row in status_matrix:
-                            val = float(row[i])
-                            y.append(val)
-                        x = list(range(len(y)))
-                        chart = Chart(name, x, y)
-                        charts.append(chart)
+                charts = []
 
+                for i in range(len(column_names)):
+                    name_list = column_names[i]
+                    name = name_list[0]
+                    y = []
+                    for row in status_matrix:
+                        val = float(row[i])
+                        y.append(val)
+                    x = list(range(len(y)))
+                    chart = Chart(name, x, y)
+                    charts.append(chart)
             else:
                 column_names = None
                 charts = None
