@@ -28,9 +28,9 @@ class createVehicleStatus(APIView):
             vermogen = values[1] -100
             batterij_percentage = values[2]
             actieradius = values[3] /10 
-            batterijspanning_minimum  = values[4] [(+200 )/100]
-            batterijspanning_gemiddeld  = values[5] [(+200 )/100]
-            batterijspanning_maximum  = values[6] [(+200 )/100]
+            batterijspanning_minimum  = values[4] +200 /100
+            batterijspanning_gemiddeld  = values[5] +200 /100
+            batterijspanning_maximum  = values[6] +200 /100
             snelheid = values[7]
             info_enc = values[8]
             motor_temperatuur = values[9] -100
