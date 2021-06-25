@@ -240,11 +240,14 @@ def dataAnalyticsView(request):
                 for i in range(len(column_names)):
                     name_list = column_names[i]
                     name = name_list[0]
-                    y = []
-                    for row in status_matrix:
-                        val = float(row[i])
-                        y.append(val)
-                    x = list(range(len(y)))
+                    x, y = [], []
+                    for i in range(len(status_matrix)):
+                        row = status_matrix[i]
+                        valx = vehicle_statusses[i].time.strftime('%d/%m/%Y %H:%M:%S')
+                        valy = float(row[i])
+                        x.append(valx)
+                        y.append(valy)
+                    # x = list(range(len(y)))
                     chart = Chart(name, x, y)
                     charts.append(chart)
             else:

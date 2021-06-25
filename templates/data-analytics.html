@@ -183,9 +183,11 @@
 </body>
 
 <script>
+    {% autoescape off %}
     {% for chart in charts %}
         setChart("{{ chart.name }}", {{ chart.x }}, {{ chart.y }})
     {% endfor %}
+    {% endautoescape %}
 
 
     function setChart(name, x, y) {
@@ -229,6 +231,14 @@
                 {#    }#}
                 {# }, #}
                 scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                minute: 'MMM D h:mm a'
+                            }
+                        }
+                    },
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
