@@ -68,7 +68,7 @@ def logboekView(request):
             date = (start_date, end_date)
 
             # Get all vehicle statusses with selected vehicle id
-            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time')
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time').reverse()
 
             # Get all possible variables in model
             column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
@@ -202,7 +202,7 @@ def dataAnalyticsView(request):
             date = (start_date, end_date)
 
             # Get all vehicle statusses with selected vehicle id and selected date range
-            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time')
+            vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time').reverse()
 
             # Get all possible variables in model
             column_names_all_unf_unfilt = [f.name for f in vehicleStatus._meta.get_fields()]
