@@ -32,14 +32,15 @@ class createVehicleStatus(APIView):
             batterijspanning_gemiddeld  = (values[5] +200) /100
             batterijspanning_maximum  = (values[6] +200) /100
             snelheid = values[7]
+
             info_enc = values[8]
             motor_temperatuur = values[9] -100
             controller_temperatuur = values[10] -100
             spanning_12v = values[11] /10
-
             gemiddeld_verbruik = values[13] *10
             satelliet_enc = values[14]
             batterij_temperatuur = values[15] -100
+
             kabine_temperatuur = values[16] -100
             kabine_ingestelde_temperatuur = values[17] -100
             olie_temperatuur = values[18]

@@ -14,6 +14,8 @@
     {% if user.is_authenticated %}
         {% if vehicle_id != None %}
             <div class="grid-container">
+            {# CAN_ID 400 #}
+                {# 0-ALARM #}
                 <div class="grid-box">
                     <h3>Opladen</h3>
                     {% if vehicle_status.laden == "1" %}
@@ -23,62 +25,152 @@
                     {% endif %}
                 </div>
                 <div class="grid-box">
-                    <h3>Snelheid</h3>
-                    <h1>{{ vehicle_status.snelheid }} km/u</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>trilling</h3>
-                    <h1>{{ vehicle_status.trilling}}</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>vermogen</h3>
-                    <h1>{{ vehicle_status.vermogen}}</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>Airco</h3>
-                    {% if vehicle_status.airco == "1" %}
-                        <h1>Aan</h1>
+                    <h3>G-Error</h3>
+                    {% if vehicle_status.error_g == "1" %}
+                        <h1>Ja</h1>
                     {% else %}
-                        <h1>Uit</h1>
+                        <h1>Nee</h1>
                     {% endif %}
                 </div>
                 <div class="grid-box">
-                    <h3>Verwarming</h3>
-                    {% if vehicle_status.verwarming == "1" %}
-                        <h1>Aan</h1>
+                    <h3>Tanken</h3>
+                    {% if vehicle_status.tanken == "1" %}
+                        <h1>Ja</h1>
                     {% else %}
-                        <h1>Uit</h1>
+                        <h1>Nee</h1>
                     {% endif %}
                 </div>
                 <div class="grid-box">
-                    <h3>Batterij perc</h3>
-                    <h1>{{ vehicle_status.batterij_percentage}}%</h1>
+                    <h3>Batterij temperatuur</h3>
+                    <h1>{{ vehicle_status.baterij_temp}}°C</h1>
                 </div>
                 <div class="grid-box">
-                    <h3>Batterij gem</h3>
-                    <h1>{{ vehicle_status.batterij_gemiddeld}}%</h1>
+                    <h3>Batterij span laag</h3>
+                    <h1>{{ vehicle_status.batterij_span_laag}}°C</h1>
                 </div>
                 <div class="grid-box">
-                    <h3>Batterij temp</h3>
-                    <h1>{{ vehicle_status.batterij_temperatuur}}°C</h1>
+                    <h3>Batterij span hoog</h3>
+                    <h1>{{ vehicle_status.batterij_span_hoog}}°C</h1>
+                </div>
+
+
+                <div class="grid-box">
+                    <h3>Vermogen</h3>
+                    <h1>{{ vehicle_status.vermogen }} km/u</h1>
                 </div>
                 <div class="grid-box">
-                    <h3>Motor temp</h3>
-                    <h1>{{ vehicle_status.motor_temperatuur}}°C</h1>
-                </div>
-                <div class="grid-box">
-                    <h3>Controller temp</h3>
-                    <h1>{{ vehicle_status.controller_temperatuur}}°C</h1>
+                    <h3>Batterij</h3>
+                    <h1>{{ vehicle_status.batterij_percentage}}</h1>
                 </div>
                 <div class="grid-box">
                     <h3>Actieradius</h3>
-                    <h1>{{ vehicle_status.actieradius }} km</h1>
+                    <h1>{{ vehicle_status.actieradius}}</h1>
                 </div>
                 <div class="grid-box">
-                    <h3>Errors</h3>
-                    <h1>{{ vehicle_status.error }}</h1>
+                    <h3>Batterijspanning minimum</h3>
+                    <h1>{{ vehicle_status.batterijspanning_minimum}}%</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Batterijspanning minimum</h3>
+                    <h1>{{ vehicle_status.batterijspanning_gemiddeld}}%</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Batterijspanning minimum</h3>
+                    <h1>{{ vehicle_status.batterijspanning_maximum}}°C</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Snelheid</h3>
+                    <h1>{{ vehicle_status.snelheid}}°C</h1>
+                </div>
+
+
+
+            {# CAN_ID 401 #}
+                {# 0-INFO #}
+                <div class="grid-box">
+                    <h3>Airco Actief</h3>
+                    <h1>{{ vehicle_status.airco_actief }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>12V Error</h3>
+                    <h1>{{ vehicle_status.error_12v }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Hoogspanningserror</h3>
+                    <h1>{{ vehicle_status.hoogspanningserror }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Motor temperatuur alarm</h3>
+                    <h1>{{ vehicle_status.motor_temperatuur_alarm }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Controller temeperatuur alarm</h3>
+                    <h1>{{ vehicle_status.controller_temperatuur_alarm }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Airco aan</h3>
+                    <h1>{{ vehicle_status.airco_aan }}</h1>
+                </div>
+
+
+                <div class="grid-box">
+                    <h3>Motor tmperatuur</h3>
+                    <h1>{{ vehicle_status.motor_temperatuur }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Controller temperatuur</h3>
+                    <h1>{{ vehicle_status.controller_temperatuur }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>12V Spanning</h3>
+                    <h1>{{ vehicle_status.spanning_12v }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Gemiddeld verbruik</h3>
+                    <h1>{{ vehicle_status.gemiddeld_verbruik }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Aantal satelliet</h3>
+                    <h1>{{ vehicle_status.aantal_satellieten }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Batterij temperatuur</h3>
+                    <h1>{{ vehicle_status.batterij_temperatuur }}</h1>
+                </div>
+
+
+
+            {# CAN_ID 402 #}
+                <div class="grid-box">
+                    <h3>Kabine temperatuur</h3>
+                    <h1>{{ vehicle_status.kabine_temperatuur }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Kabine ingestelde temperatuur</h3>
+                    <h1>{{ vehicle_status.kabine_ingestelde_temperatuur }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Olie temperatuur</h3>
+                    <h1>{{ vehicle_status.olie_temperatuur }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Versnelling X richting</h3>
+                    <h1>{{ vehicle_status.versnelling_x_richting }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Versnelling Y richting</h3>
+                    <h1>{{ vehicle_status.versnelling_y_richting }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Versnelling Z richting</h3>
+                    <h1>{{ vehicle_status.versnelling_z_richting }}</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Bedrijfstijd</h3>
+                    <h1>{{ vehicle_status.bedrijfstijd }}</h1>
                 </div>
             </div>
+
         {% else %}
             <p>Er is geen kenteken aan dit account gekoppeld.</p>
         {% endif %}
