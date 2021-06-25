@@ -243,7 +243,8 @@ def dataAnalyticsView(request):
                     x, y = [], []
                     for i in range(len(status_matrix)):
                         row = status_matrix[i]
-                        valx = vehicle_statusses[i].time.strftime('%d/%m/%Y %H:%M:%S')
+                        # valx = vehicle_statusses[i].time.strftime('%Y-%m-%dT%H:%M:%S')
+                        valx = vehicle_statusses[i].time.timestamp()
                         valy = float(row[i])
                         x.append(valx)
                         y.append(valy)

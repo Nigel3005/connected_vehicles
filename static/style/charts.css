@@ -2,6 +2,10 @@
 /* Computer */
 @media only screen and (min-width: 400px) {
 
+    body > h2, h3{
+        padding-left: 14%;
+    }
+
     label{
         color: white;
         width: 100%;
@@ -49,6 +53,7 @@
 
     form {
         position: relative;
+        padding-left: 14%;
     }
 
     form > div{

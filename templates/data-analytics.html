@@ -10,7 +10,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -117,8 +117,6 @@
     <br>
     {% if user.is_authenticated %}
         {% if vehicle_ids != None %}
-            <h2> Voertuigen </h2>
-            <h3>Kenteken: </h3>
             <form>
                 <div class="custom-select">
                     <select id="vehicle_id_filter" >
@@ -132,7 +130,7 @@
                 <div class="multiselect">
                     <div class="selectBox" onclick="showCheckboxes()">
                         <select id="column_names_filter">
-                            <option>Select an option</option>
+                            <option>Data Filter</option>
                         </select>
                         <div class="overSelect"></div>
                     </div>
@@ -147,10 +145,10 @@
 
                 {# Date selector #}
                 <div>
-                    <input id="startDate" type="text" class="daterange">
+                    van <input id="startDate" type="text" class="daterange">
                 </div>
                 <div>
-                    <input id="endDate" type="text" class="daterange">
+                    tot <input id="endDate" type="text" class="daterange">
                 </div>
 
                 {# Filter button#}
@@ -191,6 +189,7 @@
 
 
     function setChart(name, x, y) {
+        console.log(x)
         var ctx1 = document.getElementById(name).getContext('2d');
         var myChart = new Chart(ctx1, {
             {#type: 'line',#}
@@ -235,9 +234,9 @@
                         type: 'time',
                         time: {
                             displayFormats: {
-                                minute: 'MMM D h:mm a'
-                            }
-                        }
+                                second: "MMM DD"
+                            },
+                        },
                     },
                     yAxes: [{
                         ticks: {

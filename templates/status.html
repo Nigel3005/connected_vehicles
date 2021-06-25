@@ -18,7 +18,7 @@
                 {# 0-ALARM #}
                 <div class="grid-box">
                     <h3>Opladen</h3>
-                    {% if vehicle_status.laden == "1" %}
+                    {% if vehicle_status.laden %}
                         <h1>Ja</h1>
                     {% else %}
                         <h1>Nee</h1>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="grid-box">
                     <h3>G-Error</h3>
-                    {% if vehicle_status.error_g == "1" %}
+                    {% if vehicle_status.error_g %}
                         <h1>Ja</h1>
                     {% else %}
                         <h1>Nee</h1>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="grid-box">
                     <h3>Tanken</h3>
-                    {% if vehicle_status.tanken == "1" %}
+                    {% if vehicle_status.tanken %}
                         <h1>Ja</h1>
                     {% else %}
                         <h1>Nee</h1>
@@ -42,15 +42,27 @@
                 </div>
                 <div class="grid-box">
                     <h3>Batterij temperatuur</h3>
-                    <h1>{{ vehicle_status.baterij_temp}}°C</h1>
+                    {% if vehicle_status.baterij_temp %}
+                        <h1>Ja</h1>
+                    {% else %}
+                        <h1>Nee</h1>
+                    {% endif %}
                 </div>
                 <div class="grid-box">
                     <h3>Batterij span laag</h3>
-                    <h1>{{ vehicle_status.batterij_span_laag}} V</h1>
+                    {% if vehicle_status.batterij_span_laag %}
+                        <h1>Ja</h1>
+                    {% else %}
+                        <h1>Nee</h1>
+                    {% endif %}
                 </div>
                 <div class="grid-box">
                     <h3>Batterij span hoog</h3>
-                    <h1>{{ vehicle_status.batterij_span_hoog}} V</h1>
+                    {% if vehicle_status.batterij_span_hoog %}
+                        <h1>Ja</h1>
+                    {% else %}
+                        <h1>Nee</h1>
+                    {% endif %}
                 </div>
 
 

@@ -2,6 +2,10 @@
 /* Computer */
 @media only screen and (min-width: 400px) {
 
+    body > h2, h3{
+        padding-left: 14%;
+    }
+
     .tablelogboek,.thlogboek{
         color: white;
     }
@@ -42,6 +46,7 @@
 
     form {
         position: relative;
+        padding-left: 14%;
     }
 
     form > div{
