@@ -98,15 +98,18 @@
     }
 
     {# Datepicker #}
-
     $(function () {
+        $.datetimepicker.setLocale('nl');
         $("#startDate").datetimepicker({
             format: 'd/m/Y H:i',
+            lang:'nl'
         });
     });
     $(function () {
+        $.datetimepicker.setLocale('nl');
         $("#endDate").datetimepicker({
             format: 'd/m/Y H:i',
+            lang:'nl'
         });
     });
 
@@ -117,8 +120,6 @@
     <br>
     {% if user.is_authenticated %}
         {% if vehicle_ids != None %}
-            <h2> Voertuigen </h2>
-            <h3>Kenteken: </h3>
             <form>
                 <div class="custom-select">
                     <select id="vehicle_id_filter" >
@@ -132,7 +133,7 @@
                 <div class="multiselect">
                     <div class="selectBox" onclick="showCheckboxes()">
                         <select id="column_names_filter">
-                            <option>Select an option</option>
+                            <option>Data Filter</option>
                         </select>
                         <div class="overSelect"></div>
                     </div>

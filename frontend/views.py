@@ -19,7 +19,7 @@ def indexView(request):
     template_name = 'index.html'
     return render(request, 'default.html', {'page': template_name})
 
-def statusView(request):
+def dashboardView(request):
     if not request.user.is_anonymous:
         vehicle_ids = request.user.profile.vehicle_ids
         if vehicle_ids is not None:
@@ -28,13 +28,13 @@ def statusView(request):
 
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
             if len(vehicle_statusses) > 0:
-                args = {'page':'status.html', 'vehicle_status': vehicle_statusses[0], 'vehicle_id': selected_vehicle_id}
+                args = {'page':'dashboard.html', 'vehicle_status': vehicle_statusses[0], 'vehicle_id': selected_vehicle_id}
                 return render(request, 'default.html', args)
             else:
-                args = {'page': 'status.html', 'vehicle_id': vehicle_ids}
+                args = {'page': 'dashboard.html', 'vehicle_id': vehicle_ids}
                 return render(request, 'default.html', args)
 
-    args = {'page': 'status.html',}
+    args = {'page': 'dashboard.html',}
     return render(request, 'default.html', args)
 
 
@@ -71,7 +71,18 @@ def logboekView(request):
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time').reverse()
 
             # Get all possible variables in model
-            column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+            # column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
+            # column_names_all = format_column_names(column_names_all_unf)
+
+            column_names_all_unf_unfilt = [f.name for f in vehicleStatus._meta.get_fields()]
+            arr = np.array(list(column_names_all_unf_unfilt))
+            filter_arr = []
+            for element in arr:
+                if ((element == "vehicle_id") or (element == "time")):
+                    filter_arr.append(False)
+                else:
+                    filter_arr.append(True)
+            column_names_all_unf = arr[filter_arr]
             column_names_all = format_column_names(column_names_all_unf)
 
             # Check if there are statusses with selected vehicle id
@@ -151,7 +162,7 @@ def loginView(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('/status')
+                    return redirect('/dashboard')
                 else:
                     form = LoginForm
                     return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated'})

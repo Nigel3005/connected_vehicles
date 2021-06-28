@@ -77,63 +77,11 @@
         padding: 15px 32px;
     }
 
-    .daterange td{
-        color: #282D3C;
-        background-color: white;
-    }
-
-    thead th{
-        color: black;
-        background-color: white;
-    }
-
-    td.available{
-        color: #282D3C;
-        background-color: white;
-    }
-
-    td.today.available{
-        color: #282D3C;
-        background-color: white;
-    }
-
-    td.weekend.available{
-        color: #282D3C;
-        background-color: white;
-    }
-    td.off.ends.available{
-        color: #282D3C;
-        background-color: white;
-    }
-
-    td.weekend.off.ends.available{
-        color: #282D3C;
-        background-color: white;
-    }
-
-    th.month{
-        color: #282D3C;
-        background-color: white;
-    }
-
-    /*td.in-range.available{*/
-    /*    color: white;*/
-    /*    background-color: green;*/
-    /*}*/
-
-    td.today.active.start-date.available{
+    #vantot {
         color: white;
-        background-color: black;
-    }
-
-    td.active.start-date.available{
-        color: white;
-        background-color: black;
-    }
-
-    td.active.end-date.in-range.available{
-        color: white;
-        background-color: black;
+        text-align: center;
+        border: 2px solid white;
+        border-radius: 8px;
     }
 
 }

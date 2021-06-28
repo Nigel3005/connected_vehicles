@@ -1,0 +1,196 @@
+{% load static %}
+
+<head>
+
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'style/dashboard.css' %}">
+
+</head>
+
+
+<body>
+    <h1>Dashboard</h1>
+    <br>
+    {% if user.is_authenticated %}
+        {% if vehicle_id != None %}
+            {% for error in errors %}
+                <div class="grid-container">
+                {# CAN_ID 400 #}
+                    {# 0-ALARM #}
+{#                    <div class="grid-box">#}
+{#                        <h3>Opladen</h3>#}
+{#                        {% if vehicle_status.laden %}#}
+{#                            <h1>Ja</h1>#}
+{#                        {% else %}#}
+{#                            <h1>Nee</h1>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    <div class="grid-box">#}
+{#                        <h3>G-Error</h3>#}
+{#                        {% if vehicle_status.error_g %}#}
+{#                            <h1>Ja</h1>#}
+{#                        {% else %}#}
+{#                            <h1>Nee</h1>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    <div class="grid-box">#}
+{#                        <h3>Tanken</h3>#}
+{#                        {% if vehicle_status.tanken %}#}
+{#                            <h1>Ja</h1>#}
+{#                        {% else %}#}
+{#                            <h1>Nee</h1>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    <div class="grid-box">#}
+{#                        <h3>Batterij temperatuur</h3>#}
+{#                        {% if vehicle_status.baterij_temp %}#}
+{#                            <h1>Ja</h1>#}
+{#                        {% else %}#}
+{#                            <h1>Nee</h1>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    <div class="grid-box">#}
+{#                        <h3>Batterij span laag</h3>#}
+{#                        {% if vehicle_status.batterij_span_laag %}#}
+{#                            <h1>Ja</h1>#}
+{#                        {% else %}#}
+{#                            <h1>Nee</h1>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    <div class="grid-box">#}
+{#                        <h3>Batterij span hoog</h3>#}
+{#                        {% if vehicle_status.batterij_span_hoog %}#}
+{#                            <h1>Ja</h1>#}
+{#                        {% else %}#}
+{#                            <h1>Nee</h1>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+                </div>
+            {% endfor %}
+
+
+{#                <div class="grid-box">#}
+{#                    <h3>Vermogen</h3>#}
+{#                    <h1>{{ vehicle_status.vermogen }} kW</h1>#}
+{#                </div>#}
+                <div class="grid-box">
+                    <h3>Batterij</h3>
+                    <h1>{{ vehicle_status.batterij_percentage}} %</h1>
+                </div>
+                <div class="grid-box">
+                    <h3>Actieradius</h3>
+                    <h1>{{ vehicle_status.actieradius}} uur</h1>
+                </div>
+{#                <div class="grid-box">#}
+{#                    <h3>Batterijspanning minimum</h3>#}
+{#                    <h1>{{ vehicle_status.batterijspanning_minimum}} V</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Batterijspanning gemiddeld</h3>#}
+{#                    <h1>{{ vehicle_status.batterijspanning_gemiddeld}} V</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Batterijspanning maximum</h3>#}
+{#                    <h1>{{ vehicle_status.batterijspanning_maximum}} V</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Snelheid</h3>#}
+{#                    <h1>{{ vehicle_status.snelheid}} km/uur</h1>#}
+{#                </div>#}
+
+
+
+            {# CAN_ID 401 #}
+                {# 0-INFO #}
+
+{#                <div class="grid-box">#}
+{#                    <h3>Airco Actief</h3>#}
+{#                    <h1>{{ vehicle_status.airco_actief }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>12V Error</h3>#}
+{#                    <h1>{{ vehicle_status.error_12v }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Hoogspanningserror</h3>#}
+{#                    <h1>{{ vehicle_status.hoogspanningserror }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Motor temperatuur alarm</h3>#}
+{#                    <h1>{{ vehicle_status.motor_temperatuur_alarm }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Controller temeperatuur alarm</h3>#}
+{#                    <h1>{{ vehicle_status.controller_temperatuur_alarm }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Airco aan</h3>#}
+{#                    <h1>{{ vehicle_status.airco_aan }}</h1>#}
+{#                </div>#}
+
+
+{#                <div class="grid-box">#}
+{#                    <h3>Motor tmperatuur</h3>#}
+{#                    <h1>{{ vehicle_status.motor_temperatuur }} °C</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Controller temperatuur</h3>#}
+{#                    <h1>{{ vehicle_status.controller_temperatuur }} °C</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>12V Spanning</h3>#}
+{#                    <h1>{{ vehicle_status.spanning_12v }} V</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Gemiddeld verbruik</h3>#}
+{#                    <h1>{{ vehicle_status.gemiddeld_verbruik }} Wh/km</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Aantal satelliet</h3>#}
+{#                    <h1>{{ vehicle_status.aantal_satellieten }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Batterij temperatuur</h3>#}
+{#                    <h1>{{ vehicle_status.batterij_temperatuur }} °C</h1>#}
+{#                </div>#}
+
+
+
+            {# CAN_ID 402 #}
+                <div class="grid-box">
+                    <h3>Kabine temperatuur</h3>
+                    <h1>{{ vehicle_status.kabine_temperatuur }} °C</h1>
+                </div>
+{#                <div class="grid-box">#}
+{#                    <h3>Kabine ingestelde temperatuur</h3>#}
+{#                    <h1>{{ vehicle_status.kabine_ingestelde_temperatuur }} °C</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Olie temperatuur</h3>#}
+{#                    <h1>{{ vehicle_status.olie_temperatuur }} °C</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Versnelling X richting</h3>#}
+{#                    <h1>{{ vehicle_status.versnelling_x_richting }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Versnelling Y richting</h3>#}
+{#                    <h1>{{ vehicle_status.versnelling_y_richting }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Versnelling Z richting</h3>#}
+{#                    <h1>{{ vehicle_status.versnelling_z_richting }}</h1>#}
+{#                </div>#}
+{#                <div class="grid-box">#}
+{#                    <h3>Bedrijfstijd</h3>#}
+{#                    <h1>{{ vehicle_status.bedrijfstijd }} minuten</h1>#}
+{#                </div>#}
+            </div>
+
+        {% else %}
+            <p>Er is geen kenteken aan dit account gekoppeld.</p>
+        {% endif %}
+    {% else %}
+        <p>Om de status van uw voertuig(en) te zien moet u eerst <a href="/login">inloggen</a>.</p>
+    {% endif %}
+</body>
