@@ -120,9 +120,9 @@
     <br>
     {% if user.is_authenticated %}
         {% if vehicle_ids != None %}
-            <form>
+            <form id="filter-bar">
                 <div class="custom-select">
-                <p id="vantot">Voertuig</p>
+                <p id="titel">Voertuig</p>
                     <select id="vehicle_id_filter" >
                         <div class="dropdown">
                             {% for n in vehicle_ids %}
@@ -132,7 +132,7 @@
                     </select>
                 </div>
                 <div class="multiselect">
-                    <p id="vantot">Statussen</p>
+                    <p id="titel">Statussen</p>
                     <div class="selectBox" onclick="showCheckboxes()">
                         <select id="column_names_filter">
                             <option>Data Filter</option>
@@ -150,11 +150,11 @@
 
                 {# Date selector#}
                 <div>
-                    <p id="vantot">van</p>
+                    <p id="titel">van</p>
                     <input id="startDate" type="text" class="daterange">
                 </div>
                 <div>
-                    <p id="vantot">tot</p>
+                    <p id="titel">tot</p>
                     <input id="endDate" type="text" class="daterange">
                 </div>
 
