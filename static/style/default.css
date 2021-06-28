@@ -97,6 +97,18 @@
     #error-else{
         text-align: center;
     }
+
+    .xdsoft_datetimepicker.xdsoft_noselect.xdsoft_{
+        border-radius: 25px;
+        margin-top: 20px;
+        margin-right: 200px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px black;
+    }
+
+    .xdsoft_datetimepicker.xdsoft_noselect.xdsoft_today{
+        background-color: #282D3C;
+    }
 }
 
 
