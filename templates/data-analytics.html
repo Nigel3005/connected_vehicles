@@ -123,6 +123,7 @@
         {% if vehicle_ids != None %}
             <form>
                 <div class="custom-select">
+                <p id="vantot">Voertuig</p>
                     <select id="vehicle_id_filter" >
                         <div class="dropdown">
                             {% for n in vehicle_ids %}
@@ -132,6 +133,7 @@
                     </select>
                 </div>
                 <div class="multiselect">
+                <p id="vantot">Statussen</p>
                     <div class="selectBox" onclick="showCheckboxes()">
                         <select id="column_names_filter">
                             <option>Data Filter</option>
@@ -175,10 +177,10 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <p>Er is geen data beschikbaar van kenteken {{ vehicle_id }}.</p>
+                <p>Er is geen data beschikbaar van dit voertuig {{ vehicle_id }}.</p>
             {% endif %}
          {% else %}
-            <p>Er is geen kenteken aan dit account gekoppeld.</p>
+            <p>Er is geen voertuig aan dit account gekoppeld.</p>
         {% endif %}
     {% else %}
         <p>Om de status van uw voertuig(en) te zien moet u eerst <a href="/login">inloggen</a>.</p>
