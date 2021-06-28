@@ -183,13 +183,13 @@
                     {% endfor %}
                 </table>
             {% else %}
-                <p>Er zijn geen logboekgegevens beschikbaar van dit voertuig {{ vehicle_id }}.</p>
+                <p id="error-else">Er zijn geen logboekgegevens beschikbaar van dit voertuig {{ vehicle_id }}.</p>
             {% endif %}
          {% else %}
-            <p>Er is geen voertuig aan dit account gekoppeld.</p>
+            <p id="error-else">Er is geen voertuig aan dit account gekoppeld.</p>
         {% endif %}
     {% else %}
-        <p>Om de status van uw voertuig(en) te zien moet u eerst <a href="/login">inloggen</a>.</p>
+        <p id="error-else">Om de status van uw voertuig(en) te zien moet u eerst <a href="/login">inloggen</a>.</p>
     {% endif %}
 
 </body>

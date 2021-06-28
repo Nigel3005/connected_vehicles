@@ -94,6 +94,9 @@
         color: red;
     }
 
+    #error-else{
+        text-align: center;
+    }
 }
 
 
