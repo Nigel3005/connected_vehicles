@@ -78,8 +78,8 @@
     }
 
     #titel {
-        color: white;
-        background-color: #282D3C;
+        color: black;
+        background-color: white;
         text-align: center;
         border-radius: 10px;
     }
@@ -87,12 +87,23 @@
     #filter-bar{
         border: solid 2px white;
         border-radius: 25px;
-        box-shadow: 0px 0px 10px white;
-        background-color: #3b4358;
+        box-shadow: 0px 0px 10px black;
+        background-color: white;
         padding-left: 10%;
         margin-left: 5%;
         margin-right: 5%;
         width: 80%;
+    }
+
+    :focus-visible {
+        outline: None;
+    }
+
+    #opt{
+        color: #282D3C;
+        background-color: white;
+        /*border-radius: 25px;*/
+        /*padding: 10px;*/
     }
 
 }

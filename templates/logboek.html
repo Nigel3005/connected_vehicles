@@ -1,6 +1,6 @@
 {% load static %}
 
-{#<!DOCTYPE html>#}
+<!DOCTYPE html>
 <head>
 
     <title>Logboek</title>
@@ -9,6 +9,7 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <!-- XDSoft DateTimePicker -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
@@ -86,16 +87,23 @@
      }
 
     var expanded;
-    function showCheckboxes() {
+    document.onclick = function(e){
         var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
+        if (expanded) {
+            console.log(e.target.id)
+            if(e.target.id !== "target_checkbox"){
+                checkboxes.style.display = "none";
+                expanded = false;
+            }
         } else {
-            checkboxes.style.display = "none";
-            expanded = false;
+            console.log(e.target.id)
+            if(e.target.id === "target_column_names_filter"){
+                checkboxes.style.display = "block";
+                expanded = true;
+            }
         }
     }
+
 
     {# Datepicker #}
     $(function () {
@@ -116,80 +124,82 @@
 </script>
 
 <body onload="pageLoad()">
-    <h1>Logboek</h1>
-    <br>
-    {% if user.is_authenticated %}
-        {% if vehicle_ids != None %}
-            <form id="filter-bar">
-                <div class="custom-select">
-                <p id="titel">Voertuig</p>
-                    <select id="vehicle_id_filter" >
-                        <div class="dropdown">
-                            {% for n in vehicle_ids %}
-                                <option value="{{ n }}">{{ n }}</option>
+    <div class="content">
+        <div class="header">
+            <h1 class="pagetitle" id="welkoms-bericht">Logboek</h1>
+        </div>
+        {% if user.is_authenticated %}
+            {% if vehicle_ids != None %}
+                <form id="filter-bar">
+                    <div class="custom-select">
+                    <p id="titel">Voertuig</p>
+                        <select id="vehicle_id_filter" >
+                            <div class="dropdown">
+                                {% for n in vehicle_ids %}
+                                    <option id="opt" value="{{ n }}">{{ n }}</option>
+                                {% endfor %}
+                            </div>
+                        </select>
+                    </div>
+                    <div class="multiselect">
+                    <p id="titel">Statussen</p>
+                        <div  class="selectBox">
+                            <select id="column_names_filter">
+                                <option>Data Filter</option>
+                            </select>
+                            <div id="target_column_names_filter" class="overSelect"></div>
+                        </div>
+                        <div class="dropdown" id="checkboxes">
+                            {% for name in column_names_all %}
+                                <label id="target_checkbox">
+                                    <input id="target_checkbox" class="inputbox" name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
+                                </label>
                             {% endfor %}
                         </div>
-                    </select>
-                </div>
-                <div class="multiselect">
-                    <p id="titel">Statussen</p>
-                    <div class="selectBox" onclick="showCheckboxes()">
-                        <select id="column_names_filter">
-                            <option>Data Filter</option>
-                        </select>
-                        <div class="overSelect"></div>
                     </div>
-                    <div class="dropdown" id="checkboxes">
-                        {% for name in column_names_all %}
-                            <label>
-                                <input class="inputbox" name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
-                            </label>
-                        {% endfor %}
+
+                    {# Date selector#}
+                    <div>
+                        <p id="titel">Begin</p>
+                        <input id="startDate" type="text" class="daterange">
                     </div>
-                </div>
+                    <div>
+                        <p id="titel">Eind</p>
+                        <input id="endDate" type="text" class="daterange">
+                    </div>
 
-                {# Date selector#}
-                <div>
-                    <p id="titel">van</p>
-                    <input id="startDate" type="text" class="daterange">
-                </div>
-                <div>
-                    <p id="titel">tot</p>
-                    <input id="endDate" type="text" class="daterange">
-                </div>
-
-                {# Filter button#}
-                <div>
-                    <button class="btn2" onclick="return filter()">Filter</button>
-                </div>
-            </form>
-            {{ error }}
-            <br>
-            {% if vehicle_statusses == None %}
-                <p>Selecteer een kenteken a.u.b.</p>
-            {% elif vehicle_statusses|length > 0 %}
-                <table class="tablelogboek">
-                    <tr class="trlogboek">
-                        {% for name in column_names %}
-                            <td class="tdlogboek">{{ name.1 }}</td>
-                        {% endfor %}
-                    </tr>
-                    {% for status in vehicle_statusses %}
-                        <tr>
-                            {% for value in status %}
-                                <th class="thlogboek">{{ value }}</th>
+                    {# Filter button#}
+                    <div>
+                        <button class="btn1" onclick="return filter()">Filter</button>
+                    </div>
+                </form>
+                {{ error }}
+                <br>
+                {% if vehicle_statusses == None %}
+                    <p>Selecteer een kenteken a.u.b.</p>
+                {% elif vehicle_statusses|length > 0 %}
+                    <table class="tablelogboek">
+                        <thead class="trlogboek">
+                            {% for name in column_names %}
+                                <td class="tdlogboek">{{ name.1 }}</td>
                             {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% else %}
-                <p id="error-else">Er zijn geen logboekgegevens beschikbaar van dit voertuig {{ vehicle_id }}.</p>
+                        </thead>
+                        {% for status in vehicle_statusses %}
+                            <tr>
+                                {% for value in status %}
+                                    <th class="thlogboek">{{ value }}</th>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p id="error-else">Er zijn geen logboekgegevens beschikbaar van dit voertuig {{ vehicle_id }}.</p>
+                {% endif %}
+             {% else %}
+                <p id="error-else">Er is geen voertuig aan dit account gekoppeld.</p>
             {% endif %}
-         {% else %}
-            <p id="error-else">Er is geen voertuig aan dit account gekoppeld.</p>
+        {% else %}
+            <p id="error-else">Om de status van uw voertuig(en) te zien moet u eerst <a href="/login" style="color: white">inloggen</a>.</p>
         {% endif %}
-    {% else %}
-        <p id="error-else">Om de status van uw voertuig(en) te zien moet u eerst <a href="/login" style="color: white">inloggen</a>.</p>
-    {% endif %}
-
+    </div>
 </body>

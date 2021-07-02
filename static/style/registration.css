@@ -47,6 +47,10 @@
     form{
         padding: 10px;
     }
+
+    .footer{
+        transform: translate(0%, 100%);
+    }
 }
 
 

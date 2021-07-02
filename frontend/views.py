@@ -78,7 +78,7 @@ def logboekView(request):
             arr = np.array(list(column_names_all_unf_unfilt))
             filter_arr = []
             for element in arr:
-                if ((element == "vehicle_id") or (element == "time")):
+                if (element == "vehicle_id"):
                     filter_arr.append(False)
                 else:
                     filter_arr.append(True)

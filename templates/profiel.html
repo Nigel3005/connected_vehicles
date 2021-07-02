@@ -7,24 +7,26 @@
 
 
 <body>
-    <h1> Profiel </h1>
-    <br>
-    {% if user.is_authenticated %}
-        <table>
-            <tr>
-                <th>Naam: </th>
-                <th>{{ user.username}}</th>
-            </tr>
-            <tr>
-                <th>E-mail: </th>
-                <th>{{ user.email }}</th>
-            </tr>
+    <div class="content">
+        <h1 id="welkoms-bericht"> Profiel </h1>
+        <br>
+        {% if user.is_authenticated %}
+            <table>
                 <tr>
-                    <th>Kenteken: </th>
-                    <th>{{ user.profile.vehicle_ids }}</th>
+                    <th>Naam: </th>
+                    <th>{{ user.username}}</th>
                 </tr>
-            </table>
-        {% else %}
-            <p id="error-else">Om uw gegevems te zien moet u eerst <a href="/login" style="color: white">inloggen</a>.</p>
-    {% endif %}
+                <tr>
+                    <th>E-mail: </th>
+                    <th>{{ user.email }}</th>
+                </tr>
+                    <tr>
+                        <th>Kenteken: </th>
+                        <th>{{ user.profile.vehicle_ids }}</th>
+                    </tr>
+                </table>
+            {% else %}
+                <p id="error-else">Om uw gegevems te zien moet u eerst <a href="/login" style="color: white">inloggen</a>.</p>
+        {% endif %}
+    </div>
 </body>

@@ -86,19 +86,24 @@
      }
 
     var expanded;
-    function showCheckboxes() {
+    document.onclick = function(e){
         var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
+        if (expanded) {
+            console.log(e.target.id)
+            if(e.target.id !== "target_checkbox"){
+                checkboxes.style.display = "none";
+                expanded = false;
+            }
         } else {
-            checkboxes.style.display = "none";
-            expanded = false;
+            console.log(e.target.id)
+            if(e.target.id === "target_column_names_filter"){
+                checkboxes.style.display = "block";
+                expanded = true;
+            }
         }
     }
 
     {# Datepicker #}
-
     $(function () {
         $.datetimepicker.setLocale('nl');
         $("#startDate").datetimepicker({
@@ -117,75 +122,76 @@
 </script>
 
 <body onload="pageLoad()">
-    <h1>Data-analytics</h1>
-    <br>
-    {% if user.is_authenticated %}
-        {% if vehicle_ids != None %}
-            <form id="filter-bar">
-                <div class="custom-select">
-                <p id="titel">Voertuig</p>
-                    <select id="vehicle_id_filter" >
-                        <div class="dropdown">
-                            {% for n in vehicle_ids %}
-                                <option value="{{ n }}">{{ n }}</option>
+    <div class="content">
+        <h1 id="welkoms-bericht">Data-analytics</h1>
+        <br>
+        {% if user.is_authenticated %}
+            {% if vehicle_ids != None %}
+                <form id="filter-bar">
+                    <div class="custom-select">
+                    <p id="titel">Voertuig</p>
+                        <select id="vehicle_id_filter" >
+                            <div class="dropdown">
+                                {% for n in vehicle_ids %}
+                                    <option value="{{ n }}">{{ n }}</option>
+                                {% endfor %}
+                            </div>
+                        </select>
+                    </div>
+                    <div class="multiselect">
+                    <p id="titel">Statussen</p>
+                        <div  class="selectBox">
+                            <select id="column_names_filter">
+                                <option>Data Filter</option>
+                            </select>
+                            <div id="target_column_names_filter" class="overSelect"></div>
+                        </div>
+                        <div class="dropdown" id="checkboxes">
+                            {% for name in column_names_all %}
+                                <label id="target_checkbox">
+                                    <input id="target_checkbox" class="inputbox" name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
+                                </label>
                             {% endfor %}
                         </div>
-                    </select>
-                </div>
-                <div class="multiselect">
-                <p id="titel">Statussen</p>
-                    <div class="selectBox" onclick="showCheckboxes()">
-                        <select id="column_names_filter">
-                            <option>Data Filter</option>
-                        </select>
-                        <div class="overSelect"></div>
                     </div>
-                    <div class="dropdown" id="checkboxes">
-                        {% for name in column_names_all %}
-                            <label>
-                                <input class="inputbox" name="column_names_filter_box" type="checkbox" value="{{ name.0 }}" />{{ name.1 }}
-                            </label>
+
+                    {# Date selector #}
+                    <div>
+                        <p id="titel">Begin</p>
+                        <input id="startDate" type="text" class="daterange">
+                    </div>
+                    <div>
+                        <p id="titel">Eind</p>
+                        <input id="endDate" type="text" class="daterange">
+                    </div>
+
+                    {# Filter button#}
+                    <div>
+                        <button class="btn1" onclick="return filter()">Filter</button>
+                    </div>
+                </form>
+                {{ error }}
+                <br>
+                {% if vehicle_statusses == None %}
+                    <p>Selecteer een kenteken a.u.b.</p>
+                {% elif vehicle_statusses|length > 0 %}
+                    <div class="graph">
+                        {% for chart in charts %}
+                        <div>
+                            <canvas id="{{ chart.name }}"></canvas>
+                        </div>
                         {% endfor %}
                     </div>
-                </div>
-
-                {# Date selector #}
-                <div>
-                    <p id="titel">van</p>
-                    <input id="startDate" type="text" class="daterange">
-                </div>
-                <div>
-                    <p id="titel">tot</p>
-                    <input id="endDate" type="text" class="daterange">
-                </div>
-
-                {# Filter button#}
-                <div>
-                    <button class="btn2" onclick="return filter()">Filter</button>
-                </div>
-            </form>
-            {{ error }}
-            <br>
-            {% if vehicle_statusses == None %}
-                <p>Selecteer een kenteken a.u.b.</p>
-            {% elif vehicle_statusses|length > 0 %}
-                <div class="graph">
-                    {% for chart in charts %}
-                    <div>
-                        <canvas id="{{ chart.name }}"></canvas>
-                    </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <p id="error-else">Er is geen data beschikbaar van dit voertuig {{ vehicle_id }}.</p>
+                {% else %}
+                    <p id="error-else">Er is geen data beschikbaar van dit voertuig {{ vehicle_id }}.</p>
+                {% endif %}
+             {% else %}
+                <p id="error-else">Er is geen voertuig aan dit account gekoppeld.</p>
             {% endif %}
-         {% else %}
-            <p id="error-else">Er is geen voertuig aan dit account gekoppeld.</p>
+        {% else %}
+            <p id="error-else">Om de status van uw voertuig(en) te zien moet u eerst <a href="/login" style="color: white">inloggen</a>.</p>
         {% endif %}
-    {% else %}
-        <p id="error-else">Om de status van uw voertuig(en) te zien moet u eerst <a href="/login" style="color: white">inloggen</a>.</p>
-    {% endif %}
-
+    </div>
 </body>
 
 <script>
@@ -204,17 +210,6 @@
             data: {
                 labels: x,
                 datasets: [{
-                    type: 'bar',
-                    label: name,
-                    data: y,
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                    borderWidth: 1
-                }, {
                     type: 'line',
                     label: name,
                     data: y,
@@ -255,4 +250,5 @@
             }
         });
     }
+
 </script>

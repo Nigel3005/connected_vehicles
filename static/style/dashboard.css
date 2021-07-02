@@ -18,6 +18,7 @@
         padding: 20px;
         border-radius: 20px;
         text-align: center;
+        width: 25%;
     }
 
     .grid-box h1, h3 {

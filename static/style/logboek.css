@@ -2,29 +2,71 @@
 /* Computer */
 @media only screen and (min-width: 400px) {
 
+    .header {
+        /*background: url("/static/img/auto-software-security-header.jpg")  50% 0 no-repeat fixed;*/
+    }
+
+    .pagetitle {
+        padding-top: 110px;
+        padding-bottom: 110px;
+    }
+
     body > h2, h3{
         padding-left: 14%;
     }
 
-    .tablelogboek,.thlogboek{
-        color: white;
-    }
+    /*.tablelogboek,.thlogboek{*/
+    /*    color: white;*/
+    /*}*/
+
+    /*.tablelogboek {*/
+    /*    border-collapse: collapse;*/
+    /*    width: 100%;*/
+    /*}*/
+
+    /*.tablelogboek,.tdlogboek,.thlogboek {*/
+    /*    border: 1px solid #ffffff;*/
+    /*    text-align: left;*/
+    /*    color: white;*/
+    /*}*/
+
+    /*.tablelogboek, .thlogboek, .tdlogboek {*/
+    /*    padding: 15px;*/
+    /*    color: white;*/
+    /*}*/
 
     .tablelogboek {
         border-collapse: collapse;
-        width: 100%;
+        margin: 25px 0;
     }
 
-    .tablelogboek,.tdlogboek,.thlogboek {
-        border: 1px solid #ffffff;
+    .tablelogboek thead tr {
+        background-color: #36486b;
+        color: white;
         text-align: left;
-        color: white;
     }
 
-    .tablelogboek, .thlogboek, .tdlogboek {
-        padding: 15px;
-        color: white;
+    .tablelogboek th, .tablelogboek td {
+        padding: 12px 15px;
     }
+
+    .tablelogboek tbody tr:nth-of-type(even) {
+        background-color: #4a6290;
+    }
+
+    .tablelogboek tbody tr:last-of-type {
+        border-bottom: 2px solid #36486b;
+    }
+
+    table tr:last-child td:first-child {
+        border-radius: 25px 0 0 0;
+    }
+
+    table tr:last-child td:last-child {
+        border-radius: 0 25px 0 0;
+    }
+
+
 
     select{
         color: #282D3C;
@@ -40,6 +82,7 @@
         display: block;
         background-color: black;
     }
+
     select > option:focus-visible{
         background-color: black;
     }
@@ -64,21 +107,43 @@
 
     #titel {
         color: white;
-        background-color: #282D3C;
         text-align: center;
         border-radius: 10px;
     }
 
     #filter-bar{
-        border: solid 2px white;
         border-radius: 25px;
-        box-shadow: 0px 0px 10px white;
-        background-color: #3b4358;
-        padding-left: 10%;
-        margin-left: 5%;
-        margin-right: 5%;
-        width: 80%;
+        background-color: #36486b;
+        /*width: 50%;*/
     }
+
+    :focus-visible {
+        outline: None;
+    }
+
+    #opt{
+        color: #282D3C;
+        background-color: white;
+        /*border-radius: 25px;*/
+        /*padding: 10px;*/
+    }
+
+    .dropdown-menu {
+        display: none;
+    }
+
+    .toggle, .dropdown-menu {
+        width: 100%;
+    }
+
+    .is-active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
 
 }
 

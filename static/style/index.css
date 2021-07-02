@@ -8,6 +8,7 @@
     }
     #wrapper {
         overflow: hidden; /* add this to contain floated children */
+        height: 850px;
     }
 
     #first {

@@ -11,34 +11,30 @@
 </head>
 
 <body>
+    <div class="content">
+        {% if user.is_authenticated %}
 
-    {% if user.is_authenticated %}
+            <br>
+            <h1 id="welkoms-bericht">Welkom {{ user.username }}</h1>
 
-        <br>
-        <h1>Welkom {{ user.username }}</h1>
+        {% else %}
 
-    {% else %}
-
-        <h1>Welkom,</h1>
-        <br>
-        <br>
-
-{#        <h2>Beste gebruiker om gegevens te kunnen zien moet u eerst <a href="/login">inloggen</a>. </h2>#}
-    <div id="wrapper">
-{#    <h2>lorem31</h2>#}
-        <div id="first" class="smartphone">
-            <div class="content">
-                <img src="{% static 'phone.png' %}" alt="" class="fit">
+    {#        <h2>Beste gebruiker om gegevens te kunnen zien moet u eerst <a href="/login">inloggen</a>. </h2>#}
+        <div id="wrapper">
+    {#    <h2>lorem31</h2>#}
+            <div id="first" class="smartphone">
+                <div class="content">
+                    <img src="{% static 'phone.png' %}" alt="" class="fit">
+                </div>
+            </div>
+            <div id="second" class="laptop">
+                <div class="content">
+                    <img src="{% static 'logboek-view.png' %}" alt="" class="fit">
+                </div>
             </div>
         </div>
-        <div id="second" class="laptop">
-            <div class="content">
-                <img src="{% static 'logboek-view.png' %}" alt="" class="fit">
-            </div>
-        </div>
+
+        {% endif %}
     </div>
-
-    {% endif %}
-
 </body>
 

@@ -2,13 +2,20 @@
 /* Computer */
 @media only screen and (min-width: 400px) {
 
+    *{
+        list-style: none;
+        text-decoration: none;
+    }
+
     body {
         font-family: sans-serif;
         background: #282D3C;
         color: white;
+        margin: 0;
+        padding: 0;
     }
 
-    body h1{
+    #welkoms-bericht{
         text-align: center;
         color: white;
     }
@@ -61,35 +68,6 @@
         height: 50px;
     }
 
-    .topnav {
-        overflow: hidden;
-        background-color: #282D3C;
-        position: relative;
-    }
-
-    .topnav #navbar {
-        /*display: none;*/
-    }
-
-    .topnav a {
-        background: #282D3C;
-        float: left;
-        color: white;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
-
-    .topnav a:hover {
-        background: white;
-        color: #282D3C;
-        border-radius: 15px;
-    }
-
-    .topnav a.icon {
-        display: None;
-    }
-
     .errormsg{
         color: red;
     }
@@ -97,6 +75,7 @@
     #error-else{
         text-align: center;
     }
+
 
     .xdsoft_datetimepicker.xdsoft_noselect.xdsoft_{
         border-radius: 25px;
@@ -109,6 +88,170 @@
     .xdsoft_datetimepicker.xdsoft_noselect.xdsoft_today{
         background-color: #282D3C;
     }
+
+    .navbar {
+        overflow: hidden;
+        background-color: #36486b;
+        border-radius: 25px;
+        margin-top: 1%;
+    }
+
+    .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .dropdown-nav {
+        float: right;
+        overflow: hidden;
+    }
+
+    .dropdown-nav .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+    .navbar a:hover, .dropdown-nav:hover .dropbtn {
+        background-color: #4a6290;
+        color: white;
+        border-radius: 25px;
+    }
+
+    .dropbtn:hover {
+        border-radius: 25px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #4a6290;
+        min-width: 160px;
+        z-index: 1;
+        border-radius: 10px;
+        right: 0;
+        margin: 0px 8px;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #36486b;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .dropdown-nav:hover .dropdown-content {
+        display: block;
+    }
+
+    .imgnav {
+        padding-top: 3px;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: calc((100%) / 2);
+    }
+
+    #imglink{
+        cursor: pointer;
+    }
+
+
+    /*footer*/
+
+    .footer{
+        width: 100vw;
+        display: block;
+        overflow: hidden;
+        padding: 70px 0;
+        box-sizing: border-box;
+        background-color: rgba(94, 105, 201, 0.21);
+        right: 0;bottom:0;left:0;
+        margin-top: 25%;
+    }
+
+    .inner_footer{
+        display: block;
+        margin: 0 auto;
+        width: 1100px;
+        height: 100%;
+    }
+
+    .inner_footer .logo_container{
+        width: 30%;
+        float: left;
+        height: 100%;
+        display: block;
+    }
+
+    .inner_footer .logo_container img{
+        width: 200px;
+        height: auto;
+    }
+
+    .inner_footer .footer_third{
+        width: calc(20% - 47px);
+        margin-right: 25px;
+        float: left;
+        height: 100%;
+    }
+
+    .inner_footer .footer_third:last-child{
+        margin-right: 0;
+    }
+
+    .inner_footer .footer_third h1{
+        font-family: 'Arial';
+        font-size: 22px;
+        color: white;
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .inner_footer .footer_third a{
+        font-family: 'Arial';
+        font-size: 18px;
+        color: white;
+        display: block;
+        font-weight: 200;
+        width: 100%;
+        padding-bottom: 5px;
+    }
+
+    .inner_footer .footer_third li{
+        display: inline-block;
+        padding: 0 5px;
+        font-size: 20px;
+    }
+    .inner_footer .footer_third span{
+        color: white;
+        font-family: 'arial';
+        font-size: 16px;
+        font-weight: 200;
+        display: block;
+        width: 100%;
+        padding-top: 20px;
+    }
+
+
 }
 
 
@@ -204,6 +347,16 @@
 
     .errormsg {
         color: red;
+    }
+
+    .footer .inner_footer {
+        width: 90%;
+    }
+
+    .inner_footer .logo_container,
+    .inner_footer .footer_third {
+        width: 100%;
+        margin-bottom: 30px;
     }
 
 }
