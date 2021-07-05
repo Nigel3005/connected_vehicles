@@ -47,6 +47,7 @@
         display: block;
         background-color: black;
     }
+
     select > option:focus-visible{
         background-color: black;
     }

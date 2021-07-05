@@ -177,7 +177,7 @@
     /*footer*/
 
     .footer{
-        width: 100vw;
+        width: 99vw;
         display: block;
         overflow: hidden;
         padding: 70px 0;
@@ -248,7 +248,7 @@
         font-weight: 200;
         display: block;
         width: 100%;
-        padding-top: 20px;
+        /*padding-top: 20px;*/
     }
 
 
