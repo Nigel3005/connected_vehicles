@@ -4,21 +4,22 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(1, 1fr);
         gap: 0px 0px;
         width: 80%;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 4%;
     }
 
     .grid-box {
         background-color: white;
-        margin: 20px;
+        margin: 1%;
         padding: 20px;
         border-radius: 20px;
         text-align: center;
-        width: 25%;
+        width: 80%;
     }
 
     .grid-box h1, h3 {
