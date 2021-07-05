@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Work+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/1b028243f3.js'></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="icon" href="{% static 'python.ico' %}">
 </head>
 
@@ -49,26 +50,26 @@
 
     {% if user.is_authenticated %}
         <div class="navbar">
-            <a href="/home">Home</a>
+            <a href="/home">Home <i class="fas fa-home"></i></a>
             <img id="imglink" src="/static/headernav.png" class="imgnav" onclick="logoclick()"/>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/data-analytics">Data</a>
-            <a href="/logboek">logboek</a>
+            <a href="/dashboard">Dashboard <i class="fas fa-chalkboard-teacher"></i></a>
+            <a href="/data-analytics">Data <i class="fas fa-chart-line"></i></a>
+            <a href="/logboek">logboek <i class="far fa-list-alt"></i></a>
     {#        <a id="dimensions"></a>#}
                 <div class="dropdown-nav">
                 <button class="dropbtn">
                   <i id="usericon" class="far fa-user"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="/profiel">Profiel</a>
-                    <a href="/logout">Logout</a>
+                    <a href="/profiel">Profiel <i class="fas fa-id-card"></i></a>
+                    <a href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
                 </div>
               </div>
             </div>
         </div>
     {% else %}
         <div class="navbar">
-            <a href="/home">Home</a>
+            <a href="/home">Home <i class="fas fa-home"></i></a>
             <img id="imglink" src="/static/headernav.png" class="imgnav" onclick="logoclick()"/>
             {#        <a id="dimensions"></a>#}
                 <div class="dropdown-nav">
@@ -76,8 +77,8 @@
                   <i id="usericon" class="far fa-user"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="/login" >Login</a>
-                    <a href="/register" >Register</a>
+                    <a href="/login" >Login <i class="fas fa-sign-in-alt"></i></a>
+                    <a href="/register" >Register <i class="fas fa-user-plus"></i></a>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@ from django.db import models
 
 class vehicleStatus(models.Model):
     time = models.DateTimeField(auto_now_add=True)
-    vehicle_id = models.CharField(max_length=11)
+    vehicle_id = models.CharField(max_length=20)
 
     # CAN_ID 400
     laden = models.BooleanField()
