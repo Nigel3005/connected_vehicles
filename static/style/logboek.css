@@ -2,43 +2,18 @@
 /* Computer */
 @media only screen and (min-width: 400px) {
 
-    /*.header {*/
-    /*    !*background: url("/static/img/auto-software-security-header.jpg")  50% 0 no-repeat fixed;*!*/
-    /*}*/
-
-    /*.pagetitle {*/
-    /*    padding-top: 110px;*/
-    /*    padding-bottom: 110px;*/
-    /*}*/
-
     body > h2, h3{
         padding-left: 14%;
     }
 
-    /*.tablelogboek,.thlogboek{*/
-    /*    color: white;*/
-    /*}*/
-
-    /*.tablelogboek {*/
-    /*    border-collapse: collapse;*/
-    /*    width: 100%;*/
-    /*}*/
-
-    /*.tablelogboek,.tdlogboek,.thlogboek {*/
-    /*    border: 1px solid #ffffff;*/
-    /*    text-align: left;*/
-    /*    color: white;*/
-    /*}*/
-
-    /*.tablelogboek, .thlogboek, .tdlogboek {*/
-    /*    padding: 15px;*/
-    /*    color: white;*/
-    /*}*/
-
     .tablelogboek {
         border-collapse: collapse;
         margin: 25px 0;
-        margin-left: 10px;
+        margin-left: 5%;
+        overflow: auto;
+        white-space: nowrap;
+        width: 90%;
+        display: block;
     }
 
     .tablelogboek thead tr {
@@ -66,8 +41,6 @@
     table tr:last-child td:last-child {
         border-radius: 0 25px 0 0;
     }
-
-
 
     select{
         color: #282D3C;
@@ -150,6 +123,29 @@
     .dropdown {
         position: relative;
     }
+
+    #logboekpage{
+        /*background-color: palegreen;*/
+        /*border: 1px white solid;*/
+    }
+
+    .pagination{
+        text-align: center;
+        /*white-space: nowrap;*/
+        /*overflow: auto;*/
+    }
+
+    .pagination a {
+        border: 1px white solid;
+        color: white;
+        padding: 10px;
+        /*text-decoration: none;*/
+        /*text-align: center;*/
+        transition: background-color .3s;
+        background-color: #282D3C;
+    }
+
+    .pagination a:hover:not(.active) {background-color: #698cce;}
 
 
 }

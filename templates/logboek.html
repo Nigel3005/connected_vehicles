@@ -30,18 +30,18 @@
         setDate();
     }
 
-    function filter(){
+    function filter(page){
         var href = new URL(window.location.href);
         var vehicle_id = document.getElementById("vehicle_id_filter").value;
         var startDate = document.getElementById("startDate").value;
         var endDate = document.getElementById("endDate").value;
         var filtered_column_names = getSelectedCheckboxValues("column_names_filter_box");
-        console.log(filtered_column_names)
         if (filtered_column_names.length === 0){
             params = new URLSearchParams({
                 'vehicle_id': vehicle_id,
                 'startDate': startDate,
                 'endDate': endDate,
+                'page': page,
             })
         } else {
             params = new URLSearchParams({
@@ -49,6 +49,7 @@
                 'column_names': getSelectedCheckboxValues("column_names_filter_box"),
                 'startDate': startDate,
                 'endDate': endDate,
+                'page': page,
             })
         }
         href.search = params;
@@ -84,7 +85,8 @@
     function setDate() {
         document.getElementById("startDate").value = "{{ start_date }}";
         document.getElementById("endDate").value = "{{ end_date }}";
-     }
+    }
+
 
     var expanded;
     document.onclick = function(e){
@@ -158,7 +160,7 @@
                         </div>
                     </div>
 
-                    {# Date selector#}
+                    {# Date selector #}
                     <div>
                         <p id="titel">Begin</p>
                         <input id="startDate" type="text" class="daterange">
@@ -178,6 +180,7 @@
                 {% if vehicle_statusses == None %}
                     <p>Selecteer een kenteken a.u.b.</p>
                 {% elif vehicle_statusses|length > 0 %}
+
                     <table class="tablelogboek">
                         <thead class="trlogboek">
                             {% for name in column_names %}
@@ -192,6 +195,11 @@
                             </tr>
                         {% endfor %}
                     </table>
+                    <div class="pagination" id="logboekpage">
+                        {% for page in pagelist %}
+                            <a onclick="filter({{ page }})">{{ page }}</a>
+                        {% endfor %}
+                    </div>
                 {% else %}
                     <p id="error-else">Er zijn geen logboekgegevens beschikbaar van dit voertuig {{ vehicle_id }}.</p>
                 {% endif %}

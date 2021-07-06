@@ -1,3 +1,5 @@
+import math
+
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
@@ -53,7 +55,7 @@ def logboekView(request):
             selected_vehicle_id = get_selected_vehicle_id(request, vehicle_ids_sep)
             selected_startDate_unf = request.GET.get("startDate")
             selected_endDate_unf = request.GET.get("endDate")
-
+            selected_page = request.GET.get("logboekpage")
             # Check if user filtered on vehicle id else set selected vehicle id to first vehicle id in profile
             if selected_vehicle_id is None:
                 selected_vehicle_id = vehicle_ids_sep[0]
@@ -67,8 +69,17 @@ def logboekView(request):
                 end_date = datetime.datetime.strptime(selected_endDate_unf, '%d/%m/%Y %H:%M')
             date = (start_date, end_date)
 
+
+            if selected_page is None:
+                selected_page = 1
+
+
             # Get all vehicle statusses with selected vehicle id
+            start = 100*(selected_page-1)
+            end = start + 100
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id, time__range=date).order_by('time').reverse()
+            n_pages = math.ceil(len(vehicle_statusses)/100)
+            vehicle_statusses = vehicle_statusses[start:end]
 
             # Get all possible variables in model
             # column_names_all_unf = [f.name for f in vehicleStatus._meta.get_fields()]
@@ -116,6 +127,8 @@ def logboekView(request):
                     'chart_date_range': get_chart_date_range(),
                     'start_date': start_date.strftime('%d/%m/%Y %H:%M'),
                     'end_date': end_date.strftime('%d/%m/%Y %H:%M'),
+                    'selected_page' : selected_page,
+                    'pagelist': range(n_pages+1)[1:],
                     }
             return render(request, 'default.html', args)
 
