@@ -95,7 +95,7 @@ class createVehicleStatus(APIView):
                                            aantal_satellieten=aantal_satellieten, bedrijfstijd=bedrijfstijd,
                                            )
             vehicle_status.save()
-            return Response({'Good request': 'saved'}, status=status.HTTP_201_CREATED)
+            return Response({'Good request': 'saved'}, status=status.HTTP_200_OK)
         except:
             return Response({'Failed': 'bad request'}, status=status.HTTP_409_CONFLICT)
 
