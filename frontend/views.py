@@ -2,6 +2,9 @@ import math
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+# from future.backports.datetime import timedelta
+from datetime import timedelta
+
 from rest_framework.views import APIView
 
 from django.contrib.auth.models import User

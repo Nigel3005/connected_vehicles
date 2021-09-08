@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class vehicleStatus(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     vehicle_id = models.CharField(max_length=20)
