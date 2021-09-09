@@ -34,13 +34,13 @@ def dashboardView(request):
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=selected_vehicle_id).order_by('time').reverse()
             if len(vehicle_statusses) > 0:
                 args = {'page':'dashboard.html', 'vehicle_status': vehicle_statusses[0], 'vehicle_id': selected_vehicle_id}
-                return render(request, 'default.html', args)
+                return render(request, 'default-without-footer.html', args)
             else:
                 args = {'page': 'dashboard.html', 'vehicle_id': vehicle_ids}
-                return render(request, 'default.html', args)
+                return render(request, 'default-without-footer.html', args)
 
     args = {'page': 'dashboard.html',}
-    return render(request, 'default.html', args)
+    return render(request, 'default-without-footer.html', args)
 
 
 
@@ -133,11 +133,11 @@ def logboekView(request):
                     'selected_page' : selected_page,
                     'pagelist': range(n_pages+1)[1:],
                     }
-            return render(request, 'default.html', args)
+            return render(request, 'default-without-footer.html', args)
 
     # Render template without statusses and without vehicle id
     args = {'page': 'logboek.html'}
-    return render(request, 'default.html', args)
+    return render(request, 'default-without-footer.html', args)
 
 def profielView(request):
     if not request.user.is_anonymous:
@@ -146,13 +146,13 @@ def profielView(request):
             vehicle_statusses = vehicleStatus.objects.filter(vehicle_id=vehicle_id).order_by('time').reverse()
             args = {'page': 'profiel.html', 'vehicle_statusses': vehicle_statusses, 'vehicle_id': vehicle_id}
 
-            return render(request, 'default.html', args)
+            return render(request, 'default-without-footer.html', args)
         else:
             args = {'page': 'profiel.html', 'vehicle_statusses': None, 'vehicle_id': vehicle_id}
-            return render(request, 'default.html', args)
+            return render(request, 'default-without-footer.html', args)
     else:
         args = {'page': 'profiel.html', 'vehicle_statusses': None}
-        return render(request, 'default.html', args)
+        return render(request, 'default-without-footer.html', args)
 
 
 def registerView(request):
@@ -167,7 +167,7 @@ def registerView(request):
             return redirect('Login')
     else:
         form = SignUpForm()
-    return render(request, 'default.html', {'page': 'registration/register.html', 'form': form})
+    return render(request, 'default-without-footer.html', {'page': 'registration/register.html', 'form': form})
 
 def loginView(request):
     if request.method == 'POST':
@@ -181,17 +181,17 @@ def loginView(request):
                     return redirect('/dashboard')
                 else:
                     form = LoginForm
-                    return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated'})
+                    return render(request, 'default-without-footer.html', {'page': 'registration/login.html', 'form': form, 'error': 'Account is not activated'})
             else:
                 form = LoginForm
-                return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
+                return render(request, 'default-without-footer.html', {'page': 'registration/login.html', 'form': form, 'error': 'Your username and password were incorrect.'})
         except:
             form = LoginForm
-            return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': 'Invalid Form'})
+            return render(request, 'default-without-footer.html', {'page': 'registration/login.html', 'form': form, 'error': 'Invalid Form'})
 
     else:
         form = LoginForm
-        return render(request, 'default.html', {'page': 'registration/login.html', 'form': form, 'error': '' })
+        return render(request, 'default-without-footer.html', {'page': 'registration/login.html', 'form': form, 'error': ''})
 
 def logoutView(request):
     logout(request)
@@ -294,11 +294,11 @@ def dataAnalyticsView(request):
                     'start_date': start_date.strftime('%d/%m/%Y %H:%M'),
                     'end_date': end_date.strftime('%d/%m/%Y %H:%M'),
                     }
-            return render(request, 'default.html', args)
+            return render(request, 'default-without-footer.html', args)
 
     # Render template without statusses and without vehicle id
     args = {'page': 'data-analytics.html'}
-    return render(request, 'default.html', args)
+    return render(request, 'default-without-footer.html', args)
 
 
 # FUNCTIONS
