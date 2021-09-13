@@ -32,6 +32,7 @@
     #wrapper {
         overflow: hidden; /* add this to contain floated children */
         height: 850px;
+        margin-top: 25px;
     }
 
     #first {

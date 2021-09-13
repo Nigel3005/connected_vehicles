@@ -20,14 +20,14 @@
         window.location.href = '/'
     }
 
-    {#function hamburger() {#}
-        {#var x = document.getElementById("navbar");#}
-        {#    if (x.style.display === "block") {#}
-        {#        x.style.display = "none";#}
-        {#    } else {#}
-        {#        x.style.display = "block";#}
-        {#    }#}
-        {# }#}
+    function hamburger() {
+        var x = document.getElementById("navbar");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+         }
 
     dbm = false
 
@@ -69,6 +69,11 @@
     {% else %}
         <div class="navbar">
             <a href="/home">Home <i class="fas fa-home"></i></a>
+
+            <a href="javascript:void(0);" class="icon" onclick="hamburger()">
+                <i class="fa fa-bars"></i>
+            </a>
+
             <img id="imglink" src="/static/headernav.png" class="imgnav" onclick="logoclick()"/>
             {#        <a id="dimensions"></a>#}
                 <div class="dropdown-nav">
@@ -84,86 +89,10 @@
         </div>
     {% endif %}
 
-{#        <a href="javascript:void(0);" class="icon" onclick="hamburger()">#}
-{#            <i class="fa fa-bars"></i>#}
-{#        </a>#}
-
 </header>
 
-<body id="container">
-    <div id="">
-        {% include page %}
-    </div>
-
-    <footer>
-        <div class="footer">
-            <div class="inner_footer">
-                <div class="logo_container">
-                    <img src="/static/headernav.png">
-                </div>
-
-                <div class="footer_third">
-                    <h1>Account</h1>
-                    {% if user.is_authenticated %}
-
-                        <a href="/profiel">Profiel</a>
-                        <a href="/logout">Uitloggen</a>
-
-                    {% else %}
-
-                        <a href="/login">Inloggen</a>
-                        <a href="/register">Registreren</a>
-
-                    {% endif %}
-    {#                <br>#}
-    {#                <h1>Need Help?</h1>#}
-    {#                <a href="#">Terms &amp; Conditions</a>#}
-    {#                <a href="#">Privacy Policy</a>#}
-                </div>
-
-                <div class="footer_third">
-                    <h1>Contact</h1>
-                    <span>
-                        Accenda - I-EM Delft <br>
-                        Schieweg 15, N2 <br> <br>
-                        T: +31(0)6 111 996 68 <br>
-                        T: +31(0)6 242 482 73 <br>
-                        E: info@accenda.nl
-                        {#                    © Connected Vehicles <br>#}
-                    </span>
-                </div>
-
-                <div class="footer_third">
-                    <h1>Follow Us</h1>
-    {#                <li><a href="https://www.facebook.com/I-EM-Delft-100135551667918"><i class="fa fa-facebook"></i> I-EM Delft</a></li>#}
-    {#                <br>#}
-    {#                <br>#}
-                    <li><a href="https://www.linkedin.com/company/accenda-bv/about/"><i class="fa fa-linkedin"></i> {# Accenda #}</a></li>
-    {#                <br>#}
-    {#                <li><a href="https://www.linkedin.com/company/i-em-delft/"><i class="fa fa-linkedin"></i> I-EM Delft</a></li>#}
-    {#                <br>#}
-    {#                <br>#}
-                    <li><a href="https://www.accenda.nl/"><i class="fas fa-globe-europe"></i>{# Accenda #}</a></li>
-    {#                <br>#}
-    {#                <li><a href="https://i-emdelft.nl/"><i class="fa fa-google"></i> I-EM Delft</a></li>#}
-    {#                <br>#}
-    {#                <br>#}
-                    <li><a href="https://twitter.com/AccendaInfo"><i class="fa fa-twitter"></i> {# Accenda #} </a></li>
-    {#                <br>#}
-    {#                <li><a href="https://twitter.com/DelftEm"><i class="fa fa-twitter"></i> I-EM Delft</a></li>#}
-                </div>
-
-                <div class="footer_third">
-    {#                <h1>Contact</h1>#}
-                    <span>
-                        <br>
-                        © Connected Vehicles
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-</body>
+<div id="">
+    {% include page %}
+</div>
 
 </html>

@@ -74,8 +74,8 @@
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: scale(.6) translate(-50%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
-        transform: scale(.6) translate(-25%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
-        left: 30%;
+        transform: scale(.6) translate(10%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
+        /*left: 30%;*/
         position: absolute;
         width: 450px;
         height: 200px;

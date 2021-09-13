@@ -34,19 +34,19 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
         gap: 0px 0px;
         width: 100%;
     }
 
     .grid-box {
         background-color: white;
-        margin: 10%;
-        padding: 20px;
+        margin: 8%;
+        padding: 16px;
         border-radius: 20px;
         text-align: center;
-        width: 60%;
+        width: 75%;
     }
 
     .grid-box h1, h3 {
