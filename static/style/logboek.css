@@ -325,6 +325,7 @@
     border: 10px solid white;
     padding: 5px;
     padding-right: 10px;
+    z-index: 1;
 }
 
 .dropdown label {
