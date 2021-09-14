@@ -1,6 +1,6 @@
 
 /* Computer */
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 800px) {
 
     /* The laptop with borders */
     .laptop {
@@ -67,7 +67,7 @@
 }
 
 /* phoneview */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
 
     /* The laptop with borders */
     .laptop {
