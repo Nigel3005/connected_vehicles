@@ -49,18 +49,33 @@
 
     {% if user.is_authenticated %}
         <div class="navbar">
-            <a href="/home">Home <i class="fas fa-home"></i></a>
-
-            <a href="javascript:void(0);" class="icon" onclick="hamburger()">
-                <i class="fa fa-bars"></i>
-            </a>
-
             <img id="imglink" src="/static/headernav.png" class="imgnav" onclick="logoclick()"/>
-            <a href="/dashboard">Dashboard <i class="fas fa-chalkboard-teacher"></i></a>
-            <a href="/data-analytics">Data <i class="fas fa-chart-line"></i></a>
-            <a href="/logboek">logboek <i class="far fa-list-alt"></i></a>
+
+            <div class="dropdown-nav-bars">
+                <button class="dropbtn-bars">
+                  <i id="usericon-bars" class="fa fa-bars"></i>
+                </button>
+                <div class="dropdown-content-bars">
+                    <a href="/home">Home <i class="fas fa-home"></i></a>
+                    <a href="/dashboard">Dashboard <i class="fas fa-chalkboard-teacher"></i></a>
+                    <a href="/data-analytics">Data <i class="fas fa-chart-line"></i></a>
+                    <a href="/logboek">logboek <i class="far fa-list-alt"></i></a>
+                </div>
+            </div>
+
+{#            <div id="navbar">#}
+{#                <a href="/home">Home <i class="fas fa-home"></i></a>#}
+{#                <a href="/dashboard">Dashboard <i class="fas fa-chalkboard-teacher"></i></a>#}
+{#                <a href="/data-analytics">Data <i class="fas fa-chart-line"></i></a>#}
+{#                <a href="/logboek">logboek <i class="far fa-list-alt"></i></a>#}
+{#            </div>#}
     {#        <a id="dimensions"></a>#}
-                <div class="dropdown-nav">
+
+{#            <a href="javascript:void(0);" class="icon" onclick="hamburger()" style="float: left">#}
+{#                <i class="fa fa-bars"></i>#}
+{#            </a>#}
+
+            <div class="dropdown-nav">
                 <button class="dropbtn">
                   <i id="usericon" class="far fa-user"></i>
                 </button>
@@ -68,16 +83,15 @@
                     <a href="/profiel">Profiel <i class="fas fa-id-card"></i></a>
                     <a href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
                 </div>
-              </div>
             </div>
         </div>
     {% else %}
         <div class="navbar">
             <a href="/home">Home <i class="fas fa-home"></i></a>
 
-            <a href="javascript:void(0);" class="icon" onclick="hamburger()">
-                <i class="fa fa-bars"></i>
-            </a>
+{#            <a href="javascript:void(0);" class="icon" onclick="hamburger()">#}
+{#                <i class="fa fa-bars"></i>#}
+{#            </a>#}
 
             <img id="imglink" src="/static/headernav.png" class="imgnav" onclick="logoclick()"/>
             {#        <a id="dimensions"></a>#}
