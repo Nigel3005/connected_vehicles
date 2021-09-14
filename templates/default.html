@@ -50,6 +50,11 @@
     {% if user.is_authenticated %}
         <div class="navbar">
             <a href="/home">Home <i class="fas fa-home"></i></a>
+
+            <a href="javascript:void(0);" class="icon" onclick="hamburger()">
+                <i class="fa fa-bars"></i>
+            </a>
+
             <img id="imglink" src="/static/headernav.png" class="imgnav" onclick="logoclick()"/>
             <a href="/dashboard">Dashboard <i class="fas fa-chalkboard-teacher"></i></a>
             <a href="/data-analytics">Data <i class="fas fa-chart-line"></i></a>
