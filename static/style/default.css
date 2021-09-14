@@ -291,6 +291,10 @@
         color: white;
     }
 
+    #filter-bar{
+
+    }
+
     body h2, h3{
         color: white;
         margin-left: 40px;
@@ -370,16 +374,6 @@
         margin-top: 1%;
     }
 
-    /*div #navbar{*/
-    /*    display: none;*/
-    /*}*/
-
-    /*.navbar a.icon {*/
-    /*    color: white;*/
-    /*    display: block;*/
-    /*    position: absolute;*/
-    /*}*/
-
     i #usericon{
         color: white;
         display: block;
@@ -391,10 +385,6 @@
         display: block;
         position: absolute;
     }
-
-    /*.icon{*/
-    /*    color: white;*/
-    /*}*/
 
     .navbar a {
         /*float: top;*/
@@ -520,11 +510,6 @@
     }
 
     .imgnav {
-        /*padding-top: 3px;*/
-        /*width: 40px;*/
-        /*height: 40px;*/
-        /*position: absolute;*/
-        /*left: calc((100%) / 2);*/
         display: none;
     }
 
