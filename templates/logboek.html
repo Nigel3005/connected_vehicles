@@ -41,7 +41,7 @@
                 'vehicle_id': vehicle_id,
                 'startDate': startDate,
                 'endDate': endDate,
-                'page': page,
+                {#'page': page,#}
             })
         } else {
             params = new URLSearchParams({
@@ -49,7 +49,7 @@
                 'column_names': getSelectedCheckboxValues("column_names_filter_box"),
                 'startDate': startDate,
                 'endDate': endDate,
-                'page': page,
+                {#'page': page,#}
             })
         }
         href.search = params;
