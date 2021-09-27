@@ -42,7 +42,7 @@ class createVehicleStatus(APIView):
             batterij_temperatuur = values[15] -100
 
             kabine_temperatuur = values[16] -100
-            kabine_ingestelde_temperatuur = values[17] -100
+            kabine_ingestelde_temperatuur = values[17]
             olie_temperatuur = values[18]
             versnelling_x_richting = values[19] /4
             versnelling_y_richting = values[20] /4
